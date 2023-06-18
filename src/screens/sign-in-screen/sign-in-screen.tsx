@@ -1,10 +1,24 @@
-import { Text, View } from "react-native";
-import { signInScreenStyles } from "./sign-in-screen-styles";
+import * as S from "./sign-in-screen-styles";
+import { GoogleLogo } from "phosphor-react-native";
+import { AppLogo, Button } from "@components/index";
 
 export function SignInScreen() {
   return (
-    <View style={signInScreenStyles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
+    <S.Container>
+      <S.LogoContainer>
+        <AppLogo />
+      </S.LogoContainer>
+      <S.HeroText>Entrar</S.HeroText>
+      <Button width="176px" icon={<GoogleLogo color="white" weight="bold" />}>
+        com Google
+      </Button>
+      <S.FooterText>Ou com email</S.FooterText>
+
+      <Button width="308px">Entrar</Button>
+
+      <S.FooterText>
+        Novo usuário? <S.LinkText>Criar conta</S.LinkText>
+      </S.FooterText>
+    </S.Container>
   );
 }
