@@ -14,7 +14,11 @@ export const HeroText = styled.Text`
   margin-bottom: 16px;
 `;
 
-export const LogoContainer = styled.View``;
+export const LogoContainer = styled.View`
+  margin-bottom: 48px;
+  width: 100%;
+  align-items: center;
+`;
 
 export const FooterText = styled.Text`
   font-family: ${({ theme }) => theme.FONTS.PRIMARY.REGULAR};
@@ -26,4 +30,9 @@ export const FooterText = styled.Text`
 export const LinkText = styled.Text`
   color: ${({ theme }) => theme.COLORS.PRIMARY};
   font-family: ${({ theme }) => theme.FONTS.PRIMARY.REGULAR};
+`;
+
+export const Form = styled.View`
+  gap: 16px;
+  margin-top: 16px;
 `;

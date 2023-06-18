@@ -1,24 +1,32 @@
-import { TouchableOpacity } from "react-native";
+import { Text, TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
 
 type ButtonProps = {
   width?: string;
+  bold?: boolean;
+  variant?: "primary" | "secondary";
 };
 
 export const Button = styled(TouchableOpacity)<ButtonProps>`
-  background-color: ${({ theme }) => theme.COLORS.SECONDARY_DARK};
+  background-color: ${({ theme, variant }) =>
+    variant === "primary" ? theme.COLORS.PRIMARY : theme.COLORS.SECONDARY_DARK};
   border: 0;
   border-radius: 30px;
   padding: 12px 16px;
 
-  width: ${({ width }) => width || "100%"};
+  width: ${({ width }) => width || "300px"};
 
   flex-direction: row;
   justify-content: center;
 `;
 
-export const ButtonText = styled.Text`
-  font-family: ${({ theme }) => theme.FONTS.PRIMARY.REGULAR};
+type ButtonTextProps = {
+  bold?: boolean;
+};
+
+export const ButtonText = styled(Text)<ButtonTextProps>`
+  font-family: ${({ theme, bold }) =>
+    bold ? theme.FONTS.PRIMARY.REGULAR : theme.FONTS.PRIMARY.BOLD};
   font-size: 16px;
   color: ${({ theme }) => theme.COLORS.WHITE};
 `;
