@@ -12,7 +12,7 @@ export function Button({
   bold,
   children,
   icon,
-  width,
+  width = "100%",
   variant = "primary",
 }: PropsWithChildren<Props>) {
   return (

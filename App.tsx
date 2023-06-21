@@ -1,5 +1,4 @@
 import { ThemeProvider } from "styled-components/native";
-import { SignInScreen } from "./src/screens/sign-in-screen/sign-in-screen";
 import theme from "@theme/index";
 
 import {
@@ -12,6 +11,7 @@ import {
 import { Loading } from "./src/components/loading/loading";
 import { StatusBar } from "react-native";
 import { DefaultLayout } from "./src/layout/default-layout/default-layout";
+import { OnboardingScreen } from "@screens/index";
 
 export default function App() {
   const [isFontsLoaded] = useFonts({
@@ -27,7 +27,8 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <StatusBar hidden />
       <DefaultLayout>
-        <SignInScreen />
+        {/* <SignInScreen /> */}
+        <OnboardingScreen />
       </DefaultLayout>
     </ThemeProvider>
   );

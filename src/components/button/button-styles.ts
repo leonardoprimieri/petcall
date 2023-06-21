@@ -11,7 +11,7 @@ export const Button = styled(TouchableOpacity)<ButtonProps>`
   background-color: ${({ theme, variant }) =>
     variant === "primary" ? theme.COLORS.PRIMARY : theme.COLORS.SECONDARY_DARK};
   border: 0;
-  border-radius: 30px;
+  border-radius: 16px;
   padding: 12px 16px;
 
   width: ${({ width }) => width || "300px"};
