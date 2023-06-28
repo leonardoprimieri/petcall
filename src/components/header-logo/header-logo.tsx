@@ -1,5 +1,6 @@
 import * as S from "./header-logo-styles";
-import { AppLogo, IconButton } from "../index";
+import { AppLogo } from "../../components/app-logo/app-logo";
+import { IconButton } from "../../components/icon-button/icon-button";
 import { ArrowLeftIcon } from "@components/icons";
 import { useTheme } from "styled-components/native";
 
