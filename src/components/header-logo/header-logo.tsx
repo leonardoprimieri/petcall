@@ -1,6 +1,6 @@
 import * as S from "./header-logo-styles";
 import { AppLogo, IconButton } from "../index";
-import { ArrowLeftIcon } from "@components/icons/arrow-left-icon";
+import { ArrowLeftIcon } from "@components/icons";
 import { useTheme } from "styled-components/native";
 
 type Props = {
