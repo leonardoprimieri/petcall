@@ -1,7 +1,6 @@
+import { GoogleLogoIcon } from "@components/icons";
 import * as S from "./sign-in-screen-styles";
-import { GoogleLogo } from "phosphor-react-native";
-import { AppLogo, Button } from "@components/index";
-import { TextInput } from "@components/text-input/text-input";
+import { AppLogo, Button, TextInput } from "@components/index";
 
 export function SignInScreen() {
   return (
@@ -12,7 +11,7 @@ export function SignInScreen() {
       <S.HeroText>Entrar</S.HeroText>
       <Button
         width="176px"
-        icon={<GoogleLogo color="white" weight="bold" />}
+        icon={<GoogleLogoIcon color="white" weight="bold" />}
         bold
         variant="secondary"
       >

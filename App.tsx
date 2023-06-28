@@ -11,7 +11,7 @@ import {
 import { Loading } from "./src/components/loading/loading";
 import { StatusBar } from "react-native";
 import { DefaultLayout } from "./src/layout/default-layout/default-layout";
-import { OnboardingScreen } from "@screens/index";
+import { SearchVetsScreen } from "@screens/index";
 
 export default function App() {
   const [isFontsLoaded] = useFonts({
@@ -28,7 +28,8 @@ export default function App() {
       <StatusBar hidden />
       <DefaultLayout>
         {/* <SignInScreen /> */}
-        <OnboardingScreen />
+        {/* <OnboardingScreen /> */}
+        <SearchVetsScreen />
       </DefaultLayout>
     </ThemeProvider>
   );

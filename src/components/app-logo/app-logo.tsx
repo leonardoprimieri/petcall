@@ -1,11 +1,15 @@
 import * as S from "./app-logo-styles";
 import logoImg from "@assets/logo.png";
 
-export const AppLogo = () => {
+type Props = {
+  removeText?: boolean;
+};
+
+export const AppLogo = ({ removeText }: Props) => {
   return (
     <S.Container>
       <S.Logo source={logoImg} />
-      <S.LogoText>Petcall</S.LogoText>
+      {!removeText && <S.LogoText>Petcall</S.LogoText>}
     </S.Container>
   );
 };
