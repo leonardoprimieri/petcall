@@ -10,8 +10,8 @@ import {
 } from "@expo-google-fonts/poppins";
 import { Loading } from "./src/components/loading/loading";
 import { StatusBar } from "react-native";
-import { DefaultLayout } from "./src/layout/default-layout/default-layout";
-import { SearchVetsScreen } from "@screens/index";
+import { DefaultLayout } from "./src/layouts/default-layout/default-layout";
+import { Routes } from "@routes/index";
 
 export default function App() {
   const [isFontsLoaded] = useFonts({
@@ -27,9 +27,7 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <StatusBar hidden />
       <DefaultLayout>
-        {/* <SignInScreen /> */}
-        {/* <OnboardingScreen /> */}
-        <SearchVetsScreen />
+        <Routes />
       </DefaultLayout>
     </ThemeProvider>
   );

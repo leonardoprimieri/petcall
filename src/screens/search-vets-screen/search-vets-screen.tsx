@@ -1,6 +1,7 @@
+import { HeaderLogo } from "@components/header-logo/header-logo";
 import * as S from "./search-vets-screen-styles";
-import { HeaderLogo, VetCard } from "@components/index";
 import { FlatList } from "react-native";
+import { VetCard } from "@components/vet-card/vet-card";
 
 export function SearchVetsScreen() {
   return (

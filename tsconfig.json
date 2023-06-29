@@ -25,6 +25,9 @@
       "@theme/*": [
         "./src/theme/*"
       ],
+      "@layouts/*": [
+        "./src/layouts/*"
+      ],
     }
   }
 }

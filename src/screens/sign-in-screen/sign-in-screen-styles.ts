@@ -27,6 +27,8 @@ export const FooterText = styled.Text`
   margin-top: 16px;
 `;
 
+export const LinkButton = styled.TouchableOpacity``;
+
 export const LinkText = styled.Text`
   color: ${({ theme }) => theme.COLORS.PRIMARY};
   font-family: ${({ theme }) => theme.FONTS.PRIMARY.REGULAR};
