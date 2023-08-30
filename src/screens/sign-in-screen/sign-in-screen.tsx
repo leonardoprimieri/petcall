@@ -1,19 +1,14 @@
 import { GoogleLogoIcon } from "@components/icons";
 import * as S from "./sign-in-screen-styles";
-import { useNavigation } from "@react-navigation/native";
 import { AppLogo } from "@components/app-logo/app-logo";
 import { Button } from "@components/button/button";
 import { TextInput } from "@components/text-input/text-input";
-import { ROUTES_NAMES } from "@routes/routes.names.const";
 import { KeyboardAvoidingView } from "react-native";
 import { DefaultLayout } from "@layouts/default-layout/default-layout";
+import { useNavigationRoutes } from "@hooks/use-navigation-routes";
 
 export function SignInScreen() {
-  const navigation = useNavigation();
-
-  const handleGoToOnboarding = () => {
-    navigation.navigate(ROUTES_NAMES.ONBOARDING);
-  };
+  const { handleGoToOnboarding, handleGoToSearchVets } = useNavigationRoutes();
 
   return (
     <DefaultLayout>
@@ -42,15 +37,17 @@ export function SignInScreen() {
             <TextInput placeholder="E-mail" keyboardType="email-address" />
             <TextInput placeholder="Senha" secureTextEntry />
 
-            <Button width="300px">Entrar</Button>
+            <Button width="300px" onPress={handleGoToSearchVets}>
+              Entrar
+            </Button>
           </S.Form>
 
-          <S.FooterText>
-            Novo usuário?{" "}
+          <S.Footer>
+            <S.FooterText>Novo usuário?</S.FooterText>
             <S.LinkButton onPress={handleGoToOnboarding}>
               <S.LinkText>Criar conta</S.LinkText>
             </S.LinkButton>
-          </S.FooterText>
+          </S.Footer>
         </S.Container>
       </KeyboardAvoidingView>
     </DefaultLayout>

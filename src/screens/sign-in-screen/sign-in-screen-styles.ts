@@ -27,7 +27,9 @@ export const FooterText = styled.Text`
   margin-top: 16px;
 `;
 
-export const LinkButton = styled.TouchableOpacity``;
+export const LinkButton = styled.TouchableOpacity`
+  margin-top: 17px;
+`;
 
 export const LinkText = styled.Text`
   color: ${({ theme }) => theme.COLORS.PRIMARY};
@@ -37,4 +39,9 @@ export const LinkText = styled.Text`
 export const Form = styled.View`
   gap: 16px;
   margin-top: 16px;
+`;
+
+export const Footer = styled.View`
+  flex-direction: row;
+  gap: 12px;
 `;
