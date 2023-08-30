@@ -1,24 +1,15 @@
-import { Image } from "react-native";
-import * as S from "./onboarding-screen-styles";
-import onboardingImage from "@assets/onboarding-image.png";
-import { Button } from "@components/button/button";
 import { DefaultLayout } from "@layouts/default-layout/default-layout";
+import { useState } from "react";
+import { FirstStep } from "./steps/first-step/first-step";
+import { SecondStep } from "./steps/second-step/second-step";
 
 export function OnboardingScreen() {
-  return (
-    <DefaultLayout>
-      <S.Container>
-        <S.TextContainer>
-          <S.Title>Bem vindo ao PetCall</S.Title>
-          <S.Description>
-            Vamos começar o seu processo de cadastro na plataforma
-          </S.Description>
-          <S.ButtonContainer>
-            <Button>Iniciar</Button>
-          </S.ButtonContainer>
-        </S.TextContainer>
-        <Image source={onboardingImage} />
-      </S.Container>
-    </DefaultLayout>
-  );
+  const [step, setStep] = useState(1);
+
+  const steps: Record<number, React.ReactNode> = {
+    1: <FirstStep goToNextStep={() => setStep((old) => old + 1)} />,
+    2: <SecondStep />,
+  };
+
+  return <DefaultLayout>{steps[step]}</DefaultLayout>;
 }
