@@ -31,6 +31,12 @@
       "@hooks/*": [
         "./src/hooks/*"
       ],
+      "@services/*": [
+        "./src/services/*"
+      ],
+      "@config/*": [
+        "./src/config/*"
+      ],
     }
   }
 }

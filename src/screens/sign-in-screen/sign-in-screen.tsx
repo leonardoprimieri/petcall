@@ -6,9 +6,19 @@ import { TextInput } from "@components/text-input/text-input";
 import { KeyboardAvoidingView } from "react-native";
 import { DefaultLayout } from "@layouts/default-layout/default-layout";
 import { useNavigationRoutes } from "@hooks/use-navigation-routes";
+import { emailLogin } from "../../services/auth/email-login";
 
 export function SignInScreen() {
-  const { handleGoToOnboarding, handleGoToSearchVets } = useNavigationRoutes();
+  const { handleGoToOnboarding } = useNavigationRoutes();
+
+  const onSubmit = async () => {
+    const response = await emailLogin({
+      email: "leo.primieri@gmail.com",
+      password: "qwe123QWE!@#",
+    });
+
+    console.log(response);
+  };
 
   return (
     <DefaultLayout>
@@ -37,7 +47,7 @@ export function SignInScreen() {
             <TextInput placeholder="E-mail" keyboardType="email-address" />
             <TextInput placeholder="Senha" secureTextEntry />
 
-            <Button width="300px" onPress={handleGoToSearchVets}>
+            <Button width="300px" onPress={onSubmit}>
               Entrar
             </Button>
           </S.Form>
