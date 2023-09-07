@@ -10,7 +10,7 @@ export const mapFirebaseError = (code: string) => {
       return "Credenciais inválidas";
 
     case "auth/too-many-requests":
-      return "Muitas tentativas de login inválidas. Tente novamente mais tarde";
+      return "Conta bloqueada, entre em contato com o suporte";
 
     case "auth/user-disabled":
       return "Usuário desativado";
