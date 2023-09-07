@@ -1,19 +1,24 @@
-import { TextInputProps } from "react-native";
+import { TextInputProps as RNInputProps } from "react-native";
 import { useTheme } from "styled-components/native";
 import * as S from "./text-input-styles";
+import { forwardRef } from "react";
 
-type Props = {
+export type TextInputProps = {
   width?: string;
-} & TextInputProps;
+} & RNInputProps;
 
-export const TextInput = ({ width, ...rest }: Props) => {
+export const TextInput = forwardRef<any, TextInputProps>(function Input(
+  { width, ...rest },
+  ref
+) {
   const { COLORS } = useTheme();
 
   return (
     <S.Container
       width={width}
       placeholderTextColor={COLORS.PARAGRAPH}
+      ref={ref}
       {...rest}
     />
   );
-};
+});
