@@ -1,6 +1,5 @@
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-
-const auth = getAuth();
+import { auth } from "@config/firebase/firebase-config";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 type CreateEmailAccountParams = {
   email: string;

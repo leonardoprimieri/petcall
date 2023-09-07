@@ -12,12 +12,10 @@ export function SignInScreen() {
   const { handleGoToOnboarding } = useNavigationRoutes();
 
   const onSubmit = async () => {
-    const response = await emailLogin({
+    await emailLogin({
       email: "leo.primieri@gmail.com",
       password: "qwe123QWE!@#",
     });
-
-    console.log(response);
   };
 
   return (
