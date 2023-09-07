@@ -1,5 +1,5 @@
 import { TouchableOpacityProps } from "react-native";
-import * as S from "./button-styles";
+import { StyledButton, ButtonText, Icon, Loader } from "./button-styles";
 import { PropsWithChildren } from "react";
 
 type Props = {
@@ -7,20 +7,33 @@ type Props = {
   width?: string;
   bold?: boolean;
   variant?: "primary" | "secondary";
+  isLoading?: boolean;
 } & TouchableOpacityProps;
 
 export function Button({
-  bold,
-  children,
-  icon,
   width = "100%",
   variant = "primary",
+  children,
   ...props
 }: PropsWithChildren<Props>) {
+  const ButtonContent = () => {
+    return (
+      <>
+        {Boolean(props.icon) && <Icon>{props.icon}</Icon>}
+        <ButtonText bold={props.bold}>{children}</ButtonText>
+      </>
+    );
+  };
+
   return (
-    <S.Button width={width} variant={variant} {...props}>
-      {Boolean(icon) && <S.Icon>{icon}</S.Icon>}
-      <S.ButtonText bold={bold}>{children}</S.ButtonText>
-    </S.Button>
+    <StyledButton
+      disabled={props.disabled ?? props.isLoading}
+      width={width}
+      variant={variant}
+      {...props}
+    >
+      {props.isLoading && <Loader />}
+      {!props.isLoading && <ButtonContent />}
+    </StyledButton>
   );
 }

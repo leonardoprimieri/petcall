@@ -9,6 +9,7 @@ export default {
 
     TITLE: "#333333",
     PARAGRAPH: "#73665C",
+    ERROR: "#FF5147",
   },
 
   FONTS: {

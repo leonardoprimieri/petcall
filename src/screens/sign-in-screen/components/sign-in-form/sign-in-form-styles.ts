@@ -19,9 +19,12 @@ export const LinkText = styled.Text`
 export const Form = styled.View`
   gap: 16px;
   margin-top: 16px;
+  align-items: center;
+  width: 100%;
 `;
 
 export const Footer = styled.View`
   flex-direction: row;
   gap: 12px;
+  margin-top: 12px;
 `;

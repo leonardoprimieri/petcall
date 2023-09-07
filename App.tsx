@@ -1,3 +1,4 @@
+import Toast from "react-native-toast-message";
 import { ThemeProvider } from "styled-components/native";
 import theme from "@theme/index";
 
@@ -29,6 +30,7 @@ export default function App() {
       <DefaultLayout>
         <Routes />
       </DefaultLayout>
+      <Toast />
     </ThemeProvider>
   );
 }

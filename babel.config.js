@@ -19,6 +19,7 @@ module.exports = function (api) {
             "@hooks": "./src/hooks",
             "@services": "./src/services",
             "@config": "./src/config",
+            "@mappers": "./src/mappers",
           },
         },
       ],

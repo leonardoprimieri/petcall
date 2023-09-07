@@ -1,5 +1,6 @@
 import { Button } from "@components/button/button";
 import { GoogleLogoIcon } from "@components/icons";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 import {
   Footer,
@@ -13,6 +14,7 @@ import { useNavigationRoutes } from "@hooks/use-navigation-routes";
 
 import { FormProvider, useForm } from "react-hook-form";
 import { ControlledTextInput } from "@components/controlled-text-input/controlled-text-input";
+import { SignUpFormValidation } from "@screens/sign-in-screen/validation/sign-up-form-validation";
 
 type FormData = {
   email: string;
@@ -20,7 +22,10 @@ type FormData = {
 };
 
 export const SignInForm = () => {
-  const methods = useForm<FormData>();
+  const methods = useForm<FormData>({
+    resolver: zodResolver(SignUpFormValidation),
+    mode: "onSubmit",
+  });
 
   const { handleGoToOnboarding } = useNavigationRoutes();
 
@@ -50,17 +55,19 @@ export const SignInForm = () => {
           placeholder="E-mail"
           keyboardType="email-address"
           name="email"
-          required
         />
         <ControlledTextInput
           placeholder="Senha"
           name="password"
           secureTextEntry
-          required
         />
 
-        <Button width="300px" onPress={methods.handleSubmit(onSubmit)}>
-          {methods.formState.isSubmitting ? "Carregando..." : "Entrar"}
+        <Button
+          width="300px"
+          isLoading={methods.formState.isSubmitting}
+          onPress={methods.handleSubmit(onSubmit)}
+        >
+          Entrar
         </Button>
       </Form>
 

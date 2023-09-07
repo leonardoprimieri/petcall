@@ -1,18 +1,22 @@
 import { TextInput, TextInputProps } from "@components/text-input/text-input";
-import { Control, Controller } from "react-hook-form";
+import { Controller } from "react-hook-form";
 
 type Props = {
   name: string;
-  required?: boolean;
 } & TextInputProps;
 
-export const ControlledTextInput = ({ name, required, ...props }: Props) => {
+export const ControlledTextInput = ({ name, ...props }: Props) => {
   return (
     <Controller
       name={name}
-      rules={{ required }}
-      render={({ field }) => (
-        <TextInput onChangeText={field.onChange} {...field} {...props} />
+      render={({ field, fieldState: { invalid, error } }) => (
+        <TextInput
+          invalid={invalid}
+          errorMessage={error?.message}
+          onChangeText={field.onChange}
+          {...field}
+          {...props}
+        />
       )}
     />
   );
