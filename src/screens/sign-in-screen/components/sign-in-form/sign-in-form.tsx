@@ -13,8 +13,8 @@ import { useEmailLogin } from "@screens/sign-in-screen/hooks/use-email-login";
 import { useNavigationRoutes } from "@hooks/use-navigation-routes";
 
 import { FormProvider, useForm } from "react-hook-form";
-import { ControlledTextInput } from "@components/controlled-text-input/controlled-text-input";
 import { SignUpFormValidation } from "@screens/sign-in-screen/validation/sign-up-form-validation";
+import { ControlledTextInput } from "@components/form/controlled-text-input/controlled-text-input";
 
 type FormData = {
   email: string;

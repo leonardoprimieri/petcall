@@ -8,7 +8,7 @@ type ButtonProps = {
 };
 
 export const StyledButton = styled(TouchableOpacity)<ButtonProps>`
-  background-color: ${({ theme, variant, disabled }) =>
+  background-color: ${({ theme, variant }) =>
     variant === "primary" ? theme.COLORS.PRIMARY : theme.COLORS.SECONDARY_DARK};
   border: 0;
   border-radius: 16px;
