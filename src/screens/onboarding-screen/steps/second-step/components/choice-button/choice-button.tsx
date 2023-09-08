@@ -3,19 +3,26 @@ import { Container, Label } from "./choice-button-styles";
 
 import petTutorImage from "@assets/veterinary-choice.png";
 import veterinaryImage from "@assets/pet-tutor.png";
+import { UserTypeEnum } from "src/enums/user-type.enum";
 
 type Props = {
-  type: "veterinary" | "pet-tutor";
+  type: keyof typeof UserTypeEnum;
   isSelected?: boolean;
 } & TouchableOpacityProps;
 
 export const ChoiceButton = ({ type, isSelected, ...props }: Props) => {
-  const variants = {
-    veterinary: {
+  const variants: Record<
+    keyof typeof UserTypeEnum,
+    {
+      label: string;
+      image: any;
+    }
+  > = {
+    VETERINARY: {
       label: "Sou veterinário",
       image: petTutorImage,
     },
-    "pet-tutor": {
+    PET_TUTOR: {
       label: "Sou tutor de pet",
       image: veterinaryImage,
     },

@@ -10,11 +10,11 @@ import {
   LinkText,
 } from "./sign-in-form-styles";
 import { useEmailLogin } from "@screens/sign-in-screen/hooks/use-email-login";
-import { useNavigationRoutes } from "@hooks/use-navigation-routes";
 
 import { FormProvider, useForm } from "react-hook-form";
 import { SignUpFormValidation } from "@screens/sign-in-screen/validation/sign-up-form-validation";
 import { ControlledTextInput } from "@components/form/controlled-text-input/controlled-text-input";
+import { useNavigationRoutes } from "@hooks/general/use-navigation-routes";
 
 type FormData = {
   email: string;

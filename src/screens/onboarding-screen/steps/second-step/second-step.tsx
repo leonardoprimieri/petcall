@@ -9,16 +9,25 @@ import { Title } from "../components/title/title";
 import { FormProvider, useForm } from "react-hook-form";
 import { ChoiceButton } from "./components/choice-button/choice-button";
 import { useState } from "react";
+import { useCreateUser } from "./hooks/use-create-user";
+import { UserTypeEnum } from "src/enums/user-type.enum";
 
 export function SecondStep() {
   const methods = useForm();
 
-  const [selectedChoice, setSelectedChoice] = useState<
-    "veterinary" | "pet-tutor"
-  >();
+  const { isLoading, mutationFn } = useCreateUser();
 
-  const handleSelectChoice = (type: "veterinary" | "pet-tutor") => {
+  const [selectedChoice, setSelectedChoice] =
+    useState<keyof typeof UserTypeEnum>("PET_TUTOR");
+
+  const handleSelectChoice = (type: keyof typeof UserTypeEnum) => {
     setSelectedChoice(type);
+  };
+
+  const onSubmit = () => {
+    mutationFn({
+      userType: selectedChoice,
+    });
   };
 
   return (
@@ -33,18 +42,22 @@ export function SecondStep() {
         <FormContainer>
           <ChoicesContainer>
             <ChoiceButton
-              onPress={() => handleSelectChoice("veterinary")}
-              type="veterinary"
-              isSelected={selectedChoice === "veterinary"}
+              onPress={() => handleSelectChoice("PET_TUTOR")}
+              type="PET_TUTOR"
+              isSelected={selectedChoice === "PET_TUTOR"}
             />
             <ChoiceButton
-              onPress={() => handleSelectChoice("pet-tutor")}
-              type="pet-tutor"
-              isSelected={selectedChoice === "pet-tutor"}
+              onPress={() => handleSelectChoice("VETERINARY")}
+              type="VETERINARY"
+              isSelected={selectedChoice === "VETERINARY"}
             />
           </ChoicesContainer>
-          <Button disabled={!selectedChoice}>
-            {!selectedChoice ? "Selecione uma opção" : "Continuar"}
+          <Button
+            isLoading={isLoading}
+            onPress={onSubmit}
+            disabled={!selectedChoice || isLoading}
+          >
+            Continuar
           </Button>
         </FormContainer>
       </FormProvider>
