@@ -6,9 +6,12 @@ export const useNavigationRoutes = () => {
 
   const handleGoToOnboarding = () => navigate(ROUTES_NAMES.ONBOARDING);
   const handleGoToSearchVets = () => navigate(ROUTES_NAMES.SEARCH_VETS);
+  const handleGoToRegisterVeterinarian = () =>
+    navigate(ROUTES_NAMES.REGISTER_VETERINARIAN);
 
   return {
     handleGoToOnboarding,
     handleGoToSearchVets,
+    handleGoToRegisterVeterinarian,
   };
 };

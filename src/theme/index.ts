@@ -9,9 +9,12 @@ export default {
 
     TITLE: "#333333",
     PARAGRAPH: "#73665C",
-    ERROR: "#FF5147",
-  },
+    RED: "#FF4242",
 
+    INPUT_BORDER: "#6C5442",
+
+    ERROR: "#FF4242",
+  },
   FONTS: {
     PRIMARY: {
       REGULAR: "Poppins_400Regular",

@@ -6,7 +6,7 @@ type Props = {
   icon?: React.ReactNode;
   width?: string;
   bold?: boolean;
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "tertiary";
   isLoading?: boolean;
 } & TouchableOpacityProps;
 
@@ -20,7 +20,9 @@ export function Button({
     return (
       <>
         {Boolean(props.icon) && <Icon>{props.icon}</Icon>}
-        <ButtonText bold={props.bold}>{children}</ButtonText>
+        <ButtonText variant={variant} bold={props.bold}>
+          {children}
+        </ButtonText>
       </>
     );
   };

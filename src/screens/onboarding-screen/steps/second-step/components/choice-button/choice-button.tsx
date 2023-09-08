@@ -1,8 +1,8 @@
 import { Image, TouchableOpacityProps } from "react-native";
 import { Container, Label } from "./choice-button-styles";
 
-import petTutorImage from "@assets/veterinary-choice.png";
-import veterinaryImage from "@assets/pet-tutor.png";
+import petTutorImage from "@assets/veterinarian-choice.png";
+import veterinarianImage from "@assets/pet-tutor.png";
 import { UserTypeEnum } from "src/enums/user-type.enum";
 
 type Props = {
@@ -18,13 +18,13 @@ export const ChoiceButton = ({ type, isSelected, ...props }: Props) => {
       image: any;
     }
   > = {
-    VETERINARY: {
+    VETERINARIAN: {
       label: "Sou veterinário",
       image: petTutorImage,
     },
     PET_TUTOR: {
       label: "Sou tutor de pet",
-      image: veterinaryImage,
+      image: veterinarianImage,
     },
   };
 

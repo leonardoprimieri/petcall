@@ -1,4 +1,5 @@
 import { useAuthentication } from "@hooks/auth/use-authentication";
+import { useNavigationRoutes } from "@hooks/general/use-navigation-routes";
 import { useToast } from "@hooks/ui/use-toast";
 import {
   CreateUserParams,
@@ -8,6 +9,8 @@ import { useState } from "react";
 
 export const useCreateUser = () => {
   const { user } = useAuthentication();
+  const { handleGoToRegisterVeterinarian } = useNavigationRoutes();
+
   const { showToast } = useToast();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -18,7 +21,6 @@ export const useCreateUser = () => {
     setIsLoading(true);
     createUserService({
       userType,
-      fullName: user?.displayName ?? "",
       userId: user?.uid,
     })
       .catch((e) => {
@@ -27,6 +29,11 @@ export const useCreateUser = () => {
           title: "Erro ao criar usuário",
           type: "error",
         });
+      })
+      .then(() => {
+        if (userType === "VETERINARIAN") {
+          handleGoToRegisterVeterinarian();
+        }
       })
       .finally(() => {
         setIsLoading(false);

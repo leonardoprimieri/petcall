@@ -47,9 +47,9 @@ export function SecondStep() {
               isSelected={selectedChoice === "PET_TUTOR"}
             />
             <ChoiceButton
-              onPress={() => handleSelectChoice("VETERINARY")}
-              type="VETERINARY"
-              isSelected={selectedChoice === "VETERINARY"}
+              onPress={() => handleSelectChoice("VETERINARIAN")}
+              type="VETERINARIAN"
+              isSelected={selectedChoice === "VETERINARIAN"}
             />
           </ChoicesContainer>
           <Button

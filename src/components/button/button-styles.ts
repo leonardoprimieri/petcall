@@ -1,15 +1,29 @@
 import { Text, TouchableOpacity } from "react-native";
-import styled from "styled-components/native";
+import styled, { DefaultTheme } from "styled-components/native";
 
 type ButtonProps = {
   width?: string;
   bold?: boolean;
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "tertiary";
+};
+
+const renderButtonBackground = (
+  theme: DefaultTheme,
+  variant?: "primary" | "secondary" | "tertiary"
+) => {
+  switch (variant) {
+    case "primary":
+      return theme.COLORS.PRIMARY;
+    case "secondary":
+      return theme.COLORS.SECONDARY_DARK;
+    default:
+      return "transparent";
+  }
 };
 
 export const StyledButton = styled(TouchableOpacity)<ButtonProps>`
   background-color: ${({ theme, variant }) =>
-    variant === "primary" ? theme.COLORS.PRIMARY : theme.COLORS.SECONDARY_DARK};
+    renderButtonBackground(theme, variant)};
   border: 0;
   border-radius: 16px;
   padding: 12px 16px;
@@ -25,13 +39,27 @@ export const StyledButton = styled(TouchableOpacity)<ButtonProps>`
 
 type ButtonTextProps = {
   bold?: boolean;
+  variant?: "primary" | "secondary" | "tertiary";
+};
+
+const renderButtonText = (
+  theme: DefaultTheme,
+  variant?: "primary" | "secondary" | "tertiary"
+) => {
+  switch (variant) {
+    case "primary":
+    case "secondary":
+      return theme.COLORS.WHITE;
+    default:
+      return theme.COLORS.TITLE;
+  }
 };
 
 export const ButtonText = styled.Text<ButtonTextProps>`
   font-family: ${({ theme, bold }) =>
     bold ? theme.FONTS.PRIMARY.REGULAR : theme.FONTS.PRIMARY.BOLD};
   font-size: 16px;
-  color: ${({ theme }) => theme.COLORS.WHITE};
+  color: ${({ theme, variant }) => renderButtonText(theme, variant)};
 `;
 
 export const Icon = styled.View`

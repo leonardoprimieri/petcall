@@ -7,9 +7,10 @@ import { useNavigation } from "@react-navigation/native";
 
 type Props = {
   text?: string;
+  removeGoBack?: boolean;
 };
 
-export const HeaderLogo = ({ text }: Props) => {
+export const HeaderLogo = ({ text, removeGoBack }: Props) => {
   const navigation = useNavigation();
 
   const { COLORS } = useTheme();
@@ -20,9 +21,11 @@ export const HeaderLogo = ({ text }: Props) => {
 
   return (
     <S.Container>
-      <IconButton onPress={handleGoBack}>
-        <ArrowLeftIcon color={COLORS.PRIMARY} weight="bold" />
-      </IconButton>
+      {!removeGoBack && (
+        <IconButton onPress={handleGoBack}>
+          <ArrowLeftIcon color={COLORS.PRIMARY} weight="bold" />
+        </IconButton>
+      )}
       <S.LogoContainer>
         <AppLogo removeText />
         <S.HeroText>{text}</S.HeroText>

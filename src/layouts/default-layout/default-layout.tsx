@@ -12,8 +12,8 @@ export const DefaultLayout = ({ children }: PropsWithChildren) => {
       <LinearGradient
         colors={[COLORS.SECONDARY, COLORS.SECONDARY, COLORS.SECONDARY_DARK]}
         style={{ width: "100%", flex: 1 }}
-        start={{ x: 0.3, y: 0.2 }}
-        end={{ x: 1.4, y: 0.9 }}
+        start={{ x: 1, y: 1 }}
+        end={{ x: 0, y: 0 }}
       >
         <S.HeartsImage source={heartsImg} />
         {children}

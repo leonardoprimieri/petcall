@@ -4,6 +4,7 @@ export declare global {
       SignIn: undefined;
       Onboarding: undefined;
       SearchVets: undefined;
+      RegisterVeterinarian: undefined;
     }
   }
 }
