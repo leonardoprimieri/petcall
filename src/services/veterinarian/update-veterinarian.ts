@@ -10,11 +10,12 @@ export type UpdateVeterinarianParams = {
 };
 
 export const updateVeterinarianService = async (
-  data: UpdateVeterinarianParams
+  data: UpdateVeterinarianParams,
+  userId: string
 ) => {
-  const userRef = doc(db, "users", data.userId);
+  const user = doc(db, "users", userId);
 
-  const result = await updateDoc(userRef, data);
+  const result = await updateDoc(user, data);
 
   return result;
 };

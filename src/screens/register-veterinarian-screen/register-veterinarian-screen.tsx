@@ -11,9 +11,14 @@ import { Button } from "@components/button/button";
 import { ScrollView } from "react-native";
 import { useUpdateVeterinarian } from "@hooks/veterinarian/use-update-veterinarian";
 import { UpdateVeterinarianParams } from "@services/veterinarian/update-veterinarian";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { registerVeterinarianValidation } from "./validations/register-veterinarian-validation";
 
 export function RegisterVeterinarianScreen() {
-  const methods = useForm();
+  const methods = useForm({
+    mode: "all",
+    resolver: zodResolver(registerVeterinarianValidation),
+  });
 
   const { mutationFn } = useUpdateVeterinarian();
 
@@ -27,7 +32,7 @@ export function RegisterVeterinarianScreen() {
         <HeaderLogo text="Preencha seus dados" removeGoBack />
         <FormProvider {...methods}>
           <Container>
-            <ControlledTextInput name="name" label="Nome" />
+            <ControlledTextInput name="fullName" label="Nome" />
             <ControlledTextInput name="whatsapp" label="Whatsapp" />
             <ControlledTextInput name="crmv" label="CRMV" />
             <WeekDaySelector />

@@ -18,3 +18,10 @@ export const Label = styled.Text`
   font-family: ${({ theme }) => theme.FONTS.PRIMARY.BOLD};
   color: ${({ theme }) => theme.COLORS.TITLE};
 `;
+
+export const ErrorMessage = styled.Text`
+  font-family: ${({ theme }) => theme.FONTS.PRIMARY.REGULAR};
+  color: ${({ theme }) => theme.COLORS.ERROR};
+  font-size: 12px;
+  margin-top: 4px;
+`;

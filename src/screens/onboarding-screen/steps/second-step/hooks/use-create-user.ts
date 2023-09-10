@@ -8,7 +8,7 @@ import {
 import { useState } from "react";
 
 export const useCreateUser = () => {
-  const { user } = useAuthentication();
+  const { authenticatedUser } = useAuthentication();
   const { handleGoToRegisterVeterinarian } = useNavigationRoutes();
 
   const { showToast } = useToast();
@@ -21,7 +21,7 @@ export const useCreateUser = () => {
     setIsLoading(true);
     createUserService({
       userType,
-      userId: user?.uid,
+      userId: authenticatedUser?.uid,
     })
       .catch((e) => {
         showToast({

@@ -1,42 +1,44 @@
 import { useEffect, useState } from "react";
 import { onAuthStateChanged, User } from "firebase/auth";
 import { auth, db } from "@config/firebase/firebase-config";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import {
+  DocumentData,
+  collection,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
 
 export function useAuthentication() {
-  const [user, setUser] = useState<
-    User & {
-      id?: string;
-    }
-  >();
+  const [userDetails, setUserDetails] = useState<DocumentData>();
+  const [authenticatedUser, setAuthenticatedUser] = useState<User>();
 
   useEffect(() => {
     const unsubscribeFromAuthStatusChanged = onAuthStateChanged(
       auth,
-      (user) => {
-        setUser(user ?? undefined);
+      async (authenticatedUser) => {
+        setAuthenticatedUser(authenticatedUser ?? undefined);
+        const q = query(
+          collection(db, "users"),
+          where("userId", "==", authenticatedUser?.uid)
+        );
+
+        const userDetails = await getDocs(q).then(
+          (querySnapshot) => querySnapshot.docs[0]
+        );
+
+        setUserDetails({
+          ...userDetails?.data(),
+          id: userDetails?.id,
+        });
       }
     );
-
-    const q = query(collection(db, "users"), where("userId", "==", user?.uid));
-
-    const data = getDocs(q).then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        console.log(doc.id, " => ", doc.data());
-      });
-    });
-
-    console.log(data);
-
-    // setUser((old) => ({
-    //   ...old,
-    //   id: data,
-    // }));
 
     return unsubscribeFromAuthStatusChanged;
   }, []);
 
   return {
-    user,
+    authenticatedUser,
+    userDetails,
   };
 }

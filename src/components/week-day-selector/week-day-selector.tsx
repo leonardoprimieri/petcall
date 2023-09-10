@@ -1,23 +1,30 @@
-import { useState } from "react";
+import { useFormContext } from "react-hook-form";
 import { WeekDay } from "./components/week-day/week-day";
 import { WEEK_DAYS } from "./constants/week-days.const";
 import {
   Container,
+  ErrorMessage,
   Label,
   WeekDaysContainer,
 } from "./week-day-selector-styles";
-import { View } from "react-native";
+import { useMemo } from "react";
 
 export const WeekDaySelector = () => {
-  const [selectedDays, setSelectedDays] = useState<number[]>([]);
+  const { setValue, watch, getFieldState, getValues } = useFormContext();
+
+  const daysAvailable = (watch("daysAvailable") as number[]) || [];
 
   const handleSelectDay = (id: number) => {
-    if (selectedDays.includes(id)) {
-      return setSelectedDays(selectedDays.filter((day) => day !== id));
-    }
+    if (!daysAvailable.includes(id))
+      return setValue("daysAvailable", [...daysAvailable, id]);
 
-    setSelectedDays([...selectedDays, id]);
+    return setValue(
+      "daysAvailable",
+      daysAvailable.filter((day) => day !== id)
+    );
   };
+
+  const errorMessage = getFieldState("daysAvailable")?.error?.message;
 
   return (
     <Container>
@@ -25,7 +32,7 @@ export const WeekDaySelector = () => {
       <WeekDaysContainer>
         {WEEK_DAYS.map((day) => (
           <WeekDay
-            isSelected={selectedDays.includes(day.id)}
+            isSelected={daysAvailable.includes(day.id)}
             onPress={() => handleSelectDay(day.id)}
             key={day.id}
           >
@@ -33,6 +40,7 @@ export const WeekDaySelector = () => {
           </WeekDay>
         ))}
       </WeekDaysContainer>
+      <ErrorMessage>{errorMessage}</ErrorMessage>
     </Container>
   );
 };

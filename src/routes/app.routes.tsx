@@ -8,7 +8,7 @@ import { SignInScreen } from "@screens/sign-in-screen/sign-in-screen";
 const { Navigator, Screen } = createNativeStackNavigator();
 
 export const AppRoutes = () => {
-  const { user } = useAuthentication();
+  const { authenticatedUser, userDetails } = useAuthentication();
 
   return (
     <Navigator
@@ -16,7 +16,7 @@ export const AppRoutes = () => {
         headerShown: false,
       }}
     >
-      {user ? (
+      {authenticatedUser ? (
         <>
           <Screen name="Onboarding" component={OnboardingScreen} />
           <Screen name="SearchVets" component={SearchVetsScreen} />
