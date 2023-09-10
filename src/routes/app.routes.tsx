@@ -18,12 +18,14 @@ export const AppRoutes = () => {
     >
       {authenticatedUser ? (
         <>
-          <Screen name="Onboarding" component={OnboardingScreen} />
           <Screen name="SearchVets" component={SearchVetsScreen} />
           <Screen
             name="RegisterVeterinarian"
             component={RegisterVeterinarianScreen}
           />
+          {!userDetails?.userType && (
+            <Screen name="Onboarding" component={OnboardingScreen} />
+          )}
         </>
       ) : (
         <Screen name="SignIn" component={SignInScreen} />
