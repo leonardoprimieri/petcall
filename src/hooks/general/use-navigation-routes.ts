@@ -9,11 +9,14 @@ export const useNavigationRoutes = () => {
   const handleGoToRegisterVeterinarian = () =>
     navigate(ROUTES_NAMES.REGISTER_VETERINARIAN);
   const handleGoToSignUp = () => navigate(ROUTES_NAMES.SIGN_UP);
+  const handleGoToVeterinarianScreen = () =>
+    navigate(ROUTES_NAMES.VETERINARIAN_HOME);
 
   return {
     handleGoToOnboarding,
     handleGoToSearchVets,
     handleGoToRegisterVeterinarian,
     handleGoToSignUp,
+    handleGoToVeterinarianScreen,
   };
 };

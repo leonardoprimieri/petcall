@@ -6,6 +6,7 @@ import { RegisterVeterinarianScreen } from "@screens/register-veterinarian-scree
 import { SearchVetsScreen } from "@screens/search-vets-screen/search-vets-screen";
 import { SignInScreen } from "@screens/sign-in-screen/sign-in-screen";
 import { SignUpScreen } from "@screens/sign-up-screen/sign-up-screen";
+import { VeterinarianHomeScreen } from "@screens/veterinarian-home-screen/veterinarian-home-screen";
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
@@ -20,15 +21,26 @@ export const AppRoutes = () => {
     >
       {authenticatedUser ? (
         <>
+          {userDetails?.userType === UserTypeEnum.PET_TUTOR && (
+            <Screen name="SearchVets" component={SearchVetsScreen} />
+          )}
+          {userDetails?.userType === UserTypeEnum.VETERINARIAN &&
+            !userDetails?.crmv && (
+              <Screen
+                name="RegisterVeterinarian"
+                component={RegisterVeterinarianScreen}
+              />
+            )}
+          {userDetails?.userType === UserTypeEnum.VETERINARIAN && (
+            <Screen
+              name="VeterinarianHome"
+              component={VeterinarianHomeScreen}
+            />
+          )}
+
           {!userDetails?.userType && (
             <Screen name="Onboarding" component={OnboardingScreen} />
           )}
-          <Screen name="SearchVets" component={SearchVetsScreen} />
-
-          <Screen
-            name="RegisterVeterinarian"
-            component={RegisterVeterinarianScreen}
-          />
         </>
       ) : (
         <>

@@ -4,4 +4,5 @@ export const ROUTES_NAMES = {
   ONBOARDING: "Onboarding",
   SEARCH_VETS: "SearchVets",
   REGISTER_VETERINARIAN: "RegisterVeterinarian",
+  VETERINARIAN_HOME: "VeterinarianHome",
 } as const;

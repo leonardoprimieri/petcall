@@ -17,7 +17,9 @@ export function useAuthentication() {
     const unsubscribeFromAuthStatusChanged = onAuthStateChanged(
       auth,
       async (user) => {
-        setAuthenticatedUser(user ?? undefined);
+        if (!user) return;
+        setAuthenticatedUser(user);
+
         const q = query(
           collection(db, "users"),
           where("userId", "==", user?.uid)
