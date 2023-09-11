@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   ChoicesContainer,
   Container,
@@ -8,14 +9,13 @@ import { Button } from "@components/button/button";
 import { Title } from "../components/title/title";
 import { FormProvider, useForm } from "react-hook-form";
 import { ChoiceButton } from "./components/choice-button/choice-button";
-import { useState } from "react";
-import { useCreateUser } from "./hooks/use-create-user";
 import { UserTypeEnum } from "@enums/user-type.enum";
+import { useCompleteUserRegistration } from "./hooks/use-complete-user-registration";
 
 export function SecondStep() {
   const methods = useForm();
 
-  const { isLoading, mutationFn } = useCreateUser();
+  const { isLoading, mutationFn } = useCompleteUserRegistration();
 
   const [selectedChoice, setSelectedChoice] =
     useState<keyof typeof UserTypeEnum>("PET_TUTOR");

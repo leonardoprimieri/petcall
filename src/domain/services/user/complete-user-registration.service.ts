@@ -7,7 +7,9 @@ export type CreateUserParams = {
   userId?: string;
 };
 
-export const createUserService = async (data: CreateUserParams) => {
+export const completeUserRegistrationService = async (
+  data: CreateUserParams
+) => {
   const collectionRef = collection(db, "users");
 
   const result = await addDoc(collectionRef, {

@@ -1,11 +1,14 @@
-import { CreateUserParams, createUserService } from "@domain/services";
+import {
+  CreateUserParams,
+  completeUserRegistrationService,
+} from "@domain/services";
 import { useAuthentication } from "@hooks/auth/use-authentication";
 import { useNavigationRoutes } from "@hooks/general/use-navigation-routes";
 import { useToast } from "@hooks/ui/use-toast";
 
 import { useState } from "react";
 
-export const useCreateUser = () => {
+export const useCompleteUserRegistration = () => {
   const { authenticatedUser } = useAuthentication();
   const { handleGoToRegisterVeterinarian } = useNavigationRoutes();
 
@@ -13,11 +16,9 @@ export const useCreateUser = () => {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const createUser = async ({
-    userType,
-  }: Pick<CreateUserParams, "userType">) => {
+  const execute = async ({ userType }: Pick<CreateUserParams, "userType">) => {
     setIsLoading(true);
-    createUserService({
+    completeUserRegistrationService({
       userType,
       userId: authenticatedUser?.uid,
     })
@@ -39,7 +40,7 @@ export const useCreateUser = () => {
   };
 
   return {
-    mutationFn: createUser,
+    mutationFn: execute,
     isLoading,
   };
 };

@@ -1,12 +1,12 @@
 import { auth } from "@config/firebase/firebase-config";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
-type CreateEmailAccountParams = {
+export type CreateEmailAccountParams = {
   email: string;
   password: string;
 };
 
-export function createEmailAccount({
+export function createEmailAccountService({
   email,
   password,
 }: CreateEmailAccountParams) {

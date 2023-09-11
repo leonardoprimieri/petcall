@@ -15,7 +15,7 @@ import { UpdateVeterinarianParams } from "@domain/services";
 import { HeaderLogo } from "@components/header-logo/header-logo";
 
 export function RegisterVeterinarianScreen() {
-  const methods = useForm({
+  const methods = useForm<UpdateVeterinarianParams>({
     mode: "all",
     resolver: zodResolver(registerVeterinarianValidation),
   });
