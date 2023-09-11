@@ -3,7 +3,6 @@ import styled from "styled-components/native";
 export const Container = styled.View`
   flex-direction: row;
   align-items: flex-end;
-  justify-content: space-between;
   padding: 12px;
   gap: 12px;
   background-color: ${({ theme }) => theme.COLORS.SECONDARY};
@@ -34,8 +33,6 @@ export const VetPricePerHour = styled.Text`
 
 export const VetSchedule = styled.View``;
 
-export const VetAppointmentBadge = styled.Text``;
-
 export const Text = styled.Text`
   font-size: 16px;
 `;
@@ -51,4 +48,6 @@ export const VetAvatar = styled.View`
   border-radius: 999999px;
   justify-self: center;
   align-self: center;
+  justify-content: center;
+  align-items: center;
 `;

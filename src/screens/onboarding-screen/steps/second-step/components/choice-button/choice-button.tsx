@@ -3,7 +3,7 @@ import { Container, Label } from "./choice-button-styles";
 
 import petTutorImage from "@assets/veterinarian-choice.png";
 import veterinarianImage from "@assets/pet-tutor.png";
-import { UserTypeEnum } from "src/enums/user-type.enum";
+import { UserTypeEnum } from "@enums/user-type.enum";
 
 type Props = {
   type: keyof typeof UserTypeEnum;

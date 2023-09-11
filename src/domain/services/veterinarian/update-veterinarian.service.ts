@@ -1,13 +1,8 @@
 import { db } from "@config/firebase/firebase-config";
-import { collection, doc, updateDoc } from "firebase/firestore";
+import { doc, updateDoc } from "firebase/firestore";
+import { VeterinarianEntity } from "src/domain/entity/veterinarian-entity";
 
-export type UpdateVeterinarianParams = {
-  fullName?: string;
-  whatsapp?: string;
-  crmv?: string;
-  userId?: string;
-  daysAvailable?: number[];
-};
+export type UpdateVeterinarianParams = VeterinarianEntity;
 
 export const updateVeterinarianService = async (
   data: UpdateVeterinarianParams,

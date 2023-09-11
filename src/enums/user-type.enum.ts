@@ -1,4 +1,4 @@
 export enum UserTypeEnum {
-  PET_TUTOR = "pet-tutor",
-  VETERINARIAN = "veterinarian",
+  PET_TUTOR = "PET_TUTOR",
+  VETERINARIAN = "VETERINARIAN",
 }

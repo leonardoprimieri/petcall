@@ -1,6 +1,6 @@
 import { db } from "@config/firebase/firebase-config";
+import { UserTypeEnum } from "@enums/user-type.enum";
 import { collection, addDoc } from "firebase/firestore";
-import { UserTypeEnum } from "src/enums/user-type.enum";
 
 export type CreateUserParams = {
   userType: keyof typeof UserTypeEnum;

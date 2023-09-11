@@ -10,7 +10,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import { ChoiceButton } from "./components/choice-button/choice-button";
 import { useState } from "react";
 import { useCreateUser } from "./hooks/use-create-user";
-import { UserTypeEnum } from "src/enums/user-type.enum";
+import { UserTypeEnum } from "@enums/user-type.enum";
 
 export function SecondStep() {
   const methods = useForm();

@@ -40,6 +40,15 @@
       "@mappers/*": [
         "./src/mappers/*"
       ],
+      "@enums/*": [
+        "./src/enums/*"
+      ],
+      "@domain/*": [
+        "./src/domain/*"
+      ],
+      "@helpers/*": [
+        "./src/helpers/*"
+      ],
     }
   }
 }

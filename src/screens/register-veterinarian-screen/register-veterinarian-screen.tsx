@@ -1,4 +1,3 @@
-import { HeaderLogo } from "@components/header-logo/header-logo";
 import {
   ButtonContainer,
   Container,
@@ -10,9 +9,10 @@ import { WeekDaySelector } from "@components/week-day-selector/week-day-selector
 import { Button } from "@components/button/button";
 import { ScrollView } from "react-native";
 import { useUpdateVeterinarian } from "@hooks/veterinarian/use-update-veterinarian";
-import { UpdateVeterinarianParams } from "@services/veterinarian/update-veterinarian";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerVeterinarianValidation } from "./validations/register-veterinarian-validation";
+import { UpdateVeterinarianParams } from "@domain/services";
+import { HeaderLogo } from "@components/header-logo/header-logo";
 
 export function RegisterVeterinarianScreen() {
   const methods = useForm({

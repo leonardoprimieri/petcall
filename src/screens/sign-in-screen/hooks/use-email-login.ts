@@ -1,6 +1,6 @@
 import { useToast } from "@hooks/ui/use-toast";
 import { mapFirebaseError } from "../../../mappers/map-firebase-error";
-import { emailLogin } from "@services/auth/email-login";
+import { emailLogin } from "@domain/services";
 
 type EmailLoginParams = {
   email: string;

@@ -16,11 +16,11 @@ export function useAuthentication() {
   useEffect(() => {
     const unsubscribeFromAuthStatusChanged = onAuthStateChanged(
       auth,
-      async (authenticatedUser) => {
-        setAuthenticatedUser(authenticatedUser ?? undefined);
+      async (user) => {
+        setAuthenticatedUser(user ?? undefined);
         const q = query(
           collection(db, "users"),
-          where("userId", "==", authenticatedUser?.uid)
+          where("userId", "==", user?.uid)
         );
 
         const userDetails = await getDocs(q).then(

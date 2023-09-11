@@ -1,9 +1,9 @@
-import { useAuthentication } from "@hooks/auth/use-authentication";
-import { useToast } from "@hooks/ui/use-toast";
 import {
   UpdateVeterinarianParams,
   updateVeterinarianService,
-} from "@services/veterinarian/update-veterinarian";
+} from "@domain/services";
+import { useAuthentication } from "@hooks/auth/use-authentication";
+import { useToast } from "@hooks/ui/use-toast";
 
 export const useUpdateVeterinarian = () => {
   const { showToast } = useToast();

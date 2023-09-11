@@ -1,20 +1,44 @@
-import * as S from "./vet-card-styles";
+import { VeterinarianEntity } from "@domain/entity/veterinarian-entity";
+import {
+  Container,
+  FirstContainer,
+  Text,
+  VetAvailableDays,
+  VetAvatar,
+  VetInfo,
+  VetName,
+  VetPricePerHour,
+  VetSchedule,
+} from "./vet-card-styles";
+import { formatCurrency } from "@helpers/format-currency";
+import { formatSelectedDays } from "@helpers/format-selected-days";
+import { Avatar } from "@components/avatar/avatar";
 
-export const VetCard = () => {
+type Props = {
+  veterinary: VeterinarianEntity;
+};
+
+export const VetCard = ({ veterinary }: Props) => {
   return (
-    <S.Container>
-      <S.FirstContainer>
-        <S.VetAvatar />
-        <S.VetInfo>
-          <S.VetName>Jane Doe</S.VetName>
-          <S.VetPricePerHour>R$ 120,00</S.VetPricePerHour>
-          <S.Text>por consulta</S.Text>
-        </S.VetInfo>
-      </S.FirstContainer>
-      <S.VetSchedule>
-        <S.Text>Atende</S.Text>
-        <S.VetAvailableDays>Seg, Qua, Sex</S.VetAvailableDays>
-      </S.VetSchedule>
-    </S.Container>
+    <Container>
+      <FirstContainer>
+        <VetAvatar>
+          <Avatar />
+        </VetAvatar>
+        <VetInfo>
+          <VetName>{veterinary?.fullName}</VetName>
+          <VetPricePerHour>
+            {formatCurrency(veterinary?.appointmentPrice)}
+          </VetPricePerHour>
+          <Text>por consulta</Text>
+        </VetInfo>
+      </FirstContainer>
+      <VetSchedule>
+        <Text>Atende</Text>
+        <VetAvailableDays>
+          {formatSelectedDays(veterinary?.daysAvailable)}
+        </VetAvailableDays>
+      </VetSchedule>
+    </Container>
   );
 };

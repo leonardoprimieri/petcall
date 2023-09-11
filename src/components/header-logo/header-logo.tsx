@@ -1,9 +1,9 @@
-import * as S from "./header-logo-styles";
-import { AppLogo } from "../../components/app-logo/app-logo";
-import { IconButton } from "../../components/icon-button/icon-button";
-import { ArrowLeftIcon } from "@components/icons";
+import { Container, HeroText, LogoContainer } from "./header-logo-styles";
 import { useTheme } from "styled-components/native";
 import { useNavigation } from "@react-navigation/native";
+import { IconButton } from "@components/icon-button/icon-button";
+import { ArrowLeftIcon } from "@components/icons";
+import { AppLogo } from "@components/app-logo/app-logo";
 
 type Props = {
   text?: string;
@@ -20,16 +20,16 @@ export const HeaderLogo = ({ text, removeGoBack }: Props) => {
   };
 
   return (
-    <S.Container>
+    <Container>
       {!removeGoBack && (
         <IconButton onPress={handleGoBack}>
           <ArrowLeftIcon color={COLORS.PRIMARY} weight="bold" />
         </IconButton>
       )}
-      <S.LogoContainer>
+      <LogoContainer>
         <AppLogo removeText />
-        <S.HeroText>{text}</S.HeroText>
-      </S.LogoContainer>
-    </S.Container>
+        <HeroText>{text}</HeroText>
+      </LogoContainer>
+    </Container>
   );
 };

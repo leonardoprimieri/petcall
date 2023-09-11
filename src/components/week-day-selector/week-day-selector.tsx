@@ -7,10 +7,9 @@ import {
   Label,
   WeekDaysContainer,
 } from "./week-day-selector-styles";
-import { useMemo } from "react";
 
 export const WeekDaySelector = () => {
-  const { setValue, watch, getFieldState, getValues } = useFormContext();
+  const { setValue, watch, getFieldState } = useFormContext();
 
   const daysAvailable = (watch("daysAvailable") as number[]) || [];
 

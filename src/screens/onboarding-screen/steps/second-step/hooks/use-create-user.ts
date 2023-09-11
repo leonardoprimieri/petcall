@@ -1,10 +1,8 @@
+import { CreateUserParams, createUserService } from "@domain/services";
 import { useAuthentication } from "@hooks/auth/use-authentication";
 import { useNavigationRoutes } from "@hooks/general/use-navigation-routes";
 import { useToast } from "@hooks/ui/use-toast";
-import {
-  CreateUserParams,
-  createUserService,
-} from "@services/user/create-user";
+
 import { useState } from "react";
 
 export const useCreateUser = () => {
