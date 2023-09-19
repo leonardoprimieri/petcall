@@ -1,4 +1,4 @@
-import { DefaultLayout } from "@layouts/default-layout/default-layout";
+import { DefaultLayout } from "~/layouts/default-layout/default-layout";
 import { useState } from "react";
 import { FirstStep } from "./steps/first-step/first-step";
 import { SecondStep } from "./steps/second-step/second-step";

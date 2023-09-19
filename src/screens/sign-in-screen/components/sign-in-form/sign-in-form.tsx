@@ -1,5 +1,5 @@
-import { Button } from "@components/button/button";
-import { GoogleLogoIcon } from "@components/icons";
+import { Button } from "~/components/button/button";
+import { GoogleLogoIcon } from "~/components/icons";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import {
@@ -9,12 +9,12 @@ import {
   LinkButton,
   LinkText,
 } from "./sign-in-form-styles";
-import { useEmailLogin } from "@screens/sign-in-screen/hooks/use-email-login";
+import { useEmailLogin } from "~/screens/sign-in-screen/hooks/use-email-login";
 
 import { FormProvider, useForm } from "react-hook-form";
-import { SignUpFormValidation } from "@screens/sign-in-screen/validation/sign-up-form-validation";
-import { ControlledTextInput } from "@components/form/controlled-text-input/controlled-text-input";
-import { useNavigationRoutes } from "@hooks/general/use-navigation-routes";
+import { SignUpFormValidation } from "~/screens/sign-in-screen/validation/sign-up-form-validation";
+import { ControlledTextInput } from "~/components/form/controlled-text-input/controlled-text-input";
+import { useNavigationRoutes } from "~/hooks/general/use-navigation-routes";
 
 type FormData = {
   email: string;

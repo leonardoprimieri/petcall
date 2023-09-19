@@ -1,4 +1,4 @@
-import { useAuthentication } from "@hooks/auth/use-authentication";
+import { useAuthentication } from "~/hooks/auth/use-authentication";
 import { Container, Welcome, Name } from "./header-styles";
 
 export const Header = () => {

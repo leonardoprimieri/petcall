@@ -2,17 +2,17 @@ import {
   ButtonContainer,
   Container,
 } from "./register-veterinarian-screen-styles";
-import { DefaultLayout } from "@layouts/default-layout/default-layout";
+import { DefaultLayout } from "~/layouts/default-layout/default-layout";
 import { FormProvider, useForm } from "react-hook-form";
-import { ControlledTextInput } from "@components/form/controlled-text-input/controlled-text-input";
-import { WeekDaySelector } from "@components/week-day-selector/week-day-selector";
-import { Button } from "@components/button/button";
+import { ControlledTextInput } from "~/components/form/controlled-text-input/controlled-text-input";
+import { WeekDaySelector } from "~/components/week-day-selector/week-day-selector";
+import { Button } from "~/components/button/button";
 import { ScrollView } from "react-native";
-import { useUpdateVeterinarian } from "@hooks/veterinarian/use-update-veterinarian";
+import { useUpdateVeterinarian } from "~/hooks/veterinarian/use-update-veterinarian";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerVeterinarianValidation } from "./validations/register-veterinarian-validation";
-import { UpdateVeterinarianParams } from "@domain/services";
-import { HeaderLogo } from "@components/header-logo/header-logo";
+import { UpdateVeterinarianParams } from "~/domain/services";
+import { HeaderLogo } from "~/components/header-logo/header-logo";
 
 export function RegisterVeterinarianScreen() {
   const methods = useForm<UpdateVeterinarianParams>({

@@ -5,11 +5,11 @@ import {
   FormContainer,
   Subtitle,
 } from "./second-step-styles";
-import { Button } from "@components/button/button";
+import { Button } from "~/components/button/button";
 import { Title } from "../components/title/title";
 import { FormProvider, useForm } from "react-hook-form";
 import { ChoiceButton } from "./components/choice-button/choice-button";
-import { UserTypeEnum } from "@enums/user-type.enum";
+import { UserTypeEnum } from "~/enums/user-type.enum";
 import { useCompleteUserRegistration } from "./hooks/use-complete-user-registration";
 
 export function SecondStep() {

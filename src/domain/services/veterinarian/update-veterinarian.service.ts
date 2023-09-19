@@ -1,4 +1,4 @@
-import { db } from "@config/firebase/firebase-config";
+import { db } from "~/config/firebase/firebase-config";
 import { doc, updateDoc } from "firebase/firestore";
 import { VeterinarianEntity } from "src/domain/entity/veterinarian-entity";
 

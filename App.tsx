@@ -1,6 +1,5 @@
 import Toast from "react-native-toast-message";
 import { ThemeProvider } from "styled-components/native";
-import theme from "@theme/index";
 
 import {
   useFonts,
@@ -12,7 +11,8 @@ import {
 import { Loading } from "./src/components/loading/loading";
 import { StatusBar } from "react-native";
 import { DefaultLayout } from "./src/layouts/default-layout/default-layout";
-import { Routes } from "@routes/index";
+import theme from "~/theme";
+import { Routes } from "~/routes";
 
 export default function App() {
   const [isFontsLoaded] = useFonts({

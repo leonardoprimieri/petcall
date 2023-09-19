@@ -1,13 +1,13 @@
-import { Header } from "@components/header/header";
+import { Header } from "~/components/header/header";
 import { Container } from "./veterinarian-home-screen-styles";
-import { DefaultLayout } from "@layouts/default-layout/default-layout";
+import { AuthorizedLayout } from "~/layouts/authorized-layout/authorized-layout";
 
 export const VeterinarianHomeScreen = () => {
   return (
-    <DefaultLayout>
+    <AuthorizedLayout>
       <Container>
         <Header />
       </Container>
-    </DefaultLayout>
+    </AuthorizedLayout>
   );
 };

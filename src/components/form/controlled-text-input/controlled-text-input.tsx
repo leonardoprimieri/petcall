@@ -1,7 +1,7 @@
 import {
   TextInput,
   TextInputProps,
-} from "@components/form/text-input/text-input";
+} from "~/components/form/text-input/text-input";
 import { Controller } from "react-hook-form";
 
 type Props = {

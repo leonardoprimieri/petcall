@@ -1,5 +1,5 @@
 import * as S from "./app-logo-styles";
-import logoImg from "@assets/logo.png";
+import logoImg from "~/assets/logo.png";
 
 type Props = {
   removeText?: boolean;

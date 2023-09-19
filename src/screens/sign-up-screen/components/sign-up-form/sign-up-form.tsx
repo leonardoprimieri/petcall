@@ -1,12 +1,12 @@
-import { Button } from "@components/button/button";
+import { Button } from "~/components/button/button";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Form } from "./sign-up-form-styles";
 
 import { FormProvider, useForm } from "react-hook-form";
-import { SignUpFormValidation } from "@screens/sign-in-screen/validation/sign-up-form-validation";
-import { ControlledTextInput } from "@components/form/controlled-text-input/controlled-text-input";
-import { useCreateUserAccount } from "@screens/sign-up-screen/hooks/use-create-user-account";
+import { SignUpFormValidation } from "~/screens/sign-in-screen/validation/sign-up-form-validation";
+import { ControlledTextInput } from "~/components/form/controlled-text-input/controlled-text-input";
+import { useCreateUserAccount } from "~/screens/sign-up-screen/hooks/use-create-user-account";
 
 type FormData = {
   email: string;

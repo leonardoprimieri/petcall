@@ -1,7 +1,7 @@
 import { PropsWithChildren } from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import { useTheme } from "styled-components";
-import heartsImg from "@assets/hearts.png";
+import heartsImg from "~/assets/hearts.png";
 import * as S from "./default-layout-styles";
 
 export const DefaultLayout = ({ children }: PropsWithChildren) => {

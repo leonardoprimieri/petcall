@@ -1,4 +1,4 @@
-import { loadVeterinariansService } from "@domain/services";
+import { loadVeterinariansService } from "~/domain/services";
 import { useCallback, useEffect, useState } from "react";
 import { VeterinarianEntity } from "src/domain/entity/veterinarian-entity";
 

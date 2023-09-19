@@ -4,51 +4,9 @@
     "strict": true,
     "baseUrl": "./",
     "paths": {
-      "@assets/*": [
-        "./src/assets/*"
-      ],
-      "@components/*": [
-        "./src/components/*"
-      ],
-      "@routes/*": [
-        "./src/routes/*"
-      ],
-      "@screens/*": [
-        "./src/screens/*"
-      ],
-      "@storage/*": [
-        "./src/storage/*"
-      ],
-      "@utils/*": [
-        "./src/utils/*"
-      ],
-      "@theme/*": [
-        "./src/theme/*"
-      ],
-      "@layouts/*": [
-        "./src/layouts/*"
-      ],
-      "@hooks/*": [
-        "./src/hooks/*"
-      ],
-      "@services/*": [
-        "./src/services/*"
-      ],
-      "@config/*": [
-        "./src/config/*"
-      ],
-      "@mappers/*": [
-        "./src/mappers/*"
-      ],
-      "@enums/*": [
-        "./src/enums/*"
-      ],
-      "@domain/*": [
-        "./src/domain/*"
-      ],
-      "@helpers/*": [
-        "./src/helpers/*"
-      ],
+      "~/*": [
+        "./src/*"
+      ]
     }
   }
 }

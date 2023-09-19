@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import { ROUTES_NAMES } from "@routes/routes.names.const";
+import { ROUTES_NAMES } from "~/routes/routes.names.const";
 
 export const useNavigationRoutes = () => {
   const { navigate } = useNavigation();

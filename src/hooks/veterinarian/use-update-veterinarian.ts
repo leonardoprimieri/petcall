@@ -1,10 +1,10 @@
 import {
   UpdateVeterinarianParams,
   updateVeterinarianService,
-} from "@domain/services";
-import { useAuthentication } from "@hooks/auth/use-authentication";
-import { useNavigationRoutes } from "@hooks/general/use-navigation-routes";
-import { useToast } from "@hooks/ui/use-toast";
+} from "~/domain/services";
+import { useAuthentication } from "~/hooks/auth/use-authentication";
+import { useNavigationRoutes } from "~/hooks/general/use-navigation-routes";
+import { useToast } from "~/hooks/ui/use-toast";
 
 export const useUpdateVeterinarian = () => {
   const { showToast } = useToast();

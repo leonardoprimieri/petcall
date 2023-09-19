@@ -1,4 +1,4 @@
-import { auth } from "@config/firebase/firebase-config";
+import { auth } from "~/config/firebase/firebase-config";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
 export type CreateEmailAccountParams = {

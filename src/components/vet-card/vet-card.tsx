@@ -1,4 +1,4 @@
-import { VeterinarianEntity } from "@domain/entity/veterinarian-entity";
+import { VeterinarianEntity } from "~/domain/entity/veterinarian-entity";
 import {
   Container,
   FirstContainer,
@@ -10,9 +10,9 @@ import {
   VetPricePerHour,
   VetSchedule,
 } from "./vet-card-styles";
-import { formatCurrency } from "@helpers/format-currency";
-import { formatSelectedDays } from "@helpers/format-selected-days";
-import { Avatar } from "@components/avatar/avatar";
+import { formatCurrency } from "~/helpers/format-currency";
+import { formatSelectedDays } from "~/helpers/format-selected-days";
+import { Avatar } from "~/components/avatar/avatar";
 
 type Props = {
   veterinary: VeterinarianEntity;

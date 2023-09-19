@@ -1,7 +1,7 @@
-import { db } from "@config/firebase/firebase-config";
-import { UserTypeEnum } from "@enums/user-type.enum";
+import { db } from "~/config/firebase/firebase-config";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { VeterinarianEntity } from "src/domain/entity/veterinarian-entity";
+import { UserTypeEnum } from "~/enums/user-type.enum";
 
 export const loadVeterinariansService = async () => {
   const usersRef = collection(db, "users");

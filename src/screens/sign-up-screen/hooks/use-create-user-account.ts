@@ -1,10 +1,10 @@
-import { useToast } from "@hooks/ui/use-toast";
+import { useToast } from "~/hooks/ui/use-toast";
 import { mapFirebaseError } from "../../../mappers/map-firebase-error";
 import {
   CreateEmailAccountParams,
   createEmailAccountService,
-} from "@domain/services";
-import { useNavigationRoutes } from "@hooks/general/use-navigation-routes";
+} from "~/domain/services";
+import { useNavigationRoutes } from "~/hooks/general/use-navigation-routes";
 
 export const useCreateUserAccount = () => {
   const { handleGoToOnboarding } = useNavigationRoutes();
