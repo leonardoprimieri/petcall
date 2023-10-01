@@ -14,10 +14,9 @@ import {
   registerVeterinarianValidation,
 } from "./validations/register-veterinarian-validation";
 import { HeaderLogo } from "~/components/header-logo/header-logo";
-import { useCreateUserAccount } from "../sign-up-screen/hooks/use-create-user-account";
 import { useUserStore } from "~/store/user-store";
 import { UserTypeEnum } from "~/enums/user-type.enum";
-import { useCreateUserMutation } from "../onboarding-screen/steps/second-step/hooks/use-create-user-mutation";
+import { useCreateUserAccount, useCreateUserMutation } from "~/hooks/api";
 
 export function RegisterVeterinarianScreen() {
   const { user } = useUserStore();
@@ -27,10 +26,6 @@ export function RegisterVeterinarianScreen() {
     resolver: zodResolver(registerVeterinarianValidation),
     defaultValues: {
       appointmentPrice: "R$ 0,00",
-      crmv: "123",
-      daysAvailable: [1, 2],
-      fullName: "Teste",
-      whatsapp: "123",
     },
   });
 
@@ -59,6 +54,10 @@ export function RegisterVeterinarianScreen() {
             <ControlledTextInput name="fullName" label="Nome" />
             <ControlledTextInput name="whatsapp" label="Whatsapp" />
             <ControlledTextInput name="crmv" label="CRMV" />
+            <ControlledTextInput
+              name="appointmentPrice"
+              label="Preço por consulta"
+            />
             <WeekDaySelector />
             <ButtonContainer>
               <Button

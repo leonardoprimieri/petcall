@@ -1,12 +1,16 @@
 import { UserTypeEnum } from "~/enums/user-type.enum";
 import { useAuthentication } from "~/hooks/auth/use-authentication";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { OnboardingScreen } from "~/screens/onboarding-screen/onboarding-screen";
-import { RegisterVeterinarianScreen } from "~/screens/register-veterinarian-screen/register-veterinarian-screen";
-import { SearchVetsScreen } from "~/screens/search-vets-screen/search-vets-screen";
-import { SignInScreen } from "~/screens/sign-in-screen/sign-in-screen";
-import { SignUpScreen } from "~/screens/sign-up-screen/sign-up-screen";
-import { VeterinarianHomeScreen } from "~/screens/veterinarian-home-screen/veterinarian-home-screen";
+import {
+  RegisterVeterinarianScreen,
+  VeterinarianHomeScreen,
+} from "~/screens/veterinarian-screens";
+import { SearchVetsScreen } from "~/screens/pet-tutor-screens";
+import {
+  OnboardingScreen,
+  SignInScreen,
+  SignUpScreen,
+} from "~/screens/user-screens";
 
 const { Navigator, Screen } = createNativeStackNavigator();
 

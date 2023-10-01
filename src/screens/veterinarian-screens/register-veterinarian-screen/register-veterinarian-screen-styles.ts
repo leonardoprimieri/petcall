@@ -5,11 +5,10 @@ export const Container = styled.View`
   justify-content: center;
   align-items: center;
   gap: 8px;
-  margin-top: 32px;
+  margin-top: 16px;
 `;
 
 export const ButtonContainer = styled.View`
   align-items: center;
   width: 100%;
-  margin-top: 12px;
 `;

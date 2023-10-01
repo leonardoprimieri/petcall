@@ -1,40 +1,28 @@
 import { Button } from "~/components/button/button";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import {
-  Footer,
-  FooterText,
-  Form,
-  LinkButton,
-  LinkText,
-} from "./sign-in-form-styles";
-import { useEmailLogin } from "~/screens/sign-in-screen/hooks/use-email-login";
+import { Form } from "./sign-up-form-styles";
 
 import { FormProvider, useForm } from "react-hook-form";
-import { SignUpFormValidation } from "~/screens/sign-in-screen/validation/sign-up-form-validation";
+import { SignUpFormValidation } from "~/screens/user-screens/sign-in-screen/validation/sign-up-form-validation";
 import { ControlledTextInput } from "~/components/form/controlled-text-input/controlled-text-input";
 import { useNavigationRoutes } from "~/hooks/general/use-navigation-routes";
+import { useUserStore } from "~/store/user-store";
+import { SignUpFormData } from "../../validation/sign-up-form-validation";
 
-type FormData = {
-  email: string;
-  password: string;
-};
-
-export const SignInForm = () => {
-  const methods = useForm<FormData>({
+export const SignUpForm = () => {
+  const methods = useForm<SignUpFormData>({
     resolver: zodResolver(SignUpFormValidation),
     mode: "onSubmit",
   });
 
-  const { handleGoToSignUp } = useNavigationRoutes();
+  const { setUser } = useUserStore();
 
-  const { mutationFn } = useEmailLogin();
+  const { handleGoToOnboarding } = useNavigationRoutes();
 
-  const onSubmit = async (data: FormData) => {
-    await mutationFn({
-      email: data.email,
-      password: data.password,
-    });
+  const onSubmit = async (data: SignUpFormData) => {
+    setUser(data);
+    handleGoToOnboarding();
   };
 
   return (
@@ -56,16 +44,9 @@ export const SignInForm = () => {
           isLoading={methods.formState.isSubmitting}
           onPress={methods.handleSubmit(onSubmit)}
         >
-          Entrar
+          Continuar
         </Button>
       </Form>
-
-      <Footer>
-        <FooterText>Novo usuário?</FooterText>
-        <LinkButton onPress={handleGoToSignUp}>
-          <LinkText>Criar conta</LinkText>
-        </LinkButton>
-      </Footer>
     </FormProvider>
   );
 };

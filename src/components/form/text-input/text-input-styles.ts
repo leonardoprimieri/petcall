@@ -17,7 +17,6 @@ type InputProps = {
 };
 
 export const StyledInput = styled(TextInput)<InputProps>`
-  height: 50px;
   border-radius: 22px;
 
   ${({ theme, invalid }) => css`

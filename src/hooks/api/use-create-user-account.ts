@@ -1,7 +1,7 @@
 import { useToast } from "~/hooks/ui/use-toast";
-import { mapFirebaseError } from "../../../mappers/map-firebase-error";
 import { createEmailAccountService } from "~/domain/services";
-import { SignUpFormData } from "../validation/sign-up-form-validation";
+import { mapFirebaseError } from "~/mappers";
+import { SignUpFormData } from "~/screens/user-screens/sign-up-screen/validation/sign-up-form-validation";
 
 export const useCreateUserAccount = () => {
   const { showToast } = useToast();

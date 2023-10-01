@@ -1,5 +1,5 @@
 import { useToast } from "~/hooks/ui/use-toast";
-import { mapFirebaseError } from "../../../mappers/map-firebase-error";
+import { mapFirebaseError } from "../../../../mappers/map-firebase-error";
 import { emailLogin } from "~/domain/services";
 
 type EmailLoginParams = {
