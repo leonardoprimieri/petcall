@@ -14,3 +14,5 @@ export const SignUpFormValidation = z.object({
     .min(1, "Campo obrigatório")
     .min(6, "Senha deve ter no mínimo 6 caracteres"),
 });
+
+export type SignUpFormData = z.infer<typeof SignUpFormValidation>;

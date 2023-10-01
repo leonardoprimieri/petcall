@@ -6,26 +6,23 @@ import { Form } from "./sign-up-form-styles";
 import { FormProvider, useForm } from "react-hook-form";
 import { SignUpFormValidation } from "~/screens/sign-in-screen/validation/sign-up-form-validation";
 import { ControlledTextInput } from "~/components/form/controlled-text-input/controlled-text-input";
-import { useCreateUserAccount } from "~/screens/sign-up-screen/hooks/use-create-user-account";
-
-type FormData = {
-  email: string;
-  password: string;
-};
+import { useNavigationRoutes } from "~/hooks/general/use-navigation-routes";
+import { useUserStore } from "~/store/user-store";
+import { SignUpFormData } from "../../validation/sign-up-form-validation";
 
 export const SignUpForm = () => {
-  const methods = useForm<FormData>({
+  const { setUser } = useUserStore();
+
+  const methods = useForm<SignUpFormData>({
     resolver: zodResolver(SignUpFormValidation),
     mode: "onSubmit",
   });
 
-  const { mutationFn } = useCreateUserAccount();
+  const { handleGoToOnboarding } = useNavigationRoutes();
 
-  const onSubmit = async (data: FormData) => {
-    await mutationFn({
-      email: data.email,
-      password: data.password,
-    });
+  const onSubmit = async (data: SignUpFormData) => {
+    setUser(data);
+    handleGoToOnboarding();
   };
 
   return (
@@ -47,7 +44,7 @@ export const SignUpForm = () => {
           isLoading={methods.formState.isSubmitting}
           onPress={methods.handleSubmit(onSubmit)}
         >
-          Criar conta
+          Continuar
         </Button>
       </Form>
     </FormProvider>

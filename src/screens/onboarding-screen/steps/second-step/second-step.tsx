@@ -10,12 +10,11 @@ import { Title } from "../components/title/title";
 import { FormProvider, useForm } from "react-hook-form";
 import { ChoiceButton } from "./components/choice-button/choice-button";
 import { UserTypeEnum } from "~/enums/user-type.enum";
-import { useCompleteUserRegistration } from "./hooks/use-complete-user-registration";
+import { useNavigationRoutes } from "~/hooks/general/use-navigation-routes";
 
 export function SecondStep() {
   const methods = useForm();
-
-  const { isLoading, mutationFn } = useCompleteUserRegistration();
+  const { handleGoToRegisterVeterinarian } = useNavigationRoutes();
 
   const [selectedChoice, setSelectedChoice] =
     useState<keyof typeof UserTypeEnum>("PET_TUTOR");
@@ -25,9 +24,11 @@ export function SecondStep() {
   };
 
   const onSubmit = () => {
-    mutationFn({
-      userType: selectedChoice,
-    });
+    if (!selectedChoice) return;
+
+    if (selectedChoice === "VETERINARIAN") {
+      return handleGoToRegisterVeterinarian();
+    }
   };
 
   return (
@@ -52,11 +53,7 @@ export function SecondStep() {
               isSelected={selectedChoice === "VETERINARIAN"}
             />
           </ChoicesContainer>
-          <Button
-            isLoading={isLoading}
-            onPress={onSubmit}
-            disabled={!selectedChoice || isLoading}
-          >
+          <Button onPress={onSubmit} disabled={!selectedChoice}>
             Continuar
           </Button>
         </FormContainer>

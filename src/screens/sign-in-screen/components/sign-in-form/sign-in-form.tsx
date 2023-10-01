@@ -1,5 +1,4 @@
 import { Button } from "~/components/button/button";
-import { GoogleLogoIcon } from "~/components/icons";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import {
@@ -40,16 +39,6 @@ export const SignInForm = () => {
 
   return (
     <FormProvider {...methods}>
-      <Button
-        width="200px"
-        icon={<GoogleLogoIcon color="white" weight="bold" />}
-        bold
-        variant="secondary"
-      >
-        com Google
-      </Button>
-      <FooterText>Ou com email</FooterText>
-
       <Form>
         <ControlledTextInput
           placeholder="E-mail"

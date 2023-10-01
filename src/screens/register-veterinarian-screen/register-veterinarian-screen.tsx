@@ -13,17 +13,39 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { registerVeterinarianValidation } from "./validations/register-veterinarian-validation";
 import { UpdateVeterinarianParams } from "~/domain/services";
 import { HeaderLogo } from "~/components/header-logo/header-logo";
+import { useCreateUserAccount } from "../sign-up-screen/hooks/use-create-user-account";
+import { useUserStore } from "~/store/user-store";
+import { useCompleteUserRegistration } from "../onboarding-screen/steps/second-step/hooks/use-complete-user-registration";
+import { UserTypeEnum } from "~/enums/user-type.enum";
 
 export function RegisterVeterinarianScreen() {
+  const { user } = useUserStore();
+
   const methods = useForm<UpdateVeterinarianParams>({
     mode: "all",
     resolver: zodResolver(registerVeterinarianValidation),
+    defaultValues: {
+      appointmentPrice: 0,
+      crmv: "123",
+      daysAvailable: [1, 2],
+      fullName: "Teste",
+      whatsapp: "123",
+    },
   });
 
-  const { mutationFn } = useUpdateVeterinarian();
+  const { mutationFn: createUser } = useCreateUserAccount();
+  const { mutationFn: completeUserRegistration } =
+    useCompleteUserRegistration();
 
   const onSubmit = async (data: UpdateVeterinarianParams) => {
-    await mutationFn(data);
+    await createUser(user).then(async (createdUser) => {
+      await completeUserRegistration({
+        userId: createdUser.user.uid,
+        userType: UserTypeEnum.VETERINARIAN,
+        email: createdUser.user.email,
+        ...data,
+      });
+    });
   };
 
   return (

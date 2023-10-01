@@ -22,14 +22,10 @@ export default function App() {
     Poppins_800ExtraBold,
   });
 
-  if (!isFontsLoaded) return <Loading />;
-
   return (
     <ThemeProvider theme={theme}>
       <StatusBar hidden />
-      <DefaultLayout>
-        <Routes />
-      </DefaultLayout>
+      <DefaultLayout>{isFontsLoaded ? <Routes /> : <Loading />}</DefaultLayout>
       <Toast />
     </ThemeProvider>
   );

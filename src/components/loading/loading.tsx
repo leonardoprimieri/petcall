@@ -1,9 +1,12 @@
+import { DefaultLayout } from "~/layouts/default-layout/default-layout";
 import { Container, LoadIndicator } from "./loading-styles";
 
 export const Loading = () => {
   return (
-    <Container>
-      <LoadIndicator />
-    </Container>
+    <DefaultLayout>
+      <Container>
+        <LoadIndicator />
+      </Container>
+    </DefaultLayout>
   );
 };
