@@ -11,4 +11,9 @@ export const registerVeterinarianValidation = z.object({
   daysAvailable: z
     .array(z.number())
     .min(1, { message: "Selecione pelo menos um dia" }),
+  appointmentPrice: z.string(),
 });
+
+export type RegisterVeterinarianFormData = z.infer<
+  typeof registerVeterinarianValidation
+>;

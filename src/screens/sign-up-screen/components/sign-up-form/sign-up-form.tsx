@@ -11,12 +11,12 @@ import { useUserStore } from "~/store/user-store";
 import { SignUpFormData } from "../../validation/sign-up-form-validation";
 
 export const SignUpForm = () => {
-  const { setUser } = useUserStore();
-
   const methods = useForm<SignUpFormData>({
     resolver: zodResolver(SignUpFormValidation),
     mode: "onSubmit",
   });
+
+  const { setUser } = useUserStore();
 
   const { handleGoToOnboarding } = useNavigationRoutes();
 

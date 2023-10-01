@@ -1,19 +1,16 @@
-import {
-  CreateUserParams,
-  completeUserRegistrationService,
-} from "~/domain/services";
+import { CreateUserParams, createUserService } from "~/domain/services";
 import { useToast } from "~/hooks/ui/use-toast";
 
 import { useState } from "react";
 
-export const useCompleteUserRegistration = () => {
+export const useCreateUserMutation = () => {
   const { showToast } = useToast();
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const execute = async ({ userId, ...data }: CreateUserParams) => {
+  const execute = async <T>({ userId, ...data }: CreateUserParams<T>) => {
     setIsLoading(true);
-    completeUserRegistrationService({ userId, ...data })
+    createUserService({ userId, ...data })
       .catch((e) => {
         showToast({
           message: e.message,
