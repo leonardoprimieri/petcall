@@ -10,14 +10,14 @@ import {
 } from "firebase/firestore";
 
 export function useAuthentication() {
-  const [userDetails, setUserDetails] = useState<DocumentData>();
-  const [authenticatedUser, setAuthenticatedUser] = useState<User>();
+  const [userDetails, setUserDetails] = useState<DocumentData | null>();
+  const [authenticatedUser, setAuthenticatedUser] = useState<User | null>();
 
   useEffect(() => {
     const unsubscribeFromAuthStatusChanged = onAuthStateChanged(
       auth,
       async (user) => {
-        if (!user) return;
+        if (!user) return logout();
         setAuthenticatedUser(user);
 
         const q = query(
@@ -39,8 +39,16 @@ export function useAuthentication() {
     return unsubscribeFromAuthStatusChanged;
   }, []);
 
+  const logout = () => {
+    auth.signOut().then(() => {
+      setAuthenticatedUser(null);
+      setUserDetails(null);
+    });
+  };
+
   return {
     authenticatedUser,
     userDetails,
+    logout,
   };
 }

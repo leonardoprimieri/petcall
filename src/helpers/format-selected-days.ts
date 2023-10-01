@@ -7,5 +7,9 @@ export const formatSelectedDays = (days: number[]) => {
     5: "Sex",
   };
 
-  return days.map((day) => weekDays[day]).join(", ");
+  const orderedDays = days.sort((a, b) => a - b);
+
+  if (days.length === Object.keys(weekDays).length) return "Todos os dias";
+
+  return orderedDays.map((day) => weekDays[day]).join(", ");
 };

@@ -14,7 +14,8 @@ import { useNavigationRoutes } from "~/hooks/general/use-navigation-routes";
 
 export function SecondStep() {
   const methods = useForm();
-  const { handleGoToRegisterVeterinarian } = useNavigationRoutes();
+  const { handleGoToRegisterVeterinarian, handleGoToRegisterPetTutor } =
+    useNavigationRoutes();
 
   const [selectedChoice, setSelectedChoice] =
     useState<keyof typeof UserTypeEnum>("PET_TUTOR");
@@ -29,6 +30,10 @@ export function SecondStep() {
     if (selectedChoice === "VETERINARIAN") {
       return handleGoToRegisterVeterinarian();
     }
+
+    if (selectedChoice === "PET_TUTOR") {
+      return handleGoToRegisterPetTutor();
+    }
   };
 
   return (
@@ -36,7 +41,7 @@ export function SecondStep() {
       <Title>Antes de começar</Title>
 
       <Subtitle>
-        Precisamos saber se você é tutor de pet ou médico veterinário
+        Precisamos saber se você é tutor de pet ou médico veterinário:
       </Subtitle>
 
       <FormProvider {...methods}>

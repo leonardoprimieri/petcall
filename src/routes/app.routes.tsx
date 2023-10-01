@@ -5,7 +5,11 @@ import {
   RegisterVeterinarianScreen,
   VeterinarianHomeScreen,
 } from "~/screens/veterinarian-screens";
-import { SearchVetsScreen } from "~/screens/pet-tutor-screens";
+import {
+  PetTutorHomeScreen,
+  RegisterPetTutorScreen,
+  SearchVetsScreen,
+} from "~/screens/pet-tutor-screens";
 import {
   OnboardingScreen,
   SignInScreen,
@@ -26,7 +30,13 @@ export const AppRoutes = () => {
       {authenticatedUser && userDetails ? (
         <>
           {userDetails?.userType === UserTypeEnum.PET_TUTOR && (
-            <Screen name="SearchVets" component={SearchVetsScreen} />
+            <>
+              <Screen
+                name="PetTutorHomeScreen"
+                component={PetTutorHomeScreen}
+              />
+              <Screen name="SearchVets" component={SearchVetsScreen} />
+            </>
           )}
 
           {userDetails?.userType === UserTypeEnum.VETERINARIAN && (
@@ -45,6 +55,7 @@ export const AppRoutes = () => {
             name="RegisterVeterinarian"
             component={RegisterVeterinarianScreen}
           />
+          <Screen name="RegisterPetTutor" component={RegisterPetTutorScreen} />
         </>
       )}
     </Navigator>

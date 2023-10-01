@@ -7,6 +7,8 @@ export declare global {
       SearchVets: undefined;
       RegisterVeterinarian: undefined;
       VeterinarianHome: undefined;
+      PetTutorHome: undefined;
+      RegisterPetTutor: undefined;
     }
   }
 }

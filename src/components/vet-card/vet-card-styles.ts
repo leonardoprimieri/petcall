@@ -3,11 +3,12 @@ import styled from "styled-components/native";
 export const Container = styled.View`
   flex-direction: row;
   align-items: flex-end;
-  padding: 12px;
+  padding: 12px 16px 12px 12px;
   gap: 12px;
   background-color: ${({ theme }) => theme.COLORS.SECONDARY};
   border-radius: 12px;
   margin-bottom: 12px;
+  border: 1px solid ${({ theme }) => theme.COLORS.SECONDARY_DARK};
 `;
 
 export const FirstContainer = styled.View`
@@ -26,12 +27,14 @@ export const VetName = styled.Text`
 
 export const VetPricePerHour = styled.Text`
   color: ${({ theme }) => theme.COLORS.SECONDARY_DARK};
-  font-family: ${({ theme }) => theme.FONTS.PRIMARY.SEMIBOLD};
-  font-size: 16px;
+  font-family: ${({ theme }) => theme.FONTS.PRIMARY.EXTRA_BOLD};
+  font-size: 18px;
   margin-bottom: -8px;
 `;
 
-export const VetSchedule = styled.View``;
+export const VetSchedule = styled.View`
+  margin-left: auto;
+`;
 
 export const Text = styled.Text`
   font-size: 16px;

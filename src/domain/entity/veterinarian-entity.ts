@@ -4,4 +4,5 @@ export type VeterinarianEntity = {
   fullName: string;
   whatsapp: string;
   appointmentPrice: number;
+  userId: string;
 };

@@ -17,7 +17,7 @@ export function SearchVetsScreen() {
         ) : (
           <FlatList
             data={data}
-            keyExtractor={(item) => item.toString()}
+            keyExtractor={(item) => item.userId}
             renderItem={({ item }) => <VetCard veterinary={item} />}
             style={{ padding: 20 }}
           />

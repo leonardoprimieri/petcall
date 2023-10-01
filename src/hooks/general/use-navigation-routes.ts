@@ -1,22 +1,24 @@
 import { useNavigation } from "@react-navigation/native";
-import { ROUTES_NAMES } from "~/routes/routes.names.const";
 
 export const useNavigationRoutes = () => {
   const { navigate } = useNavigation();
 
-  const handleGoToOnboarding = () => navigate(ROUTES_NAMES.ONBOARDING);
-  const handleGoToSearchVets = () => navigate(ROUTES_NAMES.SEARCH_VETS);
-  const handleGoToRegisterVeterinarian = () =>
-    navigate(ROUTES_NAMES.REGISTER_VETERINARIAN);
-  const handleGoToSignUp = () => navigate(ROUTES_NAMES.SIGN_UP);
-  const handleGoToVeterinarianScreen = () =>
-    navigate(ROUTES_NAMES.VETERINARIAN_HOME);
+  const handleGoToOnboarding = () => navigate("Onboarding");
+  const handleGoToSearchVets = () => navigate("SearchVets");
+  const handleGoToRegisterVeterinarian = () => navigate("RegisterVeterinarian");
+  const handleGoToSignUp = () => navigate("SignUp");
+  const handleGoToVeterinarianHomeScreen = () => navigate("VeterinarianHome");
+
+  const handleGoToPetTutorHomeScreen = () => navigate("PetTutorHome");
+  const handleGoToRegisterPetTutor = () => navigate("RegisterPetTutor");
 
   return {
     handleGoToOnboarding,
     handleGoToSearchVets,
     handleGoToRegisterVeterinarian,
     handleGoToSignUp,
-    handleGoToVeterinarianScreen,
+    handleGoToVeterinarianHomeScreen,
+    handleGoToPetTutorHomeScreen,
+    handleGoToRegisterPetTutor,
   };
 };
