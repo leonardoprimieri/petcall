@@ -1,24 +1,39 @@
 import { Header } from "~/components/header/header";
 import { Container, ItemsContainer } from "./pet-tutor-home-screen-styles";
 import { AuthorizedLayout } from "~/layouts/authorized-layout/authorized-layout";
-import { useNavigationRoutes } from "~/hooks";
 import { HomeMenuItem } from "~/components/home-menu-item/home-menu-item";
+import { useNavigation } from "@react-navigation/native";
+
+const MENU_ITEMS = [
+  {
+    label: "Procurar Veterinários",
+    image: require("~/assets/veterinarian-choice.png"),
+    path: "SearchVets",
+  },
+  {
+    label: "Meus Pets",
+    image: require("~/assets/my-pets.png"),
+    path: "SearchVets",
+  },
+];
 
 export const PetTutorHomeScreen = () => {
-  const { handleGoToSearchVets } = useNavigationRoutes();
+  const { navigate } = useNavigation();
 
   return (
     <AuthorizedLayout>
       <Container>
         <Header />
         <ItemsContainer>
-          <HomeMenuItem
-            label="Procurar Veterinários"
-            ImageProps={{
-              source: require("~/assets/veterinarian-choice.png"),
-            }}
-            onPress={handleGoToSearchVets}
-          />
+          {MENU_ITEMS.map((item) => (
+            <HomeMenuItem
+              label={item.label}
+              ImageProps={{
+                source: item.image,
+              }}
+              onPress={() => navigate(item.path as any)}
+            />
+          ))}
         </ItemsContainer>
       </Container>
     </AuthorizedLayout>

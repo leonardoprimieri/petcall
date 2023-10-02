@@ -5,16 +5,34 @@ export const Container = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 16px;
+  padding: 0px 32px;
+  border-bottom: 1px solid ${({ theme }) => theme.COLORS.BLACK};
+  flex-direction: column;
+`;
+
+export const HeaderContainer = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 `;
 
 export const Welcome = styled.Text`
   color: ${({ theme }) => theme.COLORS.TITLE};
   font-family: ${({ theme }) => theme.FONTS.PRIMARY.REGULAR};
-  font-size: 18px;
+  font-size: 16px;
 `;
 
 export const Name = styled.Text`
   color: ${({ theme }) => theme.COLORS.PRIMARY};
   font-family: ${({ theme }) => theme.FONTS.PRIMARY.BOLD};
+`;
+
+export const WelcomeMessageContainer = styled.View``;
+
+export const Divider = styled.View`
+  width: 100%;
+  height: 1px;
+  background-color: ${({ theme }) => theme.COLORS.PRIMARY};
+  margin-top: 8px;
 `;

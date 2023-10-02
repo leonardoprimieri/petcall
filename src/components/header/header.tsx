@@ -1,19 +1,33 @@
 import { useAuthentication } from "~/hooks/auth/use-authentication";
-import { Container, Welcome, Name } from "./header-styles";
-import { Pressable, Text } from "react-native";
+import {
+  Container,
+  Welcome,
+  Name,
+  WelcomeMessageContainer,
+  Divider,
+  HeaderContainer,
+} from "./header-styles";
+import { IconButton } from "../icon-button/icon-button";
+import { LogoutIcon } from "../icons";
+import { useTheme } from "styled-components/native";
+import { View } from "react-native";
 
 export const Header = () => {
   const { userDetails, logout } = useAuthentication();
+  const { COLORS } = useTheme();
 
   return (
     <Container>
-      <Welcome>
-        Olá! <Name>{userDetails?.fullName}</Name>
-      </Welcome>
+      <HeaderContainer>
+        <Welcome>
+          Olá, <Name>{userDetails?.fullName}</Name>
+        </Welcome>
+        <IconButton onPress={logout}>
+          <LogoutIcon color={COLORS.PRIMARY} weight="bold" />
+        </IconButton>
+      </HeaderContainer>
 
-      <Pressable onPress={logout}>
-        <Text>Sair</Text>
-      </Pressable>
+      <Divider />
     </Container>
   );
 };
