@@ -8,16 +8,22 @@ import {
   WeekDaysContainer,
 } from "./week-day-selector-styles";
 
-export const WeekDaySelector = () => {
+type Props = {
+  disabled?: boolean;
+};
+
+export const WeekDaySelector = ({ disabled }: Props) => {
   const { setValue, watch, getFieldState } = useFormContext();
 
   const daysAvailable = (watch("daysAvailable") as number[]) || [];
 
   const handleSelectDay = (id: number) => {
-    if (!daysAvailable.includes(id))
-      return setValue("daysAvailable", [...daysAvailable, id]);
+    if (!daysAvailable.includes(id)) {
+      setValue("daysAvailable", [...daysAvailable, id]);
+      return;
+    }
 
-    return setValue(
+    setValue(
       "daysAvailable",
       daysAvailable.filter((day) => day !== id)
     );
@@ -34,6 +40,7 @@ export const WeekDaySelector = () => {
             isSelected={daysAvailable.includes(day.id)}
             onPress={() => handleSelectDay(day.id)}
             key={day.id}
+            disabled={disabled}
           >
             {day.name}
           </WeekDay>

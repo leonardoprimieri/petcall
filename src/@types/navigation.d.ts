@@ -1,3 +1,5 @@
+import { VeterinarianEntity } from "~/domain/entity/veterinarian-entity";
+
 export declare global {
   namespace ReactNavigation {
     interface RootParamList {
@@ -9,6 +11,9 @@ export declare global {
       VeterinarianHome: undefined;
       PetTutorHome: undefined;
       RegisterPetTutor: undefined;
+      VeterinarianDetails: {
+        veterinarian: VeterinarianEntity;
+      };
     }
   }
 }

@@ -1,4 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
+import { VeterinarianEntity } from "~/domain/entity/veterinarian-entity";
 
 export const useNavigationRoutes = () => {
   const { navigate } = useNavigation();
@@ -11,6 +12,10 @@ export const useNavigationRoutes = () => {
 
   const handleGoToPetTutorHomeScreen = () => navigate("PetTutorHome");
   const handleGoToRegisterPetTutor = () => navigate("RegisterPetTutor");
+  const handleGoToVeterinarianDetails = (veterinarian: VeterinarianEntity) =>
+    navigate("VeterinarianDetails", {
+      veterinarian,
+    });
 
   return {
     handleGoToOnboarding,
@@ -20,5 +25,6 @@ export const useNavigationRoutes = () => {
     handleGoToVeterinarianHomeScreen,
     handleGoToPetTutorHomeScreen,
     handleGoToRegisterPetTutor,
+    handleGoToVeterinarianDetails,
   };
 };

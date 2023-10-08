@@ -1,4 +1,3 @@
-import React from "react";
 import { Image } from "react-native";
 import onboardingImage from "~/assets/onboarding-image.png";
 

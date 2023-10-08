@@ -1,6 +1,6 @@
 import styled from "styled-components/native";
 
-export const Container = styled.View`
+export const Container = styled.TouchableOpacity`
   flex-direction: row;
   align-items: flex-end;
   padding: 12px 16px 12px 12px;
@@ -42,15 +42,4 @@ export const Text = styled.Text`
 
 export const VetAvailableDays = styled.Text`
   font-size: 12px;
-`;
-
-export const VetAvatar = styled.View`
-  background-color: ${({ theme }) => theme.COLORS.PRIMARY};
-  width: 80px;
-  height: 80px;
-  border-radius: 999999px;
-  justify-self: center;
-  align-self: center;
-  justify-content: center;
-  align-items: center;
 `;

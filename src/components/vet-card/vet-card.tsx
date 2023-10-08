@@ -4,7 +4,6 @@ import {
   FirstContainer,
   Text,
   VetAvailableDays,
-  VetAvatar,
   VetInfo,
   VetName,
   VetPricePerHour,
@@ -13,22 +12,32 @@ import {
 import { formatCurrency } from "~/helpers/format-currency";
 import { formatSelectedDays } from "~/helpers/format-selected-days";
 import { Avatar } from "~/components/avatar/avatar";
+import { useNavigationRoutes } from "~/hooks";
 
 type Props = {
-  veterinary: VeterinarianEntity;
+  veterinarian: VeterinarianEntity;
 };
 
-export const VetCard = ({ veterinary }: Props) => {
+export const VetCard = ({ veterinarian }: Props) => {
+  const { handleGoToVeterinarianDetails } = useNavigationRoutes();
+
+  const handleGoToDetails = () => {
+    handleGoToVeterinarianDetails(veterinarian);
+  };
+
   return (
-    <Container>
+    <Container onPress={handleGoToDetails}>
       <FirstContainer>
-        <VetAvatar>
-          <Avatar />
-        </VetAvatar>
+        <Avatar
+          style={{
+            height: 80,
+            width: 80,
+          }}
+        />
         <VetInfo>
-          <VetName>{veterinary?.fullName}</VetName>
+          <VetName>{veterinarian?.fullName}</VetName>
           <VetPricePerHour>
-            {formatCurrency(veterinary?.appointmentPrice)}
+            {formatCurrency(veterinarian?.appointmentPrice)}
           </VetPricePerHour>
           <Text>por consulta</Text>
         </VetInfo>
@@ -36,7 +45,7 @@ export const VetCard = ({ veterinary }: Props) => {
       <VetSchedule>
         <Text>Atende</Text>
         <VetAvailableDays>
-          {formatSelectedDays(veterinary?.daysAvailable)}
+          {formatSelectedDays(veterinarian?.daysAvailable)}
         </VetAvailableDays>
       </VetSchedule>
     </Container>
