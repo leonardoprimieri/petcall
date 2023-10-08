@@ -13,7 +13,7 @@ const MENU_ITEMS = [
   {
     label: "Meus Pets",
     image: require("~/assets/my-pets.png"),
-    path: "SearchVets",
+    path: "MyPets",
   },
 ];
 

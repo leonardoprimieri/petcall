@@ -14,6 +14,7 @@ export declare global {
       VeterinarianDetails: {
         veterinarian: VeterinarianEntity;
       };
+      MyPets: undefined;
     }
   }
 }

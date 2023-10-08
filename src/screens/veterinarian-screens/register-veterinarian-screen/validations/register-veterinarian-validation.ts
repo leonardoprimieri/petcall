@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { clearCurrencyInput } from "~/helpers/clear-currency-input";
 
 export const registerVeterinarianValidation = z.object({
   fullName: z
@@ -11,7 +12,7 @@ export const registerVeterinarianValidation = z.object({
   daysAvailable: z
     .array(z.number())
     .min(1, { message: "Selecione pelo menos um dia" }),
-  appointmentPrice: z.string(),
+  appointmentPrice: z.string().transform((value) => clearCurrencyInput(value)),
 });
 
 export type RegisterVeterinarianFormData = z.infer<

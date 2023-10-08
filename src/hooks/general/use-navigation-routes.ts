@@ -12,6 +12,7 @@ export const useNavigationRoutes = () => {
 
   const handleGoToPetTutorHomeScreen = () => navigate("PetTutorHome");
   const handleGoToRegisterPetTutor = () => navigate("RegisterPetTutor");
+  const handleGoToMyPets = () => navigate("MyPets");
   const handleGoToVeterinarianDetails = (veterinarian: VeterinarianEntity) =>
     navigate("VeterinarianDetails", {
       veterinarian,
@@ -26,5 +27,6 @@ export const useNavigationRoutes = () => {
     handleGoToPetTutorHomeScreen,
     handleGoToRegisterPetTutor,
     handleGoToVeterinarianDetails,
+    handleGoToMyPets,
   };
 };

@@ -25,7 +25,7 @@ export function RegisterVeterinarianScreen() {
     mode: "all",
     resolver: zodResolver(registerVeterinarianValidation),
     defaultValues: {
-      appointmentPrice: "R$ 0,00",
+      appointmentPrice: 0,
     },
   });
 
@@ -52,11 +52,17 @@ export function RegisterVeterinarianScreen() {
         <FormProvider {...methods}>
           <Container>
             <ControlledTextInput name="fullName" label="Nome" />
-            <ControlledTextInput name="whatsapp" label="Whatsapp" />
+            <ControlledTextInput
+              name="whatsapp"
+              label="Whatsapp"
+              mask="phone"
+            />
             <ControlledTextInput name="crmv" label="CRMV" />
             <ControlledTextInput
               name="appointmentPrice"
               label="Preço por consulta"
+              keyboardType="numeric"
+              mask="currency"
             />
             <WeekDaySelector />
             <ButtonContainer>
