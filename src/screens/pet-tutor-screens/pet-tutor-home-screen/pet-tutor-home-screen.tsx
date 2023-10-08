@@ -27,6 +27,7 @@ export const PetTutorHomeScreen = () => {
         <ItemsContainer>
           {MENU_ITEMS.map((item) => (
             <HomeMenuItem
+              key={item.label}
               label={item.label}
               ImageProps={{
                 source: item.image,
