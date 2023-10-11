@@ -45,7 +45,11 @@ export function RegisterPetTutorScreen() {
         <FormProvider {...methods}>
           <Container>
             <ControlledTextInput name="fullName" label="Nome" />
-            <ControlledTextInput name="whatsapp" label="Whatsapp" />
+            <ControlledTextInput
+              name="whatsapp"
+              label="Whatsapp"
+              mask="phone"
+            />
             <ButtonContainer>
               <Button
                 isLoading={methods.formState.isSubmitting}
