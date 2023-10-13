@@ -14,23 +14,32 @@ import { ArrowLeftIcon } from "~/components/icons";
 import { useTheme } from "styled-components/native";
 import { DefaultLayout } from "~/layouts/default-layout/default-layout";
 import { useNavigation } from "@react-navigation/native";
-import { VeterinarianEntity } from "~/domain/entity/veterinarian-entity";
+import { VeterinarianEntity } from "~/domain/entities/veterinarian-entity";
 
 import { formatCurrency } from "~/helpers/format-currency";
 import { WeekDaySelector } from "~/components/week-day-selector/week-day-selector";
 import { FormProvider, useForm } from "react-hook-form";
 import { Button } from "~/components/button/button";
+import { requestAppointmentService } from "~/domain/services/veterinarian/request-appointment.service";
+import { useAuthentication, useCheckForAppointments } from "~/hooks";
+import { Text } from "react-native";
 
-export function VeterinarianDetailsScreen({
-  route,
-}: {
+type RouteParams = {
   route: {
     params: {
       veterinarian: VeterinarianEntity;
     };
   };
-}) {
+};
+
+export function VeterinarianDetailsScreen({ route }: RouteParams) {
   const { veterinarian } = route.params;
+  const { userDetails } = useAuthentication();
+
+  const { appointment } = useCheckForAppointments({
+    veterinarianId: veterinarian?.userId,
+  });
+
   const methods = useForm({
     values: {
       daysAvailable: veterinarian.daysAvailable,
@@ -38,6 +47,20 @@ export function VeterinarianDetailsScreen({
   });
   const { COLORS } = useTheme();
   const { goBack } = useNavigation();
+
+  const renderAppointmentStatus = () => {
+    if (appointment?.requestStatus === "pending") {
+      return "Aguardando confirmação do veterinário...";
+    }
+
+    if (appointment?.requestStatus === "accepted") {
+      return "Consulta agendada";
+    }
+
+    if (appointment?.requestStatus === "rejected") {
+      return "Consulta rejeitada";
+    }
+  };
 
   return (
     <DefaultLayout>
@@ -76,7 +99,25 @@ export function VeterinarianDetailsScreen({
         </FormProvider>
 
         <ButtonContainer>
-          <Button>Solicitar consulta</Button>
+          {(!appointment?.requestStatus ||
+            appointment.requestStatus === "finished") && (
+            <Button
+              onPress={() => {
+                requestAppointmentService({
+                  veterinarianId: veterinarian?.userId,
+                  requestStatus: "pending",
+                  tutorDetails: {
+                    fullName: userDetails?.fullName,
+                    id: userDetails?.id,
+                  },
+                });
+              }}
+            >
+              Solicitar consulta
+            </Button>
+          )}
+
+          <Text>{renderAppointmentStatus()}</Text>
         </ButtonContainer>
       </Container>
     </DefaultLayout>

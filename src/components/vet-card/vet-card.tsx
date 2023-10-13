@@ -1,4 +1,4 @@
-import { VeterinarianEntity } from "~/domain/entity/veterinarian-entity";
+import { VeterinarianEntity } from "~/domain/entities/veterinarian-entity";
 import {
   Container,
   FirstContainer,

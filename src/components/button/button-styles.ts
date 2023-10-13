@@ -60,6 +60,7 @@ export const ButtonText = styled.Text<ButtonTextProps>`
     bold ? theme.FONTS.PRIMARY.REGULAR : theme.FONTS.PRIMARY.BOLD};
   font-size: 16px;
   color: ${({ theme, variant }) => renderButtonText(theme, variant)};
+  text-align: center;
 `;
 
 export const Icon = styled.View`

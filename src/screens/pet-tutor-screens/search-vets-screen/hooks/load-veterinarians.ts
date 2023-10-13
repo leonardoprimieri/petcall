@@ -1,6 +1,6 @@
 import { loadVeterinariansService } from "~/domain/services";
 import { useCallback, useEffect, useState } from "react";
-import { VeterinarianEntity } from "src/domain/entity/veterinarian-entity";
+import { VeterinarianEntity } from "~/domain/entities/veterinarian-entity";
 
 export const useLoadVeterinarians = () => {
   const [isLoading, setIsLoading] = useState(false);

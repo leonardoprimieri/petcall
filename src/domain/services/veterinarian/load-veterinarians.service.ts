@@ -1,6 +1,6 @@
 import { db } from "~/config/firebase/firebase-config";
 import { collection, getDocs, query, where } from "firebase/firestore";
-import { VeterinarianEntity } from "src/domain/entity/veterinarian-entity";
+import { VeterinarianEntity } from "~/domain/entities/veterinarian-entity";
 import { UserTypeEnum } from "~/enums/user-type.enum";
 
 export const loadVeterinariansService = async () => {

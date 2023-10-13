@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import { VeterinarianEntity } from "~/domain/entity/veterinarian-entity";
+import { VeterinarianEntity } from "~/domain/entities/veterinarian-entity";
 
 export const useNavigationRoutes = () => {
   const { navigate } = useNavigation();
