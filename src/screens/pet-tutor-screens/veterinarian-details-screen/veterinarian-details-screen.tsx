@@ -22,7 +22,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import { Button } from "~/components/button/button";
 import { requestAppointmentService } from "~/domain/services/veterinarian/request-appointment.service";
 import { useAuthentication, useCheckForAppointments } from "~/hooks";
-import { Text } from "react-native";
+import { Linking, Pressable, Text } from "react-native";
 
 type RouteParams = {
   route: {
@@ -34,6 +34,7 @@ type RouteParams = {
 
 export function VeterinarianDetailsScreen({ route }: RouteParams) {
   const { veterinarian } = route.params;
+
   const { userDetails } = useAuthentication();
 
   const { appointment } = useCheckForAppointments({
@@ -54,12 +55,20 @@ export function VeterinarianDetailsScreen({ route }: RouteParams) {
     }
 
     if (appointment?.requestStatus === "accepted") {
-      return "Consulta agendada";
+      return (
+        <Pressable onPress={openLink}>
+          <Text>{veterinarian.meetingUrl}</Text>
+        </Pressable>
+      );
     }
 
     if (appointment?.requestStatus === "rejected") {
       return "Consulta rejeitada";
     }
+  };
+
+  const openLink = () => {
+    Linking.openURL(veterinarian?.meetingUrl);
   };
 
   return (
