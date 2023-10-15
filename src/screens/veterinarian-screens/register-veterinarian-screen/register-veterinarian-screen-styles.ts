@@ -5,7 +5,7 @@ export const Container = styled.View`
   justify-content: center;
   align-items: center;
   gap: 8px;
-  margin-top: 16px;
+  margin: 32px 0px;
 `;
 
 export const ButtonContainer = styled.View`

@@ -11,6 +11,7 @@ export const registerVeterinarianValidation = z.object({
   daysAvailable: z
     .array(z.number())
     .min(1, { message: "Selecione pelo menos um dia" }),
+  meetingUrl: z.string().url({ message: "URL inválida" }),
   appointmentPrice: z.string().transform((value) => clearCurrencyInput(value)),
 });
 

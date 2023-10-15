@@ -60,10 +60,11 @@ export function RegisterVeterinarianScreen() {
             <ControlledTextInput name="crmv" label="CRMV" />
             <ControlledTextInput
               name="appointmentPrice"
-              label="Preço por consulta"
+              label="Preço por consulta online"
               keyboardType="numeric"
               mask="currency"
             />
+            <ControlledTextInput name="meetingUrl" label="Link para reunião" />
             <WeekDaySelector />
             <ButtonContainer>
               <Button
