@@ -52,11 +52,7 @@ export function RegisterVeterinarianScreen() {
         <FormProvider {...methods}>
           <Container>
             <ControlledTextInput name="fullName" label="Nome" />
-            <ControlledTextInput
-              name="whatsapp"
-              label="Whatsapp"
-              mask="phone"
-            />
+
             <ControlledTextInput name="crmv" label="CRMV" />
             <ControlledTextInput
               name="appointmentPrice"

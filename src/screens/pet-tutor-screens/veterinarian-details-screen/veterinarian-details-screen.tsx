@@ -22,7 +22,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import { Button } from "~/components/button/button";
 import { requestAppointmentService } from "~/domain/services/veterinarian/request-appointment.service";
 import { useAuthentication, useCheckForAppointments } from "~/hooks";
-import { Linking, Pressable, Text } from "react-native";
+import { Linking, Text } from "react-native";
 
 type RouteParams = {
   route: {
@@ -56,9 +56,9 @@ export function VeterinarianDetailsScreen({ route }: RouteParams) {
 
     if (appointment?.requestStatus === "accepted") {
       return (
-        <Pressable onPress={openLink}>
-          <Text>{veterinarian.meetingUrl}</Text>
-        </Pressable>
+        <Button onPress={openLink}>
+          <Text>Acessar consulta em andamento</Text>
+        </Button>
       );
     }
 
@@ -92,10 +92,6 @@ export function VeterinarianDetailsScreen({ route }: RouteParams) {
             <GridDescription>Consultas feitas</GridDescription>
           </GridItem>
           <GridItem>
-            <GridTitle>4.5</GridTitle>
-            <GridDescription>Reputação</GridDescription>
-          </GridItem>
-          <GridItem>
             <GridTitle>
               {formatCurrency(veterinarian.appointmentPrice)}
             </GridTitle>
@@ -125,9 +121,8 @@ export function VeterinarianDetailsScreen({ route }: RouteParams) {
               Solicitar consulta
             </Button>
           )}
-
-          <Text>{renderAppointmentStatus()}</Text>
         </ButtonContainer>
+        <Text>{renderAppointmentStatus()}</Text>
       </Container>
     </DefaultLayout>
   );
