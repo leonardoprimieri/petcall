@@ -28,7 +28,15 @@ export default {
     web: {
       favicon: "./assets/favicon.png",
     },
-
+    plugins: [
+      [
+        "expo-image-picker",
+        {
+          photosPermission:
+            "The app accesses your photos to let you share them with your friends.",
+        },
+      ],
+    ],
     extra: {
       firebaseApiKey: process.env.FIREBASE_API_KEY,
       firebaseAuthDomain: process.env.FIREBASE_AUTH_DOMAIN,

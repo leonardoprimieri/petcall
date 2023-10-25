@@ -7,3 +7,7 @@ export const Container = styled.View`
   border-radius: 9999px;
   padding: 6px;
 `;
+
+export const RoundedImage = styled.Image`
+  border-radius: 9999px;
+`;

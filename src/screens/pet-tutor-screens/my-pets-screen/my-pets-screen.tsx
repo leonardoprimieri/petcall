@@ -24,7 +24,7 @@ export function MyPetsScreen() {
             data={data}
             keyExtractor={(item) => item.name}
             renderItem={({ item }) => <PetCard pet={item} />}
-            numColumns={3}
+            numColumns={2}
           />
         )}
 

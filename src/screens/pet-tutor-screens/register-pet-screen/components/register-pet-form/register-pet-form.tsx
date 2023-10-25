@@ -8,22 +8,29 @@ import {
 } from "./validation/create-pet-validation";
 import { useCreatePetMutation } from "./hooks/use-create-pet-mutation";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useNavigationRoutes } from "~/hooks";
-import { PetEntity } from "~/domain/entities/pet-entity";
-import { View } from "react-native";
+import { UploadImage } from "~/components/upload-image/upload-image";
+import { useState } from "react";
 
 export const RegisterPetForm = () => {
+  const [imageUrl, setImageUrl] = useState("");
+
   const methods = useForm<CreatePetFormData>({
     resolver: zodResolver(CreatePetValidation),
   });
 
-  const { handleGoToMyPets } = useNavigationRoutes();
-
   const { mutationFn } = useCreatePetMutation();
 
   const onSubmit = async (values: CreatePetFormData) => {
-    await mutationFn(values as PetEntity).then(handleGoToMyPets);
+    await mutationFn({
+      birthday: values.birthday,
+      imageUrl,
+      name: values.name,
+      weight: values.weight,
+      type: "dog",
+    });
   };
+
+  if (!imageUrl) return <UploadImage onUpload={setImageUrl} />;
 
   return (
     <FormProvider {...methods}>
@@ -31,7 +38,6 @@ export const RegisterPetForm = () => {
         <ControlledTextInput name="name" label="Nome" />
         <ControlledTextInput name="weight" label="Peso" />
         <ControlledTextInput name="birthday" label="Aniversário" />
-        {/* <ControlledTextInput name="type" label="Tipo" /> */}
 
         <Button
           onPress={methods.handleSubmit(onSubmit)}

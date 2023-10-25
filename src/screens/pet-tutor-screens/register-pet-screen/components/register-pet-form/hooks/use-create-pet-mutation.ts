@@ -11,13 +11,14 @@ export const useCreatePetMutation = () => {
     await createPetService({
       userId: userDetails?.id,
       ...params,
-    }).catch((e) =>
+    }).catch((e) => {
+      console.log(e);
       showToast({
         message: mapFirebaseError(e.code),
         type: "error",
         title: "Erro ao criar pet",
-      })
-    );
+      });
+    });
   };
 
   return { mutationFn: execute };

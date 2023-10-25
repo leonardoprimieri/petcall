@@ -1,15 +1,24 @@
 import { Image, ImageProps } from "react-native";
 import avatarPlaceholder from "../../assets/placeholder-user.png";
-import { Container } from "./avatar-styles";
+import { Container, RoundedImage } from "./avatar-styles";
 
 type Props = {
-  source?: string;
+  url?: string;
 } & Omit<ImageProps, "source">;
 
-export const Avatar = ({ source, ...props }: Props) => {
+export const Avatar = ({ url, ...props }: Props) => {
   return (
     <Container>
-      <Image source={source ?? avatarPlaceholder} {...props} />
+      <RoundedImage
+        source={
+          url
+            ? {
+                uri: url,
+              }
+            : avatarPlaceholder
+        }
+        {...props}
+      />
     </Container>
   );
 };

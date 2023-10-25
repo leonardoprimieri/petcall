@@ -4,6 +4,7 @@ import { getFirestore } from "firebase/firestore";
 import { getDatabase } from "firebase/database";
 
 import Constants from "expo-constants";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: Constants.manifest?.extra?.firebaseApiKey,
@@ -18,5 +19,6 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth();
 export const db = getFirestore(app);
 export const realTimeDb = getDatabase(app);
+export const storage = getStorage(app);
 
 export default app;

@@ -1,3 +1,4 @@
+import { Image } from "react-native";
 import { Container, PetName } from "./pet-card-styles";
 import { Avatar } from "~/components/avatar/avatar";
 import { PetEntity } from "~/domain/entities/pet-entity";
@@ -11,9 +12,10 @@ export const PetCard = ({ pet }: Props) => {
     <Container>
       <Avatar
         style={{
-          height: 70,
-          width: 70,
+          height: 130,
+          width: 130,
         }}
+        url={pet?.imageUrl}
       />
       <PetName>{pet?.name}</PetName>
     </Container>
