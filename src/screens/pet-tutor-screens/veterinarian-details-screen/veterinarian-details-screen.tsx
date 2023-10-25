@@ -84,6 +84,7 @@ export function VeterinarianDetailsScreen({ route }: RouteParams) {
             width: 110,
             height: 110,
           }}
+          url={veterinarian?.imageUrl}
         />
         <VeterinarianName>{veterinarian.fullName}</VeterinarianName>
         <GridDetails>

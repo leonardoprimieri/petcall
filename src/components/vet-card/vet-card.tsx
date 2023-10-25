@@ -33,6 +33,7 @@ export const VetCard = ({ veterinarian }: Props) => {
             height: 80,
             width: 80,
           }}
+          url={veterinarian?.imageUrl}
         />
         <VetInfo>
           <VetName>{veterinarian?.fullName}</VetName>

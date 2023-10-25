@@ -6,4 +6,5 @@ export type VeterinarianEntity = {
   userId: string;
   email: string;
   meetingUrl: string;
+  imageUrl: string;
 };

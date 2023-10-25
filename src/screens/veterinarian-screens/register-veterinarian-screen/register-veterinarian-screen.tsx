@@ -17,8 +17,13 @@ import { HeaderLogo } from "~/components/header-logo/header-logo";
 import { useUserStore } from "~/store/user-store";
 import { UserTypeEnum } from "~/enums/user-type.enum";
 import { useCreateUserAccount, useCreateUserMutation } from "~/hooks/api";
+import { useState } from "react";
+import { UploadImage } from "~/components/upload-image/upload-image";
+import { VeterinarianEntity } from "~/domain/entities/veterinarian-entity";
 
 export function RegisterVeterinarianScreen() {
+  const [imageUrl, setImageUrl] = useState("");
+
   const { user } = useUserStore();
 
   const methods = useForm<RegisterVeterinarianFormData>({
@@ -36,10 +41,11 @@ export function RegisterVeterinarianScreen() {
     await createUserAccount(user).then(async (createdUser) => {
       if (!createdUser) return;
 
-      await createUser<RegisterVeterinarianFormData>({
+      await createUser<VeterinarianEntity>({
         userId: createdUser.user.uid,
         userType: UserTypeEnum.VETERINARIAN,
         email: createdUser.user.email as string,
+        imageUrl,
         ...data,
       });
     });
@@ -49,30 +55,38 @@ export function RegisterVeterinarianScreen() {
     <DefaultLayout>
       <ScrollView>
         <HeaderLogo text="Preencha seus dados" removeGoBack />
-        <FormProvider {...methods}>
-          <Container>
-            <ControlledTextInput name="fullName" label="Nome" />
 
-            <ControlledTextInput name="crmv" label="CRMV" />
-            <ControlledTextInput
-              name="appointmentPrice"
-              label="Preço por consulta online"
-              keyboardType="numeric"
-              mask="currency"
-            />
-            <ControlledTextInput name="meetingUrl" label="Link para reunião" />
-            <WeekDaySelector />
-            <ButtonContainer>
-              <Button
-                isLoading={methods.formState.isSubmitting}
-                onPress={methods.handleSubmit(onSubmit)}
-                width="300px"
-              >
-                Confirmar
-              </Button>
-            </ButtonContainer>
-          </Container>
-        </FormProvider>
+        {!imageUrl && <UploadImage onUpload={setImageUrl} />}
+
+        {imageUrl && (
+          <FormProvider {...methods}>
+            <Container>
+              <ControlledTextInput name="fullName" label="Nome" />
+
+              <ControlledTextInput name="crmv" label="CRMV" />
+              <ControlledTextInput
+                name="appointmentPrice"
+                label="Preço por consulta online"
+                keyboardType="numeric"
+                mask="currency"
+              />
+              <ControlledTextInput
+                name="meetingUrl"
+                label="Link para reunião"
+              />
+              <WeekDaySelector />
+              <ButtonContainer>
+                <Button
+                  isLoading={methods.formState.isSubmitting}
+                  onPress={methods.handleSubmit(onSubmit)}
+                  width="300px"
+                >
+                  Confirmar
+                </Button>
+              </ButtonContainer>
+            </Container>
+          </FormProvider>
+        )}
       </ScrollView>
     </DefaultLayout>
   );
