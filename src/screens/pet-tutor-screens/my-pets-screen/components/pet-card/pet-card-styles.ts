@@ -1,19 +1,10 @@
 import styled from "styled-components/native";
 
 export const Container = styled.TouchableOpacity`
-  flex-direction: row;
-  align-items: flex-end;
   padding: 12px 16px 12px 12px;
   gap: 12px;
-  background-color: ${({ theme }) => theme.COLORS.SECONDARY};
-  border-radius: 12px;
-  margin-bottom: 12px;
-  border: 1px solid ${({ theme }) => theme.COLORS.SECONDARY_DARK};
-`;
-
-export const FirstContainer = styled.View`
-  flex-direction: row;
-  gap: 12px;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const PetInfo = styled.View``;

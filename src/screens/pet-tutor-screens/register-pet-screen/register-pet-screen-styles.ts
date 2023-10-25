@@ -1,6 +1,6 @@
 import styled from "styled-components/native";
 
 export const Container = styled.View`
-  padding: 0px 30px;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
 `;

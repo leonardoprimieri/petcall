@@ -1,6 +1,7 @@
 export type PetEntity = {
   userId?: string;
   name: string;
-  weight: number;
+  weight: string;
   birthday: string;
+  type: string;
 };

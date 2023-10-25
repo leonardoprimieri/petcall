@@ -1,24 +1,24 @@
-import { loadVeterinariansService } from "~/domain/services";
 import { useCallback, useEffect, useState } from "react";
-import { VeterinarianEntity } from "~/domain/entities/veterinarian-entity";
 import { loadPetsService } from "~/domain/services/pet";
 import { useAuthentication } from "~/hooks";
+import { PetEntity } from "~/domain/entities/pet-entity";
 
 export const useLoadPets = () => {
   const { userDetails } = useAuthentication();
 
   const [isLoading, setIsLoading] = useState(false);
-  const [data, setData] = useState<VeterinarianEntity[]>([]);
+  const [data, setData] = useState<PetEntity[]>([]);
 
   const loadPets = useCallback(async () => {
     setIsLoading(true);
+    if (!userDetails?.id) return;
 
     const response = await loadPetsService({
-      userId: userDetails?.userId,
+      userId: userDetails?.id,
     });
     setData(response);
     setIsLoading(false);
-  }, [userDetails?.userId]);
+  }, [userDetails?.id]);
 
   useEffect(() => {
     loadPets();

@@ -3,10 +3,12 @@
   "compilerOptions": {
     "strict": true,
     "baseUrl": "./",
-    "jsx": "react-native",
     "paths": {
       "~/*": [
         "./src/*"
+      ],
+      "react": [
+        "./node_modules/@types/react"
       ]
     }
   }

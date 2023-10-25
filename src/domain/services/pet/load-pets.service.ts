@@ -1,6 +1,6 @@
 import { db } from "~/config/firebase/firebase-config";
 import { collection, getDocs, query, where } from "firebase/firestore";
-import { VeterinarianEntity } from "~/domain/entities/veterinarian-entity";
+import { PetEntity } from "~/domain/entities/pet-entity";
 
 type LoadPetsParams = {
   userId?: string;
@@ -15,5 +15,5 @@ export const loadPetsService = async ({ userId }: LoadPetsParams) => {
     querySnapshot.docs.map((doc) => doc.data())
   );
 
-  return pets as VeterinarianEntity[];
+  return pets as PetEntity[];
 };

@@ -18,6 +18,8 @@ export const useNavigationRoutes = () => {
       veterinarian,
     });
 
+  const handleGoToRegisterPet = () => navigate("RegisterPet");
+
   return {
     handleGoToOnboarding,
     handleGoToSearchVets,
@@ -28,5 +30,6 @@ export const useNavigationRoutes = () => {
     handleGoToRegisterPetTutor,
     handleGoToVeterinarianDetails,
     handleGoToMyPets,
+    handleGoToRegisterPet,
   };
 };
