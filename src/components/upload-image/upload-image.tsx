@@ -4,6 +4,8 @@ import { Button } from "../button/button";
 import { StyleSheet, Text, View } from "react-native";
 
 import { useState } from "react";
+import { Container, Title, UploadButton } from "./upload-image-styles";
+import { UploadImageIcon } from "../icons";
 
 type Props = {
   onUpload: React.Dispatch<React.SetStateAction<string>>;
@@ -50,7 +52,14 @@ export const UploadImage = ({ onUpload }: Props) => {
     );
   }
 
-  return <Button onPress={takePhoto}>Tirar foto</Button>;
+  return (
+    <Container>
+      <Title>Adicionar Foto de Perfil</Title>
+      <UploadButton onPress={takePhoto}>
+        <UploadImageIcon color="#fff" weight="bold" size={32} />
+      </UploadButton>
+    </Container>
+  );
 };
 
 const styles = StyleSheet.create({

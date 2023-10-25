@@ -4,3 +4,4 @@ export * from "./user-icon";
 export * from "./logout-icon";
 export * from "./check-icon";
 export * from "./x-icon";
+export * from "./upload-image-icon";
