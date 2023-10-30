@@ -1,6 +1,7 @@
 import {
   ButtonContainer,
   Container,
+  WeekDaySelectorContainer,
 } from "./register-veterinarian-screen-styles";
 import { DefaultLayout } from "~/layouts/default-layout/default-layout";
 import { FormProvider, useForm } from "react-hook-form";
@@ -74,7 +75,9 @@ export function RegisterVeterinarianScreen() {
                 name="meetingUrl"
                 label="Link para reunião"
               />
-              <WeekDaySelector />
+              <WeekDaySelectorContainer>
+                <WeekDaySelector />
+              </WeekDaySelectorContainer>
               <ButtonContainer>
                 <Button
                   isLoading={methods.formState.isSubmitting}
