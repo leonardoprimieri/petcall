@@ -6,6 +6,7 @@ import {
   GridItem,
   GridTitle,
   HeaderContainer,
+  StatusLabel,
   VeterinarianName,
 } from "./veterinarian-details-screen-styles";
 import { Avatar } from "~/components/avatar/avatar";
@@ -51,7 +52,7 @@ export function VeterinarianDetailsScreen({ route }: RouteParams) {
 
   const renderAppointmentStatus = () => {
     if (appointment?.requestStatus === "pending") {
-      return "Aguardando confirmação do veterinário...";
+      return "Já avisamos o veterinário que você deseja uma consulta. Aguarde a resposta dele.";
     }
 
     if (appointment?.requestStatus === "accepted") {
@@ -123,7 +124,7 @@ export function VeterinarianDetailsScreen({ route }: RouteParams) {
             </Button>
           )}
         </ButtonContainer>
-        <Text>{renderAppointmentStatus()}</Text>
+        <StatusLabel>{renderAppointmentStatus()}</StatusLabel>
       </Container>
     </DefaultLayout>
   );

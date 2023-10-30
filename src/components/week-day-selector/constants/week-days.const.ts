@@ -1,5 +1,9 @@
 export const WEEK_DAYS = [
   {
+    id: 0,
+    name: "D",
+  },
+  {
     id: 1,
     name: "S",
   },
@@ -17,6 +21,10 @@ export const WEEK_DAYS = [
   },
   {
     id: 5,
+    name: "S",
+  },
+  {
+    id: 6,
     name: "S",
   },
 ];

@@ -45,3 +45,11 @@ export const GridDescription = styled.Text`
 export const ButtonContainer = styled.View`
   width: 100%;
 `;
+
+export const StatusLabel = styled.Text`
+  font-family: ${({ theme }) => theme.FONTS.PRIMARY.BOLD};
+  font-size: 14px;
+  color: ${({ theme }) => theme.COLORS.TITLE};
+  margin-top: 16px;
+  text-align: center;
+`;

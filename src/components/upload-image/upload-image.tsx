@@ -1,7 +1,7 @@
 import * as ImagePicker from "expo-image-picker";
 import { uploadToFirebase } from "./helpers/upload-to-firebase";
 import { Button } from "../button/button";
-import { StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 
 import { useState } from "react";
 import { Container, Title, UploadButton } from "./upload-image-styles";
@@ -56,7 +56,10 @@ export const UploadImage = ({ onUpload }: Props) => {
     <Container>
       <Title>Adicionar Foto de Perfil</Title>
       <UploadButton onPress={takePhoto}>
-        <UploadImageIcon color="#fff" weight="bold" size={32} />
+        {progress > 0 && <ActivityIndicator color="#fff" />}
+        {progress <= 0 && (
+          <UploadImageIcon color="#fff" weight="bold" size={32} />
+        )}
       </UploadButton>
     </Container>
   );

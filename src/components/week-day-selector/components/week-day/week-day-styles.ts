@@ -6,8 +6,8 @@ type ContainerProps = {
 
 export const Container = styled.TouchableOpacity<ContainerProps>`
   background: ${({ theme }) => theme.COLORS.SECONDARY_DARK};
-  width: 45px;
-  height: 45px;
+  width: 40px;
+  height: 40px;
   justify-content: center;
   align-items: center;
   border-radius: 8px;

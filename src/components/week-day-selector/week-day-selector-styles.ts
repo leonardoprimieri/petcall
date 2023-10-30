@@ -10,7 +10,7 @@ export const WeekDaysContainer = styled.View`
   background-color: ${({ theme }) => theme.COLORS.SECONDARY};
   align-items: center;
   justify-content: space-around;
-  gap: 12px;
+  gap: 22px;
   padding: 22px 16px;
 `;
 
