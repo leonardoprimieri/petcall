@@ -8,4 +8,5 @@ export const ItemsContainer = styled.View`
   flex-direction: row;
   justify-content: center;
   gap: 16px;
+  flex-wrap: wrap;
 `;

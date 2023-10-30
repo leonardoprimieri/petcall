@@ -1,8 +1,11 @@
-import { updateAppointmentRequestStatusService } from "~/domain/services/veterinarian/update-appointment-request-status.service";
+import { updateAppointmentRequestStatusService } from "~/domain/services/appointment";
 import { useAuthentication, useCheckForAppointments } from "~/hooks";
+import { useSaveAppointmentHistoryMutation } from "./use-save-appointment-history-mutation";
 
 export const useAppointment = () => {
   const { userDetails } = useAuthentication();
+
+  const { saveAppointmentHistory } = useSaveAppointmentHistoryMutation();
 
   const { appointment } = useCheckForAppointments({
     veterinarianId: userDetails?.userId,
@@ -12,6 +15,12 @@ export const useAppointment = () => {
     updateAppointmentRequestStatusService({
       requestStatus: "finished",
       veterinarianId: appointment!.veterinarianId,
+    })?.then(async () => {
+      await saveAppointmentHistory({
+        appointmentStatus: "finished",
+        tutorId: appointment!.tutorDetails?.id,
+        veterinarianId: appointment!.veterinarianId,
+      });
     });
   };
 

@@ -12,4 +12,5 @@ export const Container = styled.TouchableOpacity`
 
 export const Label = styled.Text`
   color: ${({ theme }) => theme.COLORS.WHITE};
+  text-align: center;
 `;

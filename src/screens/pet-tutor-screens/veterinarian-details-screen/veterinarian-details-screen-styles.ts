@@ -22,8 +22,9 @@ export const VeterinarianName = styled.Text`
 export const GridDetails = styled.View`
   display: flex;
   flex-direction: row;
-  gap: 12px;
-  justify-content: space-between;
+  gap: 64px;
+  justify-content: center;
+  width: 100%;
 `;
 
 export const GridItem = styled.View`

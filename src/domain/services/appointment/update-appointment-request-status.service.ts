@@ -14,7 +14,6 @@ export const updateAppointmentRequestStatusService = ({
   if (requestStatus === "finished") {
     return update(ref(realTimeDb, "appointment-requests/" + veterinarianId), {
       requestStatus,
-      finishedAt: new Date(),
     });
   }
 

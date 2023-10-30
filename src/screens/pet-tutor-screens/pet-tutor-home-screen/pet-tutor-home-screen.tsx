@@ -15,6 +15,11 @@ const MENU_ITEMS = [
     image: require("~/assets/my-pets.png"),
     path: "MyPets",
   },
+  {
+    label: "Histórico de Consultas",
+    image: require("~/assets/medical.png"),
+    path: "MyPets",
+  },
 ];
 
 export const PetTutorHomeScreen = () => {

@@ -21,9 +21,10 @@ import { formatCurrency } from "~/helpers/format-currency";
 import { WeekDaySelector } from "~/components/week-day-selector/week-day-selector";
 import { FormProvider, useForm } from "react-hook-form";
 import { Button } from "~/components/button/button";
-import { requestAppointmentService } from "~/domain/services/veterinarian/request-appointment.service";
 import { useAuthentication, useCheckForAppointments } from "~/hooks";
 import { Linking, Text } from "react-native";
+import { requestAppointmentService } from "~/domain/services/appointment";
+import { useLoadVeterinarianAppointmentsQuery } from "~/hooks/api/veterinarian/use-load-veterinarian-appointments-query";
 
 type RouteParams = {
   route: {
@@ -36,6 +37,11 @@ type RouteParams = {
 export function VeterinarianDetailsScreen({ route }: RouteParams) {
   const { veterinarian } = route.params;
 
+  const { COLORS } = useTheme();
+  const { goBack } = useNavigation();
+
+  const { appointments } = useLoadVeterinarianAppointmentsQuery(veterinarian);
+
   const { userDetails } = useAuthentication();
 
   const { appointment } = useCheckForAppointments({
@@ -47,8 +53,6 @@ export function VeterinarianDetailsScreen({ route }: RouteParams) {
       daysAvailable: veterinarian.daysAvailable,
     },
   });
-  const { COLORS } = useTheme();
-  const { goBack } = useNavigation();
 
   const renderAppointmentStatus = () => {
     if (appointment?.requestStatus === "pending") {
@@ -90,7 +94,7 @@ export function VeterinarianDetailsScreen({ route }: RouteParams) {
         <VeterinarianName>{veterinarian.fullName}</VeterinarianName>
         <GridDetails>
           <GridItem>
-            <GridTitle>547</GridTitle>
+            <GridTitle>{appointments?.length}</GridTitle>
             <GridDescription>Consultas feitas</GridDescription>
           </GridItem>
           <GridItem>

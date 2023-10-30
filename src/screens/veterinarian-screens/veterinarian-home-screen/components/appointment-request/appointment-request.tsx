@@ -42,7 +42,7 @@ export const AppointmentRequest = () => {
       {appointment.requestStatus === "pending" && (
         <>
           <HeaderText>
-            Você tem uma solicitaçao de consulta de{" "}
+            Você tem uma solicitação de consulta de{" "}
             {appointment.tutorDetails.fullName}
           </HeaderText>
           <ButtonsContainer>
