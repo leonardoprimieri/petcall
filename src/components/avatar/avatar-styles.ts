@@ -5,7 +5,7 @@ export const Container = styled.View`
   align-items: center;
   background-color: ${({ theme }) => theme.COLORS.PRIMARY};
   border-radius: 9999px;
-  padding: 6px;
+  padding: 4px;
 `;
 
 export const RoundedImage = styled.Image`
