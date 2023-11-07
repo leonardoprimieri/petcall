@@ -16,6 +16,7 @@ export declare global {
       };
       MyPets: undefined;
       RegisterPet: undefined;
+      PetTutorAppointments: undefined;
     }
   }
 }

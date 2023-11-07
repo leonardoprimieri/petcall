@@ -7,6 +7,7 @@ import {
 } from "~/screens/veterinarian-screens";
 import {
   MyPetsScreen,
+  PetTutorAppointmentsScreen,
   PetTutorHomeScreen,
   RegisterPetScreen,
   RegisterPetTutorScreen,
@@ -45,6 +46,10 @@ export const AppRoutes = () => {
               />
               <Screen name="MyPets" component={MyPetsScreen} />
               <Screen name="RegisterPet" component={RegisterPetScreen} />
+              <Screen
+                name="PetTutorAppointments"
+                component={PetTutorAppointmentsScreen}
+              />
             </>
           )}
 

@@ -84,13 +84,7 @@ export function VeterinarianDetailsScreen({ route }: RouteParams) {
             <ArrowLeftIcon color={COLORS.PRIMARY} weight="bold" />
           </IconButton>
         </HeaderContainer>
-        <Avatar
-          style={{
-            width: 110,
-            height: 110,
-          }}
-          url={veterinarian?.imageUrl}
-        />
+        <Avatar size={110} url={veterinarian?.imageUrl} />
         <VeterinarianName>{veterinarian.fullName}</VeterinarianName>
         <GridDetails>
           <GridItem>
@@ -115,7 +109,7 @@ export function VeterinarianDetailsScreen({ route }: RouteParams) {
             <Button
               onPress={() => {
                 requestAppointmentService({
-                  veterinarianId: veterinarian?.userId,
+                  veterinarianDetails: veterinarian,
                   requestStatus: "pending",
                   tutorDetails: {
                     fullName: userDetails?.fullName,

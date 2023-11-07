@@ -18,7 +18,7 @@ const MENU_ITEMS = [
   {
     label: "Histórico de Consultas",
     image: require("~/assets/medical.png"),
-    path: "MyPets",
+    path: "PetTutorAppointments",
   },
 ];
 

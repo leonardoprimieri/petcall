@@ -22,7 +22,6 @@ export const uploadToFirebase = async (
         onProgress && onProgress(progress);
       },
       (error) => {
-        console.log(error);
         reject(error);
       },
       async () => {

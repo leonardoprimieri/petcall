@@ -4,9 +4,10 @@ import { Container, RoundedImage } from "./avatar-styles";
 
 type Props = {
   url?: string;
+  size: number;
 } & Omit<ImageProps, "source">;
 
-export const Avatar = ({ url, ...props }: Props) => {
+export const Avatar = ({ url, size, ...props }: Props) => {
   return (
     <Container>
       <RoundedImage
@@ -17,6 +18,10 @@ export const Avatar = ({ url, ...props }: Props) => {
               }
             : avatarPlaceholder
         }
+        style={{
+          height: size,
+          width: size,
+        }}
         {...props}
       />
     </Container>

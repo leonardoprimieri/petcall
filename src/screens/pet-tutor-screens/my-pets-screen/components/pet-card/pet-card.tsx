@@ -10,13 +10,7 @@ type Props = {
 export const PetCard = ({ pet }: Props) => {
   return (
     <Container>
-      <Avatar
-        style={{
-          height: 130,
-          width: 130,
-        }}
-        url={pet?.imageUrl}
-      />
+      <Avatar size={130} url={pet?.imageUrl} />
       <PetName>{pet?.name}</PetName>
     </Container>
   );

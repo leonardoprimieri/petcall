@@ -12,7 +12,6 @@ export const useCreatePetMutation = () => {
       userId: userDetails?.id,
       ...params,
     }).catch((e) => {
-      console.log(e);
       showToast({
         message: mapFirebaseError(e.code),
         type: "error",

@@ -1,20 +1,21 @@
 import { ref, set } from "firebase/database";
 import { realTimeDb } from "~/config/firebase/firebase-config";
 import { TutorEntity } from "~/domain/entities/tutor-entity";
+import { VeterinarianEntity } from "~/domain/entities/veterinarian-entity";
 
 type RequestAppointmentParams = {
-  veterinarianId: string;
+  veterinarianDetails: VeterinarianEntity;
   tutorDetails: TutorEntity;
   requestStatus: "pending" | "accepted" | "rejected";
 };
 
 export const requestAppointmentService = ({
-  veterinarianId,
+  veterinarianDetails,
   tutorDetails,
   requestStatus,
 }: RequestAppointmentParams) => {
-  set(ref(realTimeDb, "appointment-requests/" + veterinarianId), {
-    veterinarianId,
+  set(ref(realTimeDb, "appointment-requests/" + veterinarianDetails?.userId), {
+    veterinarianDetails,
     requestStatus,
     tutorDetails,
   });

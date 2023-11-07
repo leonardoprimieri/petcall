@@ -28,13 +28,7 @@ export const VetCard = ({ veterinarian }: Props) => {
   return (
     <Container onPress={handleGoToDetails}>
       <FirstContainer>
-        <Avatar
-          style={{
-            height: 80,
-            width: 80,
-          }}
-          url={veterinarian?.imageUrl}
-        />
+        <Avatar size={80} url={veterinarian?.imageUrl} />
         <VetInfo>
           <VetName>{veterinarian?.fullName}</VetName>
           <VetPricePerHour>
