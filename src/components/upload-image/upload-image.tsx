@@ -43,21 +43,14 @@ export const UploadImage = ({ onUpload }: Props) => {
     }
   };
 
-  if (permission?.status !== ImagePicker.PermissionStatus.GRANTED) {
-    return (
-      <View style={styles.container}>
-        <Text>Permita o acesso da câmera</Text>
-        <Button onPress={requestPermission}>Permitir</Button>
-      </View>
-    );
-  }
-
   return (
     <Container>
       <Title>Adicionar Foto de Perfil</Title>
       <UploadButton onPress={takePhoto}>
         {progress > 0 && <ActivityIndicator color="#fff" />}
-        <UploadImageIcon color="#fff" weight="bold" size={32} />
+        {progress <= 0 && (
+          <UploadImageIcon color="#fff" weight="bold" size={32} />
+        )}
       </UploadButton>
     </Container>
   );
@@ -66,6 +59,6 @@ export const UploadImage = ({ onUpload }: Props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 63,
+    paddingHorizontal: 64,
   },
 });

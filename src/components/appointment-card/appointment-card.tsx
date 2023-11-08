@@ -8,9 +8,7 @@ import {
   DescriptionContainer,
   Separator,
 } from "./appointment-card-styles";
-import { CalendarIcon } from "../icons";
 import { formatCurrency } from "~/helpers/format-currency";
-import { useTheme } from "styled-components/native";
 import { Avatar } from "../avatar/avatar";
 import { formatDate } from "~/helpers/format-date";
 
@@ -27,8 +25,6 @@ export const AppointmentCard = ({
   fullName,
   imageUrl,
 }: Props) => {
-  const { COLORS } = useTheme();
-
   const formattedFinishedAt = formatDate(new Date(finishedAt as Date));
 
   return (
@@ -37,7 +33,6 @@ export const AppointmentCard = ({
       <CardTextContainer>
         <CardTitle>{fullName}</CardTitle>
         <DescriptionContainer>
-          <CalendarIcon color={COLORS.PRIMARY} />
           <Description>{formattedFinishedAt}</Description>
           <Separator />
           <CurrencyContainer>
