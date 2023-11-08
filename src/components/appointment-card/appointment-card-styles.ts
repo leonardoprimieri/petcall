@@ -12,7 +12,8 @@ export const Container = styled.View`
   border: 1px solid ${({ theme }) => theme.COLORS.SECONDARY_DARK};
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 32px;
 `;
 
 export const CardTitle = styled.Text`
@@ -54,6 +55,4 @@ export const CurrencyDescription = styled.Text`
   text-transform: capitalize;
 `;
 
-export const CardTextContainer = styled.View`
-  margin-right: 18px;
-`;
+export const CardTextContainer = styled.View``;
