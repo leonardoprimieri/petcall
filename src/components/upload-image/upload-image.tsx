@@ -46,8 +46,8 @@ export const UploadImage = ({ onUpload }: Props) => {
   if (permission?.status !== ImagePicker.PermissionStatus.GRANTED) {
     return (
       <View style={styles.container}>
-        <Text>Permissão não concedida - {permission?.status}</Text>
-        <Button onPress={requestPermission}>Request Permission</Button>
+        <Text>Permita o acesso da câmera</Text>
+        <Button onPress={requestPermission}>Permitir</Button>
       </View>
     );
   }
@@ -57,9 +57,7 @@ export const UploadImage = ({ onUpload }: Props) => {
       <Title>Adicionar Foto de Perfil</Title>
       <UploadButton onPress={takePhoto}>
         {progress > 0 && <ActivityIndicator color="#fff" />}
-        {progress <= 0 && (
-          <UploadImageIcon color="#fff" weight="bold" size={32} />
-        )}
+        <UploadImageIcon color="#fff" weight="bold" size={32} />
       </UploadButton>
     </Container>
   );
@@ -68,6 +66,6 @@ export const UploadImage = ({ onUpload }: Props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    paddingHorizontal: 63,
   },
 });

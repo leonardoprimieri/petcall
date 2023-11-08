@@ -5,5 +5,5 @@ export type AppointmentEntity = {
   veterinarianDetails: VeterinarianEntity;
   tutorDetails: TutorEntity;
   requestStatus: "pending" | "accepted" | "rejected" | "finished";
-  finishedAt?: string;
+  finishedAt?: Date;
 };

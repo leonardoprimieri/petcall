@@ -40,7 +40,9 @@ export function VeterinarianDetailsScreen({ route }: RouteParams) {
   const { COLORS } = useTheme();
   const { goBack } = useNavigation();
 
-  const { appointments } = useLoadVeterinarianAppointmentsQuery(veterinarian);
+  const { appointments } = useLoadVeterinarianAppointmentsQuery({
+    id: veterinarian?.userId,
+  });
 
   const { userDetails } = useAuthentication();
 
@@ -89,7 +91,7 @@ export function VeterinarianDetailsScreen({ route }: RouteParams) {
         <GridDetails>
           <GridItem>
             <GridTitle>{appointments?.length}</GridTitle>
-            <GridDescription>Consultas feitas</GridDescription>
+            <GridDescription>Consultas realizadas</GridDescription>
           </GridItem>
           <GridItem>
             <GridTitle>
@@ -111,10 +113,7 @@ export function VeterinarianDetailsScreen({ route }: RouteParams) {
                 requestAppointmentService({
                   veterinarianDetails: veterinarian,
                   requestStatus: "pending",
-                  tutorDetails: {
-                    fullName: userDetails?.fullName,
-                    id: userDetails?.id,
-                  },
+                  tutorDetails: userDetails,
                 });
               }}
             >

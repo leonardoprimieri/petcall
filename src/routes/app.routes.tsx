@@ -3,6 +3,7 @@ import { useAuthentication } from "~/hooks/auth/use-authentication";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import {
   RegisterVeterinarianScreen,
+  VeterinarianAppointmentsScreen,
   VeterinarianHomeScreen,
 } from "~/screens/veterinarian-screens";
 import {
@@ -54,10 +55,16 @@ export const AppRoutes = () => {
           )}
 
           {userDetails?.userType === UserTypeEnum.VETERINARIAN && (
-            <Screen
-              name="VeterinarianHome"
-              component={VeterinarianHomeScreen}
-            />
+            <>
+              <Screen
+                name="VeterinarianHome"
+                component={VeterinarianHomeScreen}
+              />
+              <Screen
+                name="VeterinarianAppointments"
+                component={VeterinarianAppointmentsScreen}
+              />
+            </>
           )}
         </>
       ) : (

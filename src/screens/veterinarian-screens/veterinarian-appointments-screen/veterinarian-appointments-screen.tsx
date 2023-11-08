@@ -1,17 +1,17 @@
-import { Container } from "./pet-tutor-appointments-screen-styles";
-import { ActivityIndicator, FlatList, View } from "react-native";
+import { Container } from "./veterinarian-appointments-screen-styles";
+import { ActivityIndicator, FlatList } from "react-native";
 import { DefaultLayout } from "~/layouts/default-layout/default-layout";
 import { HeaderLogo } from "~/components/header-logo/header-logo";
-import { useLoadPetTutorAppointmentsQuery } from "~/hooks/api/pet-tutor/use-load-pet-tutor-appointments-query";
 import { AppointmentCard } from "~/components/appointment-card/appointment-card";
 import { useAuthentication } from "~/hooks";
+import { useLoadVeterinarianAppointmentsQuery } from "~/hooks/api/veterinarian/use-load-veterinarian-appointments-query";
 
-export function PetTutorAppointmentsScreen() {
+export function VeterinarianAppointmentsScreen() {
   const { userDetails } = useAuthentication();
 
-  const { appointments, isLoading } = useLoadPetTutorAppointmentsQuery(
-    userDetails?.id
-  );
+  const { appointments, isLoading } = useLoadVeterinarianAppointmentsQuery({
+    id: userDetails?.userId,
+  });
 
   return (
     <DefaultLayout>
@@ -25,9 +25,9 @@ export function PetTutorAppointmentsScreen() {
             renderItem={({ item }) => (
               <AppointmentCard
                 appointmentPrice={item?.veterinarianDetails?.appointmentPrice}
-                finishedAt={item?.finishedAt as Date}
-                fullName={item?.veterinarianDetails?.fullName}
-                imageUrl={item?.veterinarianDetails?.imageUrl}
+                finishedAt={item.finishedAt as Date}
+                fullName={item.tutorDetails?.fullName}
+                imageUrl={item?.tutorDetails?.imageUrl}
               />
             )}
             style={{ padding: 20 }}

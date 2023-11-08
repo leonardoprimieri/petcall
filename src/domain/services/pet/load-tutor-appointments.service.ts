@@ -1,5 +1,5 @@
 import { db } from "~/config/firebase/firebase-config";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import { AppointmentEntity } from "~/domain/entities/appointment-entity";
 
 export type LoadTutorAppointmentsServiceParams = {
@@ -11,7 +11,11 @@ export const loadTutorAppointmentsService = async ({
 }: LoadTutorAppointmentsServiceParams) => {
   const appointmentsRef = collection(db, "appointments");
 
-  const q = query(appointmentsRef, where("tutorDetails.id", "==", tutorId));
+  const q = query(
+    appointmentsRef,
+    where("tutorDetails.id", "==", tutorId),
+    orderBy("finishedAt", "desc")
+  );
 
   const appointments = await getDocs(q).then((querySnapshot) =>
     querySnapshot.docs.map((doc) => doc.data())

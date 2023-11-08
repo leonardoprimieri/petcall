@@ -1,4 +1,5 @@
 export type TutorEntity = {
   fullName: string;
-  id: string;
+  id?: string;
+  imageUrl: string;
 };

@@ -1,24 +1,25 @@
 import { useCallback, useEffect, useState } from "react";
 import { AppointmentEntity } from "~/domain/entities/appointment-entity";
-import { VeterinarianEntity } from "~/domain/entities/veterinarian-entity";
 import { loadVeterinarianAppointmentsService } from "~/domain/services";
 
-export const useLoadVeterinarianAppointmentsQuery = (
-  veterinarian: VeterinarianEntity
-) => {
+export const useLoadVeterinarianAppointmentsQuery = ({
+  id,
+}: {
+  id: string;
+}) => {
   const [isLoading, setIsLoading] = useState(false);
   const [appointments, setAppointments] = useState<AppointmentEntity[]>([]);
 
   const loadVeterinarianAppointments = useCallback(async () => {
     setIsLoading(true);
-    if (!veterinarian?.userId) return;
+    if (!id) return;
 
     const response = await loadVeterinarianAppointmentsService({
-      veterinarianId: veterinarian?.userId,
+      veterinarianId: id,
     });
     setAppointments(response);
     setIsLoading(false);
-  }, [veterinarian?.userId]);
+  }, [id]);
 
   useEffect(() => {
     loadVeterinarianAppointments();

@@ -1,5 +1,5 @@
 import { db } from "~/config/firebase/firebase-config";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import { AppointmentEntity } from "~/domain/entities/appointment-entity";
 
 export type LoadVeterinarianAppointmentsServiceParams = {
@@ -13,7 +13,8 @@ export const loadVeterinarianAppointmentsService = async ({
 
   const q = query(
     appointmentsRef,
-    where("veterinarianDetails.userId", "==", veterinarianId)
+    where("veterinarianDetails.userId", "==", veterinarianId),
+    orderBy("finishedAt", "desc")
   );
 
   const appointments = await getDocs(q).then((querySnapshot) =>

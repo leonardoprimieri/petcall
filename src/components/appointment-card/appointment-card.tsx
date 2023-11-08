@@ -1,4 +1,3 @@
-import { AppointmentEntity } from "~/domain/entities/appointment-entity";
 import {
   CardTextContainer,
   CardTitle,
@@ -13,28 +12,37 @@ import { CalendarIcon } from "../icons";
 import { formatCurrency } from "~/helpers/format-currency";
 import { useTheme } from "styled-components/native";
 import { Avatar } from "../avatar/avatar";
+import { formatDate } from "~/helpers/format-date";
 
 type Props = {
-  appointment: AppointmentEntity;
+  finishedAt: Date;
+  imageUrl: string;
+  fullName: string;
+  appointmentPrice: number;
 };
 
-export const AppointmentCard = ({ appointment }: Props) => {
+export const AppointmentCard = ({
+  appointmentPrice,
+  finishedAt,
+  fullName,
+  imageUrl,
+}: Props) => {
   const { COLORS } = useTheme();
+
+  const formattedFinishedAt = formatDate(new Date(finishedAt as Date));
 
   return (
     <Container>
-      <Avatar size={55} url={appointment?.veterinarianDetails?.imageUrl} />
+      <Avatar size={55} url={imageUrl} />
       <CardTextContainer>
-        <CardTitle>{appointment?.veterinarianDetails?.fullName}</CardTitle>
+        <CardTitle>{fullName}</CardTitle>
         <DescriptionContainer>
           <CalendarIcon color={COLORS.PRIMARY} />
-          <Description>{appointment?.finishedAt}</Description>
+          <Description>{formattedFinishedAt}</Description>
           <Separator />
           <CurrencyContainer>
             <CurrencyDescription>
-              {formatCurrency(
-                appointment?.veterinarianDetails?.appointmentPrice
-              )}
+              {formatCurrency(appointmentPrice)}
             </CurrencyDescription>
           </CurrencyContainer>
         </DescriptionContainer>

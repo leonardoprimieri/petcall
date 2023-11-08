@@ -19,10 +19,7 @@ export const useAppointment = () => {
       await saveAppointmentHistory({
         appointmentStatus: "finished",
         veterinarianDetails: appointment?.veterinarianDetails,
-        tutorDetails: {
-          fullName: appointment?.tutorDetails?.fullName as string,
-          id: appointment?.tutorDetails?.id as string,
-        },
+        tutorDetails: appointment?.tutorDetails,
       });
     });
   };

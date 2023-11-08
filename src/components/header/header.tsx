@@ -3,14 +3,14 @@ import {
   Container,
   Welcome,
   Name,
-  WelcomeMessageContainer,
   Divider,
   HeaderContainer,
+  AvatarContainer,
 } from "./header-styles";
 import { IconButton } from "../icon-button/icon-button";
 import { LogoutIcon } from "../icons";
 import { useTheme } from "styled-components/native";
-import { View } from "react-native";
+import { Avatar } from "../avatar/avatar";
 
 export const Header = () => {
   const { userDetails, logout } = useAuthentication();
@@ -19,9 +19,12 @@ export const Header = () => {
   return (
     <Container>
       <HeaderContainer>
-        <Welcome>
-          Olá, <Name>{userDetails?.fullName}</Name>
-        </Welcome>
+        <AvatarContainer>
+          <Avatar url={userDetails?.imageUrl} size={32} removeBorder />
+          <Welcome>
+            Olá, <Name>{userDetails?.fullName}</Name>
+          </Welcome>
+        </AvatarContainer>
         <IconButton onPress={logout}>
           <LogoutIcon color={COLORS.PRIMARY} weight="bold" />
         </IconButton>

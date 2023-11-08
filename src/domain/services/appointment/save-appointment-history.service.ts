@@ -1,5 +1,6 @@
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "~/config/firebase/firebase-config";
+import { TutorEntity } from "~/domain/entities/tutor-entity";
 import { VeterinarianEntity } from "~/domain/entities/veterinarian-entity";
 import { formatDate } from "~/helpers/format-date";
 
@@ -7,10 +8,7 @@ export type SaveAppointmentHistoryParams = {
   veterinarianDetails: VeterinarianEntity | undefined;
   appointmentStatus: string;
   veterinarianName?: string;
-  tutorDetails: {
-    id: string;
-    fullName: string;
-  };
+  tutorDetails: TutorEntity | undefined;
 };
 
 export const saveAppointmentHistoryService = async ({
@@ -20,12 +18,10 @@ export const saveAppointmentHistoryService = async ({
 }: SaveAppointmentHistoryParams) => {
   const collectionRef = collection(db, "appointments");
 
-  console.log(Date);
-
   const result = await addDoc(collectionRef, {
     veterinarianDetails,
     appointmentStatus,
-    finishedAt: formatDate(new Date()),
+    finishedAt: Date.now(),
     tutorDetails,
   });
 
