@@ -3,16 +3,15 @@ import { getReactNativePersistence, initializeAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getDatabase } from "firebase/database";
 import ReactNativeAsyncStorage from "@react-native-async-storage/async-storage";
-import Constants from "expo-constants";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: Constants.manifest?.extra?.firebaseApiKey,
-  authDomain: Constants.manifest?.extra?.firebaseAuthDomain,
-  projectId: Constants.manifest?.extra?.firebaseProjectId,
-  storageBucket: Constants.manifest?.extra?.firebaseStorageBucket,
-  messagingSenderId: Constants.manifest?.extra?.firebaseMessagingSenderId,
-  appId: Constants.manifest?.extra?.firebaseAppId,
+  apiKey: "AIzaSyCsFjZMlP-i1xEcSo8vw9z-GSZEXIdwKvU",
+  authDomain: "pet-call-15666.firebaseapp.com",
+  projectId: "pet-call-15666",
+  storageBucket: "pet-call-15666.appspot.com",
+  messagingSenderId: "941337369530",
+  appId: "1:941337369530:web:6b93854bf57443bc775b83",
 };
 
 const app = initializeApp(firebaseConfig);

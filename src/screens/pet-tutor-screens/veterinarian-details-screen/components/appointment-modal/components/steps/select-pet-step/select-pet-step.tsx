@@ -2,8 +2,14 @@ import { BottomSheetScrollView } from "@gorhom/bottom-sheet";
 import { useCallback } from "react";
 import { StyleSheet } from "react-native";
 import { PetEntity } from "~/domain/entities/pet-entity";
-import { PetCard, PetImage, PetName } from "./select-pet-step-styles";
+import {
+  PetCard,
+  PetImage,
+  PetImageWrapper,
+  PetName,
+} from "./select-pet-step-styles";
 import { useLoadPets } from "~/screens/pet-tutor-screens/my-pets-screen/hooks/use-load-pets";
+import { Button } from "~/components/button/button";
 
 type Props = {
   selectedPet: PetEntity | undefined;
@@ -21,12 +27,14 @@ export const SelectPetStep = ({ selectedPet, setSelectedPet }: Props) => {
           setSelectedPet(item);
         }}
       >
-        <PetImage
-          isSelected={selectedPet?.name === item?.name}
-          source={{
-            uri: item?.imageUrl,
-          }}
-        />
+        <PetImageWrapper isSelected={selectedPet?.name === item?.name}>
+          <PetImage
+            source={{
+              uri: item?.imageUrl,
+            }}
+            resizeMode="cover"
+          />
+        </PetImageWrapper>
         <PetName isSelected={selectedPet?.name === item?.name}>
           {item?.name}
         </PetName>

@@ -16,6 +16,7 @@ import { useAuthentication } from "~/hooks";
 import { requestAppointmentService } from "~/domain/services/appointment";
 import { VeterinarianEntity } from "~/domain/entities/veterinarian-entity";
 import { SelectPetStep } from "./components/steps/select-pet-step/select-pet-step";
+import { Button } from "~/components/button/button";
 
 type Props = {
   veterinarian: VeterinarianEntity;
@@ -29,7 +30,7 @@ export const AppointmentModal = forwardRef<any, Props>(function Modal(
   const [selectedPet, setSelectedPet] = useState<PetEntity>();
   const [currentStep, setCurrentStep] = useState(1);
 
-  const snapPoints = useMemo(() => ["25%", "60%"], []);
+  const snapPoints = useMemo(() => ["40%", "50%"], []);
 
   useImperativeHandle(ref, () => ({
     present: () => {
@@ -54,13 +55,22 @@ export const AppointmentModal = forwardRef<any, Props>(function Modal(
     });
   };
 
-  const steps: Record<number, React.ReactNode> = {
-    1: (
-      <SelectPetStep
-        selectedPet={selectedPet}
-        setSelectedPet={setSelectedPet}
-      />
-    ),
+  const steps: Record<
+    number,
+    {
+      title: string;
+      content: React.ReactNode;
+    }
+  > = {
+    1: {
+      title: "Qual pet precisa de consulta?",
+      content: (
+        <SelectPetStep
+          selectedPet={selectedPet}
+          setSelectedPet={setSelectedPet}
+        />
+      ),
+    },
   };
 
   return (
@@ -71,8 +81,9 @@ export const AppointmentModal = forwardRef<any, Props>(function Modal(
         snapPoints={snapPoints}
         style={styles.contentContainer}
       >
-        <ModalTitle>Qual pet precisa de consulta?</ModalTitle>
-        {steps[currentStep]}
+        <ModalTitle> {steps[currentStep].title}</ModalTitle>
+        {steps[currentStep].content}
+        <Button>Ir para o pagamento</Button>
       </BottomSheetModal>
     </BottomSheetModalProvider>
   );

@@ -1,13 +1,20 @@
 import styled from "styled-components/native";
 
-type PetImageProps = {
+type PetImageWrapperProps = {
   isSelected: boolean;
 };
 
-export const PetImage = styled.Image<PetImageProps>`
+export const PetImageWrapper = styled.View<PetImageWrapperProps>`
+  border: 2px solid;
+  border-color: ${({ theme, isSelected }) =>
+    isSelected ? theme.COLORS.PRIMARY : theme.COLORS.WHITE};
+  border-radius: 8px;
+`;
+
+export const PetImage = styled.Image`
+  border-radius: 6px;
   width: 130px;
   height: 100px;
-  border-radius: 6px;
 `;
 
 export const PetCard = styled.Pressable`
