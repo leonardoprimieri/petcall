@@ -1,6 +1,8 @@
 import {
+  AppointmentPriceContainer,
   ButtonContainer,
   Container,
+  DiscountLabel,
   WeekDaySelectorContainer,
 } from "./register-veterinarian-screen-styles";
 import { DefaultLayout } from "~/layouts/default-layout/default-layout";
@@ -8,8 +10,9 @@ import { FormProvider, useForm } from "react-hook-form";
 import { ControlledTextInput } from "~/components/form/controlled-text-input/controlled-text-input";
 import { WeekDaySelector } from "~/components/week-day-selector/week-day-selector";
 import { Button } from "~/components/button/button";
-import { ScrollView } from "react-native";
+import { ScrollView, View } from "react-native";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Text } from "react-native";
 import {
   RegisterVeterinarianFormData,
   registerVeterinarianValidation,
@@ -21,6 +24,8 @@ import { useCreateUserAccount, useCreateUserMutation } from "~/hooks/api";
 import { useState } from "react";
 import { UploadImage } from "~/components/upload-image/upload-image";
 import { VeterinarianEntity } from "~/domain/entities/veterinarian-entity";
+import { clearCurrencyInput } from "~/helpers/clear-currency-input";
+import { formatCurrency } from "~/helpers/format-currency";
 
 export function RegisterVeterinarianScreen() {
   const [imageUrl, setImageUrl] = useState("");
@@ -52,6 +57,18 @@ export function RegisterVeterinarianScreen() {
     });
   };
 
+  const appointmentPriceWithDiscount =
+    clearCurrencyInput(String(methods.watch("appointmentPrice"))) -
+    (clearCurrencyInput(String(methods.watch("appointmentPrice"))) * 10) / 100;
+
+  const receivedAmountLabel = () => {
+    if (clearCurrencyInput(String(methods.watch("appointmentPrice"))) === 0) {
+      return "Você optou por voluntariar seu tempo";
+    }
+
+    return `Você recebe: ${formatCurrency(appointmentPriceWithDiscount)}`;
+  };
+
   return (
     <DefaultLayout>
       <ScrollView>
@@ -65,12 +82,15 @@ export function RegisterVeterinarianScreen() {
               <ControlledTextInput name="fullName" label="Nome" />
 
               <ControlledTextInput name="crmv" label="CRMV" />
-              <ControlledTextInput
-                name="appointmentPrice"
-                label="Preço por consulta online"
-                keyboardType="numeric"
-                mask="currency"
-              />
+              <AppointmentPriceContainer>
+                <ControlledTextInput
+                  name="appointmentPrice"
+                  label="Preço por consulta online"
+                  keyboardType="numeric"
+                  mask="currency"
+                />
+                <DiscountLabel>{receivedAmountLabel()}</DiscountLabel>
+              </AppointmentPriceContainer>
               <ControlledTextInput
                 name="meetingUrl"
                 label="Link para reunião"

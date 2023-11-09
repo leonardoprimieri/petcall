@@ -9,8 +9,12 @@ export const registerVeterinarianValidation = z.object({
   daysAvailable: z
     .array(z.number())
     .min(1, { message: "Selecione pelo menos um dia" }),
-  meetingUrl: z.string().url({ message: "URL inválida" }),
-  appointmentPrice: z.string().transform((value) => clearCurrencyInput(value)),
+  meetingUrl: z.string(),
+  appointmentPrice: z
+    .string({
+      invalid_type_error: "Informe um valor válido",
+    })
+    .transform((value) => clearCurrencyInput(value)),
 });
 
 export type RegisterVeterinarianFormData = z.infer<

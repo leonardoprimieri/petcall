@@ -2,7 +2,7 @@ import "dotenv/config";
 
 export default {
   expo: {
-    name: "petcall",
+    name: "PetCall",
     slug: "petcall",
     version: "1.0.0",
     orientation: "portrait",
