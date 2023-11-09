@@ -1,35 +1,33 @@
-import React, {
+import {
   forwardRef,
-  useCallback,
   useImperativeHandle,
   useMemo,
   useRef,
   useState,
 } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import {
-  BottomSheetFlatList,
   BottomSheetModal,
   BottomSheetModalProvider,
-  BottomSheetScrollView,
 } from "@gorhom/bottom-sheet";
-import { useLoadPets } from "~/screens/pet-tutor-screens/my-pets-screen/hooks/use-load-pets";
 import { PetEntity } from "~/domain/entities/pet-entity";
-import { Image } from "react-native";
-import {
-  ModalTitle,
-  PetCard,
-  PetImage,
-  PetName,
-} from "./appointment-modal-styles";
+import { ModalTitle } from "./appointment-modal-styles";
+import { useAuthentication } from "~/hooks";
+import { requestAppointmentService } from "~/domain/services/appointment";
+import { VeterinarianEntity } from "~/domain/entities/veterinarian-entity";
+import { SelectPetStep } from "./components/steps/select-pet-step/select-pet-step";
 
-export const AppointmentModal = forwardRef<any, any>(function Modal(
-  props,
+type Props = {
+  veterinarian: VeterinarianEntity;
+};
+
+export const AppointmentModal = forwardRef<any, Props>(function Modal(
+  { veterinarian },
   ref
 ) {
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
-  const { pets } = useLoadPets();
   const [selectedPet, setSelectedPet] = useState<PetEntity>();
+  const [currentStep, setCurrentStep] = useState(1);
 
   const snapPoints = useMemo(() => ["25%", "60%"], []);
 
@@ -39,27 +37,31 @@ export const AppointmentModal = forwardRef<any, any>(function Modal(
     },
   }));
 
-  const renderItem = useCallback(
-    (item: PetEntity) => (
-      <PetCard
-        key={item?.name}
-        onPress={() => {
-          setSelectedPet(item);
-        }}
-      >
-        <PetImage
-          isSelected={selectedPet?.name === item?.name}
-          source={{
-            uri: item?.imageUrl,
-          }}
-        />
-        <PetName isSelected={selectedPet?.name === item?.name}>
-          {item?.name}
-        </PetName>
-      </PetCard>
+  const { userDetails } = useAuthentication();
+
+  const handleConfirmAppointment = () => {
+    if (!selectedPet) return;
+
+    requestAppointmentService({
+      veterinarianDetails: veterinarian,
+      requestStatus: "pending",
+      tutorDetails: {
+        fullName: userDetails?.fullName,
+        imageUrl: userDetails?.imageUrl,
+        id: userDetails?.userId,
+      },
+      petDetails: selectedPet,
+    });
+  };
+
+  const steps: Record<number, React.ReactNode> = {
+    1: (
+      <SelectPetStep
+        selectedPet={selectedPet}
+        setSelectedPet={setSelectedPet}
+      />
     ),
-    [selectedPet?.name]
-  );
+  };
 
   return (
     <BottomSheetModalProvider>
@@ -70,12 +72,7 @@ export const AppointmentModal = forwardRef<any, any>(function Modal(
         style={styles.contentContainer}
       >
         <ModalTitle>Qual pet precisa de consulta?</ModalTitle>
-        <BottomSheetScrollView
-          horizontal
-          contentContainerStyle={styles.contentContainer}
-        >
-          {pets?.map(renderItem)}
-        </BottomSheetScrollView>
+        {steps[currentStep]}
       </BottomSheetModal>
     </BottomSheetModalProvider>
   );

@@ -21,11 +21,9 @@ import { formatCurrency } from "~/helpers/format-currency";
 import { WeekDaySelector } from "~/components/week-day-selector/week-day-selector";
 import { FormProvider, useForm } from "react-hook-form";
 import { Button } from "~/components/button/button";
-import { useAuthentication, useCheckForAppointments } from "~/hooks";
+import { useCheckForAppointments } from "~/hooks";
 import { Linking, Text } from "react-native";
-import { requestAppointmentService } from "~/domain/services/appointment";
 import { useLoadVeterinarianAppointmentsQuery } from "~/hooks/api/veterinarian/use-load-veterinarian-appointments-query";
-import { TutorEntity } from "~/domain/entities/tutor-entity";
 import { AppointmentModal } from "./components/appointment-modal/appointment-modal";
 import { useRef } from "react";
 
@@ -48,8 +46,6 @@ export function VeterinarianDetailsScreen({ route }: RouteParams) {
   const { appointments } = useLoadVeterinarianAppointmentsQuery({
     id: veterinarian?.userId,
   });
-
-  const { userDetails } = useAuthentication();
 
   const { appointment } = useCheckForAppointments({
     veterinarianId: veterinarian?.userId,
@@ -115,11 +111,6 @@ export function VeterinarianDetailsScreen({ route }: RouteParams) {
             appointment.requestStatus === "finished") && (
             <Button
               onPress={() => {
-                // requestAppointmentService({
-                //   veterinarianDetails: veterinarian,
-                //   requestStatus: "pending",
-                //   tutorDetails: userDetails as TutorEntity,
-                // });
                 modalRef?.current?.present();
               }}
             >
@@ -129,7 +120,7 @@ export function VeterinarianDetailsScreen({ route }: RouteParams) {
         </ButtonContainer>
         <StatusLabel>{renderAppointmentStatus()}</StatusLabel>
       </Container>
-      <AppointmentModal ref={modalRef} />
+      <AppointmentModal ref={modalRef} veterinarian={veterinarian} />
     </DefaultLayout>
   );
 }
