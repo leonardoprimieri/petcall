@@ -1,7 +1,7 @@
+import { useState } from "react";
+
 import { CreateUserParams, createUserService } from "~/domain/services";
 import { useToast } from "~/hooks/ui/use-toast";
-
-import { useState } from "react";
 
 export const useCreateUserMutation = () => {
   const { showToast } = useToast();

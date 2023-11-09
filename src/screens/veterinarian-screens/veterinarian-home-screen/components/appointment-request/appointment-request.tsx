@@ -1,15 +1,17 @@
 import { Linking, Text } from "react-native";
+
 import {
   ButtonsContainer,
   Container,
   HeaderText,
   MeetingLink,
 } from "./appointment-request-styles";
+import { useAppointment } from "./hooks/use-appointment";
+
 import { Button } from "~/components/button/button";
-import { useAuthentication } from "~/hooks";
 import { IconButton } from "~/components/icon-button/icon-button";
 import { CheckIcon, XIcon } from "~/components/icons";
-import { useAppointment } from "./hooks/use-appointment";
+import { useAuthentication } from "~/hooks";
 
 export const AppointmentRequest = () => {
   const { userDetails } = useAuthentication();

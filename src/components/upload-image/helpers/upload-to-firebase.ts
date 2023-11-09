@@ -1,10 +1,11 @@
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+
 import { storage } from "~/config/firebase/firebase-config";
 
 export const uploadToFirebase = async (
   uri: string,
   name: string | undefined,
-  onProgress: (progress: number) => void
+  onProgress: (progress: number) => void,
 ) => {
   const fetchResponse = await fetch(uri);
   const theBlob = await fetchResponse.blob();
@@ -30,7 +31,7 @@ export const uploadToFirebase = async (
           downloadUrl,
           metadata: uploadTask.snapshot.metadata,
         });
-      }
+      },
     );
   });
 };

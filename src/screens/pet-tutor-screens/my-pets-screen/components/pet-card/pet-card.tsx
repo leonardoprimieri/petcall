@@ -1,5 +1,5 @@
-import { Image } from "react-native";
 import { Container, PetName } from "./pet-card-styles";
+
 import { Avatar } from "~/components/avatar/avatar";
 import { PetEntity } from "~/domain/entities/pet-entity";
 

@@ -1,4 +1,5 @@
-import { TouchableOpacity, TouchableOpacityProps } from "react-native";
+import { TouchableOpacityProps } from "react-native";
+
 import { Container } from "./icon-button-styles";
 
 type Props = {

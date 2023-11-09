@@ -1,9 +1,10 @@
 import { Image } from "react-native";
-import onboardingImage from "~/assets/onboarding-image.png";
 
 import * as S from "./first-step-styles";
-import { Button } from "~/components/button/button";
 import { Title } from "../components/title/title";
+
+import onboardingImage from "~/assets/onboarding-image.png";
+import { Button } from "~/components/button/button";
 
 type Props = {
   goToNextStep: () => void;

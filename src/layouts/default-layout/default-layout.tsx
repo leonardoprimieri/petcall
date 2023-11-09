@@ -1,8 +1,10 @@
-import { PropsWithChildren } from "react";
 import { LinearGradient } from "expo-linear-gradient";
+import { PropsWithChildren } from "react";
 import { useTheme } from "styled-components";
-import heartsImg from "~/assets/hearts.png";
+
 import * as S from "./default-layout-styles";
+
+import heartsImg from "~/assets/hearts.png";
 
 export const DefaultLayout = ({ children }: PropsWithChildren) => {
   const { COLORS } = useTheme();

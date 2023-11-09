@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
+
+import { PetEntity } from "~/domain/entities/pet-entity";
 import { loadPetsService } from "~/domain/services/pet";
 import { useAuthentication } from "~/hooks";
-import { PetEntity } from "~/domain/entities/pet-entity";
 
 export const useLoadPets = () => {
   const { userDetails } = useAuthentication();

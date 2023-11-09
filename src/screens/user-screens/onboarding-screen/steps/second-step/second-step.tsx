@@ -1,14 +1,16 @@
 import { useState } from "react";
+import { FormProvider, useForm } from "react-hook-form";
+
+import { ChoiceButton } from "./components/choice-button/choice-button";
 import {
   ChoicesContainer,
   Container,
   FormContainer,
   Subtitle,
 } from "./second-step-styles";
-import { Button } from "~/components/button/button";
 import { Title } from "../components/title/title";
-import { FormProvider, useForm } from "react-hook-form";
-import { ChoiceButton } from "./components/choice-button/choice-button";
+
+import { Button } from "~/components/button/button";
 import { UserTypeEnum } from "~/enums/user-type.enum";
 import { useNavigationRoutes } from "~/hooks/general/use-navigation-routes";
 

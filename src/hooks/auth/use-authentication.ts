@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
 import { onAuthStateChanged, User } from "firebase/auth";
-import { auth, db } from "~/config/firebase/firebase-config";
 import {
   DocumentData,
   collection,
@@ -8,6 +6,9 @@ import {
   query,
   where,
 } from "firebase/firestore";
+import { useEffect, useState } from "react";
+
+import { auth, db } from "~/config/firebase/firebase-config";
 
 export function useAuthentication() {
   const [userDetails, setUserDetails] = useState<DocumentData | null>();
@@ -22,18 +23,18 @@ export function useAuthentication() {
 
         const q = query(
           collection(db, "users"),
-          where("userId", "==", user?.uid)
+          where("userId", "==", user?.uid),
         );
 
         const userDetails = await getDocs(q).then(
-          (querySnapshot) => querySnapshot.docs[0]
+          (querySnapshot) => querySnapshot.docs[0],
         );
 
         setUserDetails({
           ...userDetails?.data(),
           id: userDetails?.id,
         });
-      }
+      },
     );
 
     return unsubscribeFromAuthStatusChanged;

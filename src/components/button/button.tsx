@@ -1,6 +1,7 @@
-import { TouchableOpacityProps } from "react-native";
-import { StyledButton, ButtonText, Icon, Loader } from "./button-styles";
 import { PropsWithChildren } from "react";
+import { TouchableOpacityProps } from "react-native";
+
+import { StyledButton, ButtonText, Icon, Loader } from "./button-styles";
 
 type Props = {
   icon?: React.ReactNode;

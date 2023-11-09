@@ -1,4 +1,5 @@
 import { ref, set } from "firebase/database";
+
 import { realTimeDb } from "~/config/firebase/firebase-config";
 import { PetEntity } from "~/domain/entities/pet-entity";
 import { TutorEntity } from "~/domain/entities/tutor-entity";
@@ -15,8 +16,8 @@ export const requestAppointmentService = (data: RequestAppointmentParams) => {
   set(
     ref(
       realTimeDb,
-      "appointment-requests/" + data?.veterinarianDetails?.userId
+      "appointment-requests/" + data?.veterinarianDetails?.userId,
     ),
-    data
+    data,
   );
 };

@@ -1,21 +1,23 @@
-import { ButtonContainer, Container } from "./register-pet-tutor-screen-styles";
-import { DefaultLayout } from "~/layouts/default-layout/default-layout";
-import { FormProvider, useForm } from "react-hook-form";
-import { ControlledTextInput } from "~/components/form/controlled-text-input/controlled-text-input";
-import { Button } from "~/components/button/button";
-import { ScrollView } from "react-native";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
+import { FormProvider, useForm } from "react-hook-form";
+import { ScrollView } from "react-native";
+
+import { ButtonContainer, Container } from "./register-pet-tutor-screen-styles";
 import {
   RegisterPetTutorFormData,
   registerPetTutorValidation,
 } from "./validations/register-pet-tutor-validation";
+
+import { Button } from "~/components/button/button";
+import { ControlledTextInput } from "~/components/form/controlled-text-input/controlled-text-input";
 import { HeaderLogo } from "~/components/header-logo/header-logo";
-import { useUserStore } from "~/store/user-store";
+import { UploadImage } from "~/components/upload-image/upload-image";
+import { TutorEntity } from "~/domain/entities/tutor-entity";
 import { UserTypeEnum } from "~/enums/user-type.enum";
 import { useCreateUserAccount, useCreateUserMutation } from "~/hooks/api";
-import { UploadImage } from "~/components/upload-image/upload-image";
-import { useState } from "react";
-import { TutorEntity } from "~/domain/entities/tutor-entity";
+import { DefaultLayout } from "~/layouts/default-layout/default-layout";
+import { useUserStore } from "~/store/user-store";
 
 export function RegisterPetTutorScreen() {
   const [imageUrl, setImageUrl] = useState("");

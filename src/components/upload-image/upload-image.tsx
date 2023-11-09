@@ -1,9 +1,8 @@
 import * as ImagePicker from "expo-image-picker";
-import { uploadToFirebase } from "./helpers/upload-to-firebase";
-import { Button } from "../button/button";
-import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
-
 import { useState } from "react";
+import { ActivityIndicator } from "react-native";
+
+import { uploadToFirebase } from "./helpers/upload-to-firebase";
 import { Container, Title, UploadButton } from "./upload-image-styles";
 import { UploadImageIcon } from "../icons";
 
@@ -12,7 +11,6 @@ type Props = {
 };
 
 export const UploadImage = ({ onUpload }: Props) => {
-  const [permission, requestPermission] = ImagePicker.useCameraPermissions();
   const [progress, setProgress] = useState(0);
 
   const takePhoto = async () => {
@@ -29,7 +27,7 @@ export const UploadImage = ({ onUpload }: Props) => {
         const uploadResponse = await uploadToFirebase(
           uri,
           fileName,
-          setProgress
+          setProgress,
         );
 
         const { downloadUrl } = uploadResponse as {
@@ -55,10 +53,3 @@ export const UploadImage = ({ onUpload }: Props) => {
     </Container>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingHorizontal: 64,
-  },
-});

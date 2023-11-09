@@ -1,6 +1,7 @@
-import { Image, ImageProps } from "react-native";
-import avatarPlaceholder from "../../assets/placeholder-user.png";
+import { ImageProps } from "react-native";
+
 import { Container, RoundedImage } from "./avatar-styles";
+import avatarPlaceholder from "../../assets/placeholder-user.png";
 
 type Props = {
   url?: string;

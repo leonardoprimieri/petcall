@@ -1,4 +1,5 @@
 import { useFormContext } from "react-hook-form";
+
 import { WeekDay } from "./components/week-day/week-day";
 import { WEEK_DAYS } from "./constants/week-days.const";
 import {
@@ -25,7 +26,7 @@ export const WeekDaySelector = ({ disabled }: Props) => {
 
     setValue(
       "daysAvailable",
-      daysAvailable.filter((day) => day !== id)
+      daysAvailable.filter((day) => day !== id),
     );
   };
 

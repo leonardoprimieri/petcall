@@ -1,5 +1,6 @@
-import { db } from "~/config/firebase/firebase-config";
 import { collection, addDoc } from "firebase/firestore";
+
+import { db } from "~/config/firebase/firebase-config";
 import { PetEntity } from "~/domain/entities/pet-entity";
 
 export type CreatePetParams = PetEntity;

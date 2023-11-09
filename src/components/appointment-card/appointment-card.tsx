@@ -8,8 +8,9 @@ import {
   DescriptionContainer,
   Separator,
 } from "./appointment-card-styles";
-import { formatCurrency } from "~/helpers/format-currency";
 import { Avatar } from "../avatar/avatar";
+
+import { formatCurrency } from "~/helpers/format-currency";
 import { formatDate } from "~/helpers/format-date";
 
 type Props = {

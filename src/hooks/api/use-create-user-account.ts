@@ -1,5 +1,5 @@
-import { useToast } from "~/hooks/ui/use-toast";
 import { createEmailAccountService } from "~/domain/services";
+import { useToast } from "~/hooks/ui/use-toast";
 import { mapFirebaseError } from "~/mappers";
 import { SignUpFormData } from "~/screens/user-screens/sign-up-screen/validation/sign-up-form-validation";
 

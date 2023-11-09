@@ -1,8 +1,10 @@
-import { Header } from "~/components/header/header";
-import { Container, ItemsContainer } from "./pet-tutor-home-screen-styles";
-import { AuthorizedLayout } from "~/layouts/authorized-layout/authorized-layout";
-import { HomeMenuItem } from "~/components/home-menu-item/home-menu-item";
 import { useNavigation } from "@react-navigation/native";
+
+import { Container, ItemsContainer } from "./pet-tutor-home-screen-styles";
+
+import { Header } from "~/components/header/header";
+import { HomeMenuItem } from "~/components/home-menu-item/home-menu-item";
+import { AuthorizedLayout } from "~/layouts/authorized-layout/authorized-layout";
 
 const MENU_ITEMS = [
   {

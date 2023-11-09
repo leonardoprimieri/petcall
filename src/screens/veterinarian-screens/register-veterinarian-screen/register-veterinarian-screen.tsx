@@ -1,3 +1,8 @@
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
+import { FormProvider, useForm } from "react-hook-form";
+import { ScrollView } from "react-native";
+
 import {
   AppointmentPriceContainer,
   ButtonContainer,
@@ -5,27 +10,23 @@ import {
   DiscountLabel,
   WeekDaySelectorContainer,
 } from "./register-veterinarian-screen-styles";
-import { DefaultLayout } from "~/layouts/default-layout/default-layout";
-import { FormProvider, useForm } from "react-hook-form";
-import { ControlledTextInput } from "~/components/form/controlled-text-input/controlled-text-input";
-import { WeekDaySelector } from "~/components/week-day-selector/week-day-selector";
-import { Button } from "~/components/button/button";
-import { ScrollView, View } from "react-native";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Text } from "react-native";
 import {
   RegisterVeterinarianFormData,
   registerVeterinarianValidation,
 } from "./validations/register-veterinarian-validation";
+
+import { Button } from "~/components/button/button";
+import { ControlledTextInput } from "~/components/form/controlled-text-input/controlled-text-input";
 import { HeaderLogo } from "~/components/header-logo/header-logo";
-import { useUserStore } from "~/store/user-store";
-import { UserTypeEnum } from "~/enums/user-type.enum";
-import { useCreateUserAccount, useCreateUserMutation } from "~/hooks/api";
-import { useState } from "react";
 import { UploadImage } from "~/components/upload-image/upload-image";
+import { WeekDaySelector } from "~/components/week-day-selector/week-day-selector";
 import { VeterinarianEntity } from "~/domain/entities/veterinarian-entity";
+import { UserTypeEnum } from "~/enums/user-type.enum";
 import { clearCurrencyInput } from "~/helpers/clear-currency-input";
 import { formatCurrency } from "~/helpers/format-currency";
+import { useCreateUserAccount, useCreateUserMutation } from "~/hooks/api";
+import { DefaultLayout } from "~/layouts/default-layout/default-layout";
+import { useUserStore } from "~/store/user-store";
 
 export function RegisterVeterinarianScreen() {
   const [imageUrl, setImageUrl] = useState("");

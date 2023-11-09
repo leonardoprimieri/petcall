@@ -1,15 +1,17 @@
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
+
+import { useCreatePetMutation } from "./hooks/use-create-pet-mutation";
 import { FormContainer } from "./register-pet-form-styles";
-import { ControlledTextInput } from "~/components/form";
-import { Button } from "~/components/button/button";
 import {
   CreatePetFormData,
   CreatePetValidation,
 } from "./validation/create-pet-validation";
-import { useCreatePetMutation } from "./hooks/use-create-pet-mutation";
-import { zodResolver } from "@hookform/resolvers/zod";
+
+import { Button } from "~/components/button/button";
+import { ControlledTextInput } from "~/components/form";
 import { UploadImage } from "~/components/upload-image/upload-image";
-import { useState } from "react";
 
 export const RegisterPetForm = () => {
   const [imageUrl, setImageUrl] = useState("");

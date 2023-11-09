@@ -1,14 +1,14 @@
-import { Button } from "~/components/button/button";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { FormProvider, useForm } from "react-hook-form";
 
 import { Form } from "./sign-up-form-styles";
+import { SignUpFormData } from "../../validation/sign-up-form-validation";
 
-import { FormProvider, useForm } from "react-hook-form";
-import { SignUpFormValidation } from "~/screens/user-screens/sign-in-screen/validation/sign-up-form-validation";
+import { Button } from "~/components/button/button";
 import { ControlledTextInput } from "~/components/form/controlled-text-input/controlled-text-input";
 import { useNavigationRoutes } from "~/hooks/general/use-navigation-routes";
+import { SignUpFormValidation } from "~/screens/user-screens/sign-in-screen/validation/sign-up-form-validation";
 import { useUserStore } from "~/store/user-store";
-import { SignUpFormData } from "../../validation/sign-up-form-validation";
 
 export const SignUpForm = () => {
   const methods = useForm<SignUpFormData>({

@@ -1,4 +1,5 @@
 import { TouchableOpacityProps } from "react-native";
+
 import { Container, Day } from "./week-day-styles";
 
 type Props = {

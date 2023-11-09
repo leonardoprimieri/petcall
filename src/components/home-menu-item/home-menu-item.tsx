@@ -1,6 +1,7 @@
 import React, { ComponentProps } from "react";
-import { Label, Container } from "./home-menu-item-styles";
 import { Image } from "react-native";
+
+import { Label, Container } from "./home-menu-item-styles";
 
 type Props = {
   label: string;

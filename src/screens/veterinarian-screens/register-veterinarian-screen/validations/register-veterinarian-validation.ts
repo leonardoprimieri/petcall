@@ -1,4 +1,5 @@
 import { z } from "zod";
+
 import { clearCurrencyInput } from "~/helpers/clear-currency-input";
 
 export const registerVeterinarianValidation = z.object({

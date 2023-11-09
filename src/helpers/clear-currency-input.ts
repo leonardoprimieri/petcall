@@ -8,6 +8,6 @@ export const clearCurrencyInput = (value: string): number => {
         currency: "USD",
       })
       ?.replace("$", "")
-      ?.replace(/,/g, "")
+      ?.replace(/,/g, ""),
   );
 };

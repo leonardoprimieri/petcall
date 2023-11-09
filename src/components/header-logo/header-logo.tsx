@@ -1,9 +1,10 @@
 import { useNavigation } from "@react-navigation/native";
-import { Container, HeroText, LogoContainer } from "./header-logo-styles";
 import { useTheme } from "styled-components/native";
+
+import { Container, HeroText, LogoContainer } from "./header-logo-styles";
+import { AppLogo } from "../app-logo/app-logo";
 import { IconButton } from "../icon-button/icon-button";
 import { ArrowLeftIcon } from "../icons";
-import { AppLogo } from "../app-logo/app-logo";
 
 type Props = {
   text?: string;

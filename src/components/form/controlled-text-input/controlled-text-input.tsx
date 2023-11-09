@@ -1,9 +1,11 @@
+import { Controller } from "react-hook-form";
+
+import { getInputMask } from "./helpers/get-input-mask";
+
 import {
   TextInput,
   TextInputProps,
 } from "~/components/form/text-input/text-input";
-import { Controller } from "react-hook-form";
-import { getInputMask } from "./helpers/get-input-mask";
 
 type Props = {
   name: string;

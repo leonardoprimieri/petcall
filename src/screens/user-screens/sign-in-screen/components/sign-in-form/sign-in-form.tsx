@@ -1,5 +1,5 @@
-import { Button } from "~/components/button/button";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { FormProvider, useForm } from "react-hook-form";
 
 import {
   Footer,
@@ -8,12 +8,12 @@ import {
   LinkButton,
   LinkText,
 } from "./sign-in-form-styles";
-import { useEmailLogin } from "~/screens/user-screens/sign-in-screen/hooks/use-email-login";
 
-import { FormProvider, useForm } from "react-hook-form";
-import { SignUpFormValidation } from "~/screens/user-screens/sign-in-screen/validation/sign-up-form-validation";
+import { Button } from "~/components/button/button";
 import { ControlledTextInput } from "~/components/form/controlled-text-input/controlled-text-input";
 import { useNavigationRoutes } from "~/hooks/general/use-navigation-routes";
+import { useEmailLogin } from "~/screens/user-screens/sign-in-screen/hooks/use-email-login";
+import { SignUpFormValidation } from "~/screens/user-screens/sign-in-screen/validation/sign-up-form-validation";
 
 type FormData = {
   email: string;

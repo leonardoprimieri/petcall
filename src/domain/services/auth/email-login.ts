@@ -1,5 +1,6 @@
-import { auth } from "~/config/firebase/firebase-config";
 import { signInWithEmailAndPassword } from "firebase/auth";
+
+import { auth } from "~/config/firebase/firebase-config";
 
 type EmailLoginParams = {
   email: string;

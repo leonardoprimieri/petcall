@@ -1,3 +1,10 @@
+import { useNavigation } from "@react-navigation/native";
+import { useRef } from "react";
+import { FormProvider, useForm } from "react-hook-form";
+import { Linking, Text } from "react-native";
+import { useTheme } from "styled-components/native";
+
+import { AppointmentModal } from "./components/appointment-modal/appointment-modal";
 import {
   ButtonContainer,
   Container,
@@ -9,23 +16,17 @@ import {
   StatusLabel,
   VeterinarianName,
 } from "./veterinarian-details-screen-styles";
+
 import { Avatar } from "~/components/avatar/avatar";
+import { Button } from "~/components/button/button";
 import { IconButton } from "~/components/icon-button/icon-button";
 import { ArrowLeftIcon } from "~/components/icons";
-import { useTheme } from "styled-components/native";
-import { DefaultLayout } from "~/layouts/default-layout/default-layout";
-import { useNavigation } from "@react-navigation/native";
-import { VeterinarianEntity } from "~/domain/entities/veterinarian-entity";
-
-import { formatCurrency } from "~/helpers/format-currency";
 import { WeekDaySelector } from "~/components/week-day-selector/week-day-selector";
-import { FormProvider, useForm } from "react-hook-form";
-import { Button } from "~/components/button/button";
+import { VeterinarianEntity } from "~/domain/entities/veterinarian-entity";
+import { formatCurrency } from "~/helpers/format-currency";
 import { useCheckForAppointments } from "~/hooks";
-import { Linking, Text } from "react-native";
 import { useLoadVeterinarianAppointmentsQuery } from "~/hooks/api/veterinarian/use-load-veterinarian-appointments-query";
-import { AppointmentModal } from "./components/appointment-modal/appointment-modal";
-import { useRef } from "react";
+import { DefaultLayout } from "~/layouts/default-layout/default-layout";
 
 type RouteParams = {
   route: {

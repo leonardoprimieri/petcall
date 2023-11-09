@@ -1,4 +1,5 @@
 import { ref, update } from "firebase/database";
+
 import { realTimeDb } from "~/config/firebase/firebase-config";
 import { AppointmentEntity } from "~/domain/entities/appointment-entity";
 

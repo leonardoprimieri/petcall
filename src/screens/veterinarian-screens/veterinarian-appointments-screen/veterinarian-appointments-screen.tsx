@@ -1,10 +1,12 @@
-import { Container } from "./veterinarian-appointments-screen-styles";
 import { ActivityIndicator, FlatList } from "react-native";
-import { DefaultLayout } from "~/layouts/default-layout/default-layout";
-import { HeaderLogo } from "~/components/header-logo/header-logo";
+
+import { Container } from "./veterinarian-appointments-screen-styles";
+
 import { AppointmentCard } from "~/components/appointment-card/appointment-card";
+import { HeaderLogo } from "~/components/header-logo/header-logo";
 import { useAuthentication } from "~/hooks";
 import { useLoadVeterinarianAppointmentsQuery } from "~/hooks/api/veterinarian/use-load-veterinarian-appointments-query";
+import { DefaultLayout } from "~/layouts/default-layout/default-layout";
 
 export function VeterinarianAppointmentsScreen() {
   const { userDetails } = useAuthentication();

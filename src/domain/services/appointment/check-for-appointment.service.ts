@@ -1,4 +1,5 @@
 import { ref, onValue } from "firebase/database";
+
 import { realTimeDb } from "~/config/firebase/firebase-config";
 
 type ReceiveAppointmentParams = {
@@ -12,7 +13,7 @@ export const checkForAppointmentService = ({
 }: ReceiveAppointmentParams) => {
   const appointmentRef = ref(
     realTimeDb,
-    "appointment-requests/" + veterinarianId
+    "appointment-requests/" + veterinarianId,
   );
 
   onValue(appointmentRef, (snapshot) => {

@@ -1,4 +1,8 @@
 import {
+  BottomSheetModal,
+  BottomSheetModalProvider,
+} from "@gorhom/bottom-sheet";
+import {
   forwardRef,
   useImperativeHandle,
   useMemo,
@@ -6,17 +10,15 @@ import {
   useState,
 } from "react";
 import { StyleSheet } from "react-native";
-import {
-  BottomSheetModal,
-  BottomSheetModalProvider,
-} from "@gorhom/bottom-sheet";
-import { PetEntity } from "~/domain/entities/pet-entity";
+
 import { ModalTitle } from "./appointment-modal-styles";
-import { useAuthentication } from "~/hooks";
-import { requestAppointmentService } from "~/domain/services/appointment";
-import { VeterinarianEntity } from "~/domain/entities/veterinarian-entity";
 import { SelectPetStep } from "./components/steps/select-pet-step/select-pet-step";
+
 import { Button } from "~/components/button/button";
+import { PetEntity } from "~/domain/entities/pet-entity";
+import { VeterinarianEntity } from "~/domain/entities/veterinarian-entity";
+// import { requestAppointmentService } from "~/domain/services/appointment";
+// import { useAuthentication } from "~/hooks";
 
 type Props = {
   veterinarian: VeterinarianEntity;
@@ -24,11 +26,11 @@ type Props = {
 
 export const AppointmentModal = forwardRef<any, Props>(function Modal(
   { veterinarian },
-  ref
+  ref,
 ) {
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
   const [selectedPet, setSelectedPet] = useState<PetEntity>();
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep] = useState(1);
 
   const snapPoints = useMemo(() => ["40%", "50%"], []);
 
@@ -38,22 +40,22 @@ export const AppointmentModal = forwardRef<any, Props>(function Modal(
     },
   }));
 
-  const { userDetails } = useAuthentication();
+  // const { userDetails } = useAuthentication();
 
-  const handleConfirmAppointment = () => {
-    if (!selectedPet) return;
+  // const handleConfirmAppointment = () => {
+  //   if (!selectedPet) return;
 
-    requestAppointmentService({
-      veterinarianDetails: veterinarian,
-      requestStatus: "pending",
-      tutorDetails: {
-        fullName: userDetails?.fullName,
-        imageUrl: userDetails?.imageUrl,
-        id: userDetails?.userId,
-      },
-      petDetails: selectedPet,
-    });
-  };
+  //   requestAppointmentService({
+  //     veterinarianDetails: veterinarian,
+  //     requestStatus: "pending",
+  //     tutorDetails: {
+  //       fullName: userDetails?.fullName,
+  //       imageUrl: userDetails?.imageUrl,
+  //       id: userDetails?.userId,
+  //     },
+  //     petDetails: selectedPet,
+  //   });
+  // };
 
   const steps: Record<
     number,

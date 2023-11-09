@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+
 import { AppointmentEntity } from "~/domain/entities/appointment-entity";
 import { loadVeterinarianAppointmentsService } from "~/domain/services";
 

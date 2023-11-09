@@ -1,4 +1,5 @@
-import { useAuthentication } from "~/hooks/auth/use-authentication";
+import { useTheme } from "styled-components/native";
+
 import {
   Container,
   Welcome,
@@ -7,10 +8,11 @@ import {
   HeaderContainer,
   AvatarContainer,
 } from "./header-styles";
+import { Avatar } from "../avatar/avatar";
 import { IconButton } from "../icon-button/icon-button";
 import { LogoutIcon } from "../icons";
-import { useTheme } from "styled-components/native";
-import { Avatar } from "../avatar/avatar";
+
+import { useAuthentication } from "~/hooks/auth/use-authentication";
 
 export const Header = () => {
   const { userDetails, logout } = useAuthentication();

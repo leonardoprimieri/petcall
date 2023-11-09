@@ -1,16 +1,18 @@
+import { ActivityIndicator, FlatList } from "react-native";
+
 import { Container } from "./pet-tutor-appointments-screen-styles";
-import { ActivityIndicator, FlatList, View } from "react-native";
-import { DefaultLayout } from "~/layouts/default-layout/default-layout";
-import { HeaderLogo } from "~/components/header-logo/header-logo";
-import { useLoadPetTutorAppointmentsQuery } from "~/hooks/api/pet-tutor/use-load-pet-tutor-appointments-query";
+
 import { AppointmentCard } from "~/components/appointment-card/appointment-card";
+import { HeaderLogo } from "~/components/header-logo/header-logo";
 import { useAuthentication } from "~/hooks";
+import { useLoadPetTutorAppointmentsQuery } from "~/hooks/api/pet-tutor/use-load-pet-tutor-appointments-query";
+import { DefaultLayout } from "~/layouts/default-layout/default-layout";
 
 export function PetTutorAppointmentsScreen() {
   const { userDetails } = useAuthentication();
 
   const { appointments, isLoading } = useLoadPetTutorAppointmentsQuery(
-    userDetails?.id
+    userDetails?.id,
   );
 
   return (
