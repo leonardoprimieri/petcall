@@ -25,6 +25,9 @@ import { useAuthentication, useCheckForAppointments } from "~/hooks";
 import { Linking, Text } from "react-native";
 import { requestAppointmentService } from "~/domain/services/appointment";
 import { useLoadVeterinarianAppointmentsQuery } from "~/hooks/api/veterinarian/use-load-veterinarian-appointments-query";
+import { TutorEntity } from "~/domain/entities/tutor-entity";
+import { AppointmentModal } from "./components/appointment-modal/appointment-modal";
+import { useRef } from "react";
 
 type RouteParams = {
   route: {
@@ -36,6 +39,8 @@ type RouteParams = {
 
 export function VeterinarianDetailsScreen({ route }: RouteParams) {
   const { veterinarian } = route.params;
+
+  const modalRef = useRef<any>(null);
 
   const { COLORS } = useTheme();
   const { goBack } = useNavigation();
@@ -110,11 +115,12 @@ export function VeterinarianDetailsScreen({ route }: RouteParams) {
             appointment.requestStatus === "finished") && (
             <Button
               onPress={() => {
-                requestAppointmentService({
-                  veterinarianDetails: veterinarian,
-                  requestStatus: "pending",
-                  tutorDetails: userDetails,
-                });
+                // requestAppointmentService({
+                //   veterinarianDetails: veterinarian,
+                //   requestStatus: "pending",
+                //   tutorDetails: userDetails as TutorEntity,
+                // });
+                modalRef?.current?.present();
               }}
             >
               Solicitar consulta
@@ -123,6 +129,7 @@ export function VeterinarianDetailsScreen({ route }: RouteParams) {
         </ButtonContainer>
         <StatusLabel>{renderAppointmentStatus()}</StatusLabel>
       </Container>
+      <AppointmentModal ref={modalRef} />
     </DefaultLayout>
   );
 }

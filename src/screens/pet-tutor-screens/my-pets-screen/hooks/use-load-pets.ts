@@ -24,5 +24,5 @@ export const useLoadPets = () => {
     loadPets();
   }, [loadPets]);
 
-  return { data, isLoading };
+  return { pets: data, isLoading };
 };

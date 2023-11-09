@@ -13,6 +13,7 @@ import { StatusBar } from "react-native";
 import { DefaultLayout } from "./src/layouts/default-layout/default-layout";
 import theme from "~/theme";
 import { Routes } from "~/routes";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 export default function App() {
   const [isFontsLoaded] = useFonts({
@@ -24,9 +25,13 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <StatusBar hidden />
-      <DefaultLayout>{isFontsLoaded ? <Routes /> : <Loading />}</DefaultLayout>
-      <Toast />
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <StatusBar hidden />
+        <DefaultLayout>
+          {isFontsLoaded ? <Routes /> : <Loading />}
+        </DefaultLayout>
+        <Toast />
+      </GestureHandlerRootView>
     </ThemeProvider>
   );
 }

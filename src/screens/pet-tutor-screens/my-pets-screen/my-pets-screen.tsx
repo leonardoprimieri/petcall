@@ -9,7 +9,7 @@ import { Button } from "~/components/button/button";
 import { useNavigationRoutes } from "~/hooks";
 
 export function MyPetsScreen() {
-  const { data, isLoading } = useLoadPets();
+  const { pets, isLoading } = useLoadPets();
 
   const { handleGoToRegisterPet } = useNavigationRoutes();
 
@@ -21,7 +21,7 @@ export function MyPetsScreen() {
           <ActivityIndicator />
         ) : (
           <FlatList
-            data={data}
+            data={pets}
             keyExtractor={(item) => item.name}
             renderItem={({ item }) => <PetCard pet={item} />}
             numColumns={2}
