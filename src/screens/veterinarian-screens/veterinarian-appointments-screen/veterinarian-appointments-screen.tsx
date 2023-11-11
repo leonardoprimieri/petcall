@@ -14,6 +14,7 @@ export function VeterinarianAppointmentsScreen() {
 
   const { appointments, isLoading } = useLoadVeterinarianAppointmentsQuery({
     id: userDetails?.userId,
+    loadRejected: true,
   });
 
   return (

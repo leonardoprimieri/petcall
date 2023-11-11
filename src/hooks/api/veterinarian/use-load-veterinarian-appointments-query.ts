@@ -5,8 +5,10 @@ import { loadVeterinarianAppointmentsService } from "~/domain/services";
 
 export const useLoadVeterinarianAppointmentsQuery = ({
   id,
+  loadRejected = false,
 }: {
   id: string;
+  loadRejected?: boolean;
 }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [appointments, setAppointments] = useState<AppointmentEntity[]>([]);
@@ -17,10 +19,11 @@ export const useLoadVeterinarianAppointmentsQuery = ({
 
     const response = await loadVeterinarianAppointmentsService({
       veterinarianId: id,
+      loadRejected,
     });
     setAppointments(response);
     setIsLoading(false);
-  }, [id]);
+  }, [id, loadRejected]);
 
   useEffect(() => {
     loadVeterinarianAppointments();
