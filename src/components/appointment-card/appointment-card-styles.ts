@@ -60,8 +60,15 @@ export const CurrencyDescription = styled.Text`
 
 export const CollapseContainer = styled.View`
   width: 100%;
-  padding: 0 12px 0 16px;
+  padding: 0 12px 0 24px;
   margin: 16px 0px;
 `;
 
 export const CardTextContainer = styled.View``;
+
+export const RejectedLabel = styled.Text`
+  color: ${({ theme }) => theme.COLORS.RED};
+  font-family: ${({ theme }) => theme.FONTS.PRIMARY.REGULAR};
+  font-size: 14px;
+  text-transform: capitalize;
+`;

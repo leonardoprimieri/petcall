@@ -54,3 +54,16 @@ export const StatusLabel = styled.Text`
   margin-top: 16px;
   text-align: center;
 `;
+
+export const AcceptedLabel = styled.Text`
+  font-family: ${({ theme }) => theme.FONTS.PRIMARY.REGULAR};
+  font-size: 16px;
+  color: ${({ theme }) => theme.COLORS.BLACK};
+  width: 320px;
+  text-align: center;
+`;
+
+export const AcceptedContainer = styled.View`
+  padding: 0px 32px;
+  gap: 16px;
+`;

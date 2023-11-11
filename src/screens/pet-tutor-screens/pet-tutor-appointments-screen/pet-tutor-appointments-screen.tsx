@@ -14,10 +14,6 @@ export function PetTutorAppointmentsScreen() {
   const { appointments, isLoading } = useLoadPetTutorAppointmentsQuery(
     userDetails?.userId
   );
-  console.log(
-    "🚀 ~ file: pet-tutor-appointments-screen.tsx:15 ~ PetTutorAppointmentsScreen ~ appointments:",
-    JSON.stringify(appointments, null, 2)
-  );
 
   return (
     <DefaultLayout>
@@ -35,6 +31,8 @@ export function PetTutorAppointmentsScreen() {
                 fullName={item?.veterinarianDetails?.fullName}
                 imageUrl={item?.veterinarianDetails?.imageUrl}
                 CollapseContent={<Text>Teste</Text>}
+                wasRejected={item?.wasRejected}
+                petDetails={item?.petDetails}
               />
             )}
             style={{ padding: 20 }}

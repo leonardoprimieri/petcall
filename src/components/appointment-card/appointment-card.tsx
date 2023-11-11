@@ -10,11 +10,13 @@ import {
   Description,
   DescriptionContainer,
   InfoContainer,
+  RejectedLabel,
   Separator,
 } from "./appointment-card-styles";
 import { Avatar } from "../avatar/avatar";
 import { Divider } from "../divider/divider";
 
+import { PetEntity } from "~/domain/entities/pet-entity";
 import { formatCurrency } from "~/helpers/format-currency";
 import { formatDate } from "~/helpers/format-date";
 
@@ -24,6 +26,8 @@ type Props = {
   fullName: string;
   appointmentPrice: number;
   CollapseContent?: React.ReactNode;
+  wasRejected: boolean;
+  petDetails: PetEntity;
 };
 
 export const AppointmentCard = ({
@@ -32,6 +36,8 @@ export const AppointmentCard = ({
   fullName,
   imageUrl,
   CollapseContent,
+  wasRejected,
+  petDetails,
 }: Props) => {
   const formattedFinishedAt = formatDate(new Date(finishedAt as Date));
 
@@ -52,16 +58,21 @@ export const AppointmentCard = ({
             <Separator />
             <CurrencyContainer>
               <CurrencyDescription>
-                {formatCurrency(appointmentPrice)}
+                {!wasRejected ? formatCurrency(appointmentPrice) : "R$ 0,00"}
               </CurrencyDescription>
             </CurrencyContainer>
           </DescriptionContainer>
+          {wasRejected && <RejectedLabel>Consulta rejeitada</RejectedLabel>}
         </CardTextContainer>
       </InfoContainer>
       {openCollapse && CollapseContent && (
         <>
           <Divider />
-          <CollapseContainer>{CollapseContent}</CollapseContainer>
+
+          <CollapseContainer>
+            <Avatar size={55} url={petDetails?.imageUrl} removeBorder />
+            {CollapseContent}
+          </CollapseContainer>
         </>
       )}
     </Container>

@@ -1,11 +1,13 @@
 import { useNavigation } from "@react-navigation/native";
 import { useRef } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import { Linking, Text } from "react-native";
+import { Linking } from "react-native";
 import { useTheme } from "styled-components/native";
 
 import { AppointmentModal } from "./components/appointment-modal/appointment-modal";
 import {
+  AcceptedContainer,
+  AcceptedLabel,
   ButtonContainer,
   Container,
   GridDescription,
@@ -65,9 +67,13 @@ export function VeterinarianDetailsScreen({ route }: RouteParams) {
 
     if (appointment?.requestStatus === "accepted") {
       return (
-        <Button onPress={openLink}>
-          <Text>Acessar consulta em andamento</Text>
-        </Button>
+        <AcceptedContainer>
+          <AcceptedLabel>
+            A sua consulta foi aceita. Clique no botão abaixo para acessar a
+            reunião:
+          </AcceptedLabel>
+          <Button onPress={openLink}>Acessar reunião</Button>
+        </AcceptedContainer>
       );
     }
 

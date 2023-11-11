@@ -34,6 +34,8 @@ export function VeterinarianAppointmentsScreen() {
                 finishedAt={item.finishedAt as Date}
                 fullName={item.tutorDetails?.fullName}
                 imageUrl={item?.tutorDetails?.imageUrl}
+                wasRejected={item?.wasRejected}
+                petDetails={item?.petDetails}
               />
             )}
             style={{ padding: 20 }}

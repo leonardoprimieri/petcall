@@ -26,6 +26,7 @@ export const useAppointment = () => {
         veterinarianDetails: appointment?.veterinarianDetails,
         tutorDetails: appointment?.tutorDetails,
         wasRejected,
+        petDetails: appointment?.petDetails,
       });
     });
   };
