@@ -1,4 +1,4 @@
-import { ActivityIndicator, FlatList } from "react-native";
+import { ActivityIndicator, FlatList, Text } from "react-native";
 
 import { Container } from "./pet-tutor-appointments-screen-styles";
 
@@ -12,7 +12,7 @@ export function PetTutorAppointmentsScreen() {
   const { userDetails } = useAuthentication();
 
   const { appointments, isLoading } = useLoadPetTutorAppointmentsQuery(
-    userDetails?.id,
+    userDetails?.userId
   );
 
   return (
@@ -30,6 +30,7 @@ export function PetTutorAppointmentsScreen() {
                 finishedAt={item?.finishedAt as Date}
                 fullName={item?.veterinarianDetails?.fullName}
                 imageUrl={item?.veterinarianDetails?.imageUrl}
+                CollapseContent={<Text>Teste</Text>}
               />
             )}
             style={{ padding: 20 }}

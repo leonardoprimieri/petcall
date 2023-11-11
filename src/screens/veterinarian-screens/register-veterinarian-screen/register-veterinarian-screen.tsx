@@ -22,6 +22,7 @@ import { UploadImage } from "~/components/upload-image/upload-image";
 import { WeekDaySelector } from "~/components/week-day-selector/week-day-selector";
 import { VeterinarianEntity } from "~/domain/entities/veterinarian-entity";
 import { UserTypeEnum } from "~/enums/user-type.enum";
+import { applyPlatformFee } from "~/helpers/apply-platform-fee";
 import { clearCurrencyInput } from "~/helpers/clear-currency-input";
 import { formatCurrency } from "~/helpers/format-currency";
 import { useCreateUserAccount, useCreateUserMutation } from "~/hooks/api";
@@ -58,9 +59,9 @@ export function RegisterVeterinarianScreen() {
     });
   };
 
-  const appointmentPriceWithDiscount =
-    clearCurrencyInput(String(methods.watch("appointmentPrice"))) -
-    (clearCurrencyInput(String(methods.watch("appointmentPrice"))) * 10) / 100;
+  const appointmentPriceWithDiscount = applyPlatformFee(
+    clearCurrencyInput(String(methods.watch("appointmentPrice")))
+  );
 
   const receivedAmountLabel = () => {
     if (clearCurrencyInput(String(methods.watch("appointmentPrice"))) === 0) {

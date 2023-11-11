@@ -9,7 +9,8 @@ import {
 
 type Props = {
   name: string;
-  mask?: "currency" | "phone";
+  mask?: "currency" | "phone" | "creditCard" | "expirationDate" | "zipCode";
+  width?: string;
 } & TextInputProps;
 
 export const ControlledTextInput = ({ name, mask, ...props }: Props) => {

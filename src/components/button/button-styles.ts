@@ -9,7 +9,7 @@ type ButtonProps = {
 
 const renderButtonBackground = (
   theme: DefaultTheme,
-  variant?: "primary" | "secondary" | "tertiary",
+  variant?: "primary" | "secondary" | "tertiary"
 ) => {
   switch (variant) {
     case "primary":
@@ -25,7 +25,7 @@ export const StyledButton = styled(TouchableOpacity)<ButtonProps>`
   background-color: ${({ theme, variant }) =>
     renderButtonBackground(theme, variant)};
   border: 0;
-  border-radius: 16px;
+  border-radius: 10px;
   padding: 12px 16px;
 
   opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
@@ -44,7 +44,7 @@ type ButtonTextProps = {
 
 const renderButtonText = (
   theme: DefaultTheme,
-  variant?: "primary" | "secondary" | "tertiary",
+  variant?: "primary" | "secondary" | "tertiary"
 ) => {
   switch (variant) {
     case "primary":

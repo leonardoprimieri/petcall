@@ -21,7 +21,7 @@ export const TextInput = forwardRef<any, TextInputProps>(
     const { COLORS } = useTheme();
 
     return (
-      <Container>
+      <Container width={props.width}>
         {props.label && <Label>{props.label}</Label>}
         <StyledInput
           width={props.width}
@@ -34,5 +34,5 @@ export const TextInput = forwardRef<any, TextInputProps>(
         )}
       </Container>
     );
-  },
+  }
 );

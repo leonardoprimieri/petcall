@@ -5,5 +5,5 @@ export const ModalTitle = styled.Text`
   font-size: 18px;
   text-align: center;
   color: ${({ theme }) => theme.COLORS.BLACK};
-  margin-bottom: 16px;
+  margin: 16px;
 `;

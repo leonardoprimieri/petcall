@@ -1,8 +1,7 @@
-import { TextInput } from "react-native";
 import styled, { css } from "styled-components/native";
 
 type ContainerProps = {
-  width?: number;
+  width?: string;
 };
 
 export const Container = styled.View<ContainerProps>`
@@ -14,18 +13,19 @@ export const Container = styled.View<ContainerProps>`
 type InputProps = {
   invalid?: boolean;
   errorMessage?: string;
+  width?: string;
 };
 
-export const StyledInput = styled(TextInput)<InputProps>`
-  border-radius: 22px;
+export const StyledInput = styled.TextInput<InputProps>`
+  border-radius: 10px;
 
-  ${({ theme, invalid }) => css`
+  ${({ theme, invalid, width }) => css`
     font-size: 16px;
     color: ${theme.COLORS.WHITE};
     font-family: ${theme.FONTS.PRIMARY.REGULAR};
     border: 1px solid
       ${invalid ? theme.COLORS.ERROR : theme.COLORS.INPUT_BORDER};
-    width: 100%;
+    width: ${width || "100%"};
   `}
 
   padding: 8px 16px;

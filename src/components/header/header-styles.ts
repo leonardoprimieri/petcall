@@ -28,13 +28,6 @@ export const Name = styled.Text`
   font-family: ${({ theme }) => theme.FONTS.PRIMARY.BOLD};
 `;
 
-export const Divider = styled.View`
-  width: 100%;
-  height: 1px;
-  background-color: ${({ theme }) => theme.COLORS.PRIMARY};
-  margin-top: 8px;
-`;
-
 export const AvatarContainer = styled.View`
   gap: 12px;
   flex-direction: row;

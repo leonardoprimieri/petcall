@@ -4,11 +4,11 @@ import {
   Container,
   Welcome,
   Name,
-  Divider,
   HeaderContainer,
   AvatarContainer,
 } from "./header-styles";
 import { Avatar } from "../avatar/avatar";
+import { Divider } from "../divider/divider";
 import { IconButton } from "../icon-button/icon-button";
 import { LogoutIcon } from "../icons";
 
