@@ -12,13 +12,7 @@ export const updateAppointmentRequestStatusService = ({
   veterinarianId,
   requestStatus,
 }: RequestAppointmentParams) => {
-  if (requestStatus === "finished") {
-    return update(ref(realTimeDb, "appointment-requests/" + veterinarianId), {
-      requestStatus,
-    });
-  }
-
-  update(ref(realTimeDb, "appointment-requests/" + veterinarianId), {
+  return update(ref(realTimeDb, "appointment-requests/" + veterinarianId), {
     requestStatus,
   });
 };

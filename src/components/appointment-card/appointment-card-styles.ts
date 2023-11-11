@@ -5,7 +5,7 @@ export const Container = styled.TouchableOpacity`
   background-color: ${({ theme }) => theme.COLORS.SECONDARY};
   border: 1px solid ${({ theme }) => theme.COLORS.SECONDARY_DARK};
   border-radius: 14px;
-  justify-content: center;
+  margin: 8px 0px;
 `;
 
 export const InfoContainer = styled.View`
@@ -14,10 +14,8 @@ export const InfoContainer = styled.View`
   height: 80px;
   padding: 0 12px 0 16px;
   margin-bottom: 12px;
-  justify-content: center;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
   gap: 32px;
 `;
 

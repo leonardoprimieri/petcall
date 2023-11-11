@@ -1,13 +1,17 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm } from "react-hook-form";
-import { KeyboardAvoidingView, View } from "react-native";
+import { KeyboardAvoidingView } from "react-native";
 
 import {
+  ButtonContainer,
   Container,
   DetailsContainer,
   ProcessingPaymentLabel,
 } from "./credit-card-step-styles";
-import { CreditCardFormValidation } from "./validations/credit-card-form-validation";
+import {
+  CreditCardFormData,
+  CreditCardFormValidation,
+} from "./validations/credit-card-form-validation";
 
 import { Button } from "~/components/button/button";
 import { ControlledTextInput } from "~/components/form";
@@ -18,6 +22,7 @@ import { useAuthentication } from "~/hooks";
 
 type Props = {
   handleCloseModal: () => void;
+  handlePreviousStep: () => void;
   selectedPet: PetEntity | undefined;
   veterinarian: VeterinarianEntity;
 };
@@ -26,12 +31,20 @@ export const CreditCardStep = ({
   handleCloseModal,
   selectedPet,
   veterinarian,
+  handlePreviousStep,
 }: Props) => {
   const { userDetails } = useAuthentication();
 
-  const methods = useForm({
+  const methods = useForm<CreditCardFormData>({
     resolver: zodResolver(CreditCardFormValidation),
     mode: "onChange",
+    defaultValues: {
+      cardCvv: "123",
+      cardExpDate: "12/22",
+      cardNumber: "1234 1234 1234 1234",
+      fullName: "Joana da Silva",
+      zipCode: "00000-000",
+    },
   });
 
   const handleConfirmAppointment = () => {
@@ -50,7 +63,7 @@ export const CreditCardStep = ({
   };
 
   const onSubmit = async () => {
-    return new Promise((resolve) => setTimeout(resolve, 5000)).then(() => {
+    return new Promise((resolve) => setTimeout(resolve, 2500)).then(() => {
       handleCloseModal();
       handleConfirmAppointment();
     });
@@ -109,21 +122,28 @@ export const CreditCardStep = ({
           />
         </Container>
 
-        <View style={{ paddingHorizontal: 55, marginTop: 32 }}>
-          <Button
-            disabled={!methods.formState.isValid}
-            onPress={methods.handleSubmit(onSubmit)}
-            isLoading={isFormSubmitting}
-          >
-            Confirmar
-          </Button>
+        <ButtonContainer>
+          {!isFormSubmitting && (
+            <>
+              <Button
+                disabled={!methods.formState.isValid}
+                onPress={methods.handleSubmit(onSubmit)}
+                isLoading={isFormSubmitting}
+              >
+                Confirmar
+              </Button>
+              <Button onPress={handlePreviousStep} variant="tertiary">
+                Voltar
+              </Button>
+            </>
+          )}
           {isFormSubmitting && (
             <ProcessingPaymentLabel>
               Estamos processando seu pagamento, isso pode levar alguns
               instantes ...
             </ProcessingPaymentLabel>
           )}
-        </View>
+        </ButtonContainer>
       </KeyboardAvoidingView>
     </FormProvider>
   );

@@ -72,7 +72,7 @@ export function VeterinarianDetailsScreen({ route }: RouteParams) {
     }
 
     if (appointment?.requestStatus === "rejected") {
-      return "Consulta rejeitada";
+      return "Infelizmente o veterinário não pode atender você agora. Tente novamente mais tarde.";
     }
   };
 

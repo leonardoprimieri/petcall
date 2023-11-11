@@ -20,3 +20,9 @@ export const ProcessingPaymentLabel = styled.Text`
   text-align: center;
   margin-top: 8px;
 `;
+
+export const ButtonContainer = styled.View`
+  padding: 0 55px;
+  margin-top: 32px;
+  gap: 8px;
+`;

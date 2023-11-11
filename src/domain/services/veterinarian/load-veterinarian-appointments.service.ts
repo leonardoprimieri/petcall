@@ -15,11 +15,13 @@ export const loadVeterinarianAppointmentsService = async ({
   const q = query(
     appointmentsRef,
     where("veterinarianDetails.userId", "==", veterinarianId),
-    orderBy("finishedAt", "desc"),
+    orderBy("wasRejected"),
+    where("wasRejected", "==", false),
+    orderBy("finishedAt", "desc")
   );
 
   const appointments = await getDocs(q).then((querySnapshot) =>
-    querySnapshot.docs.map((doc) => doc.data()),
+    querySnapshot.docs.map((doc) => doc.data())
   );
 
   return appointments as AppointmentEntity[];

@@ -12,15 +12,20 @@ export const useAppointment = () => {
     veterinarianId: userDetails?.userId,
   });
 
-  const handleFinishAppointment = () => {
+  const handleFinishAppointment = ({
+    wasRejected = false,
+  }: {
+    wasRejected?: boolean;
+  }) => {
     updateAppointmentRequestStatusService({
       requestStatus: "finished",
-      veterinarianId: appointment!.veterinarianDetails?.userId,
+      veterinarianId: appointment?.veterinarianDetails?.userId as string,
     })?.then(async () => {
       await saveAppointmentHistory({
         appointmentStatus: "finished",
         veterinarianDetails: appointment?.veterinarianDetails,
         tutorDetails: appointment?.tutorDetails,
+        wasRejected,
       });
     });
   };
@@ -28,14 +33,20 @@ export const useAppointment = () => {
   const handleRejectAppointmentRequest = () => {
     updateAppointmentRequestStatusService({
       requestStatus: "rejected",
-      veterinarianId: appointment!.veterinarianDetails?.userId,
+      veterinarianId: appointment?.veterinarianDetails?.userId as string,
+    }).then(() => {
+      setTimeout(() => {
+        handleFinishAppointment({
+          wasRejected: true,
+        });
+      }, 4000);
     });
   };
 
   const handleAcceptAppointmentRequest = () => {
     updateAppointmentRequestStatusService({
       requestStatus: "accepted",
-      veterinarianId: appointment!.veterinarianDetails?.userId,
+      veterinarianId: appointment?.veterinarianDetails?.userId as string,
     });
   };
 

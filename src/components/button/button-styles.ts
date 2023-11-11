@@ -57,7 +57,7 @@ const renderButtonText = (
 
 export const ButtonText = styled.Text<ButtonTextProps>`
   font-family: ${({ theme, bold }) =>
-    bold ? theme.FONTS.PRIMARY.REGULAR : theme.FONTS.PRIMARY.BOLD};
+    bold ? theme.FONTS.PRIMARY.BOLD : theme.FONTS.PRIMARY.REGULAR};
   font-size: 16px;
   color: ${({ theme, variant }) => renderButtonText(theme, variant)};
   text-align: center;

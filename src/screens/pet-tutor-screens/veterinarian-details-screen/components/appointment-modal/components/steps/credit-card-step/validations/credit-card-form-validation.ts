@@ -17,3 +17,5 @@ export const CreditCardFormValidation = z.object({
     message: "CEP inválido",
   }),
 });
+
+export type CreditCardFormData = z.infer<typeof CreditCardFormValidation>;

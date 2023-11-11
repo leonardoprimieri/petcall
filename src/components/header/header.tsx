@@ -31,7 +31,6 @@ export const Header = () => {
           <LogoutIcon color={COLORS.PRIMARY} weight="bold" />
         </IconButton>
       </HeaderContainer>
-
       <Divider />
     </Container>
   );

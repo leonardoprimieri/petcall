@@ -14,6 +14,10 @@ export function PetTutorAppointmentsScreen() {
   const { appointments, isLoading } = useLoadPetTutorAppointmentsQuery(
     userDetails?.userId
   );
+  console.log(
+    "🚀 ~ file: pet-tutor-appointments-screen.tsx:15 ~ PetTutorAppointmentsScreen ~ appointments:",
+    JSON.stringify(appointments, null, 2)
+  );
 
   return (
     <DefaultLayout>

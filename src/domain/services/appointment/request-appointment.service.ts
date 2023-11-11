@@ -13,10 +13,6 @@ type RequestAppointmentParams = {
 };
 
 export const requestAppointmentService = (data: RequestAppointmentParams) => {
-  console.log(
-    "🚀 ~ file: request-appointment.service.ts:16 ~ requestAppointmentService ~ data:",
-    JSON.stringify(data, null, 2)
-  );
   set(
     ref(
       realTimeDb,

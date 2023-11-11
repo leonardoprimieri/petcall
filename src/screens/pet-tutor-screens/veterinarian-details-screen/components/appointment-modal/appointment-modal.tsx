@@ -44,6 +44,10 @@ export const AppointmentModal = forwardRef<any, Props>(function Modal(
     setCurrentStep((prev) => prev + 1);
   };
 
+  const handlePreviousStep = () => {
+    setCurrentStep((prev) => prev - 1);
+  };
+
   const steps: Record<
     number,
     {
@@ -70,6 +74,7 @@ export const AppointmentModal = forwardRef<any, Props>(function Modal(
           handleCloseModal={handleCloseModal}
           selectedPet={selectedPet}
           veterinarian={veterinarian}
+          handlePreviousStep={handlePreviousStep}
         />
       ),
       snapPointPercentage: "80%",
