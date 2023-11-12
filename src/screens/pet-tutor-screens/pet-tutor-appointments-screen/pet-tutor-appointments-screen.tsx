@@ -30,7 +30,6 @@ export function PetTutorAppointmentsScreen() {
                 finishedAt={item?.finishedAt as Date}
                 fullName={item?.veterinarianDetails?.fullName}
                 imageUrl={item?.veterinarianDetails?.imageUrl}
-                CollapseContent={<Text>Teste</Text>}
                 wasRejected={item?.wasRejected}
                 petDetails={item?.petDetails}
               />

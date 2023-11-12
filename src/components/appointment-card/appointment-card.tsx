@@ -13,6 +13,7 @@ import {
   RejectedLabel,
   Separator,
 } from "./appointment-card-styles";
+import { AppointmentCardPetDetails } from "./components/appointment-card-pet-details/appointment-card-pet-details";
 import { Avatar } from "../avatar/avatar";
 import { Divider } from "../divider/divider";
 
@@ -65,12 +66,11 @@ export const AppointmentCard = ({
           {wasRejected && <RejectedLabel>Consulta rejeitada</RejectedLabel>}
         </CardTextContainer>
       </InfoContainer>
-      {openCollapse && CollapseContent && (
+      {openCollapse && (
         <>
           <Divider />
-
           <CollapseContainer>
-            <Avatar size={55} url={petDetails?.imageUrl} removeBorder />
+            <AppointmentCardPetDetails pet={petDetails} />
             {CollapseContent}
           </CollapseContainer>
         </>

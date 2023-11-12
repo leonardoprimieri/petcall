@@ -12,8 +12,10 @@ import {
 import { Button } from "~/components/button/button";
 import { ControlledTextInput } from "~/components/form";
 import { UploadImage } from "~/components/upload-image/upload-image";
+import { useNavigationRoutes } from "~/hooks";
 
 export const RegisterPetForm = () => {
+  const { handleGoToMyPets } = useNavigationRoutes();
   const [imageUrl, setImageUrl] = useState("");
 
   const methods = useForm<CreatePetFormData>({
@@ -29,7 +31,7 @@ export const RegisterPetForm = () => {
       name: values.name,
       weight: values.weight,
       type: "dog",
-    });
+    }).then(handleGoToMyPets);
   };
 
   if (!imageUrl) return <UploadImage onUpload={setImageUrl} />;
