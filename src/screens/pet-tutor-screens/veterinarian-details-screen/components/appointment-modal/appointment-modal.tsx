@@ -92,6 +92,7 @@ export const AppointmentModal = forwardRef<any, Props>(function Modal(
         ref={bottomSheetModalRef}
         index={1}
         snapPoints={snapPoints}
+        containerStyle={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
       >
         <ModalTitle> {steps[currentStep].title}</ModalTitle>
         {steps[currentStep].content}

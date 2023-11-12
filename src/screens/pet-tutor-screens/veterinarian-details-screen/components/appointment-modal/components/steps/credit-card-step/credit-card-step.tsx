@@ -1,7 +1,9 @@
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { KeyboardAvoidingView } from "react-native";
 
+import { SuccessPaymentMessage } from "./components/success-payment-message/success-payment-message";
 import {
   ButtonContainer,
   Container,
@@ -34,6 +36,8 @@ export const CreditCardStep = ({
   handlePreviousStep,
 }: Props) => {
   const { userDetails } = useAuthentication();
+  const [showConfirmedPaymentMessage, setShowConfirmedPaymentMessage] =
+    useState(false);
 
   const methods = useForm<CreditCardFormData>({
     resolver: zodResolver(CreditCardFormValidation),
@@ -63,13 +67,23 @@ export const CreditCardStep = ({
   };
 
   const onSubmit = async () => {
-    return new Promise((resolve) => setTimeout(resolve, 2500)).then(() => {
-      handleCloseModal();
-      handleConfirmAppointment();
-    });
+    return new Promise((resolve) => setTimeout(resolve, 1500))
+      .then(() => {
+        setShowConfirmedPaymentMessage(true);
+      })
+      .then(() => {
+        new Promise((resolve) => setTimeout(resolve, 1500)).then(() => {
+          handleCloseModal();
+          handleConfirmAppointment();
+        });
+      });
   };
 
   const isFormSubmitting = methods.formState.isSubmitting;
+
+  if (showConfirmedPaymentMessage) {
+    return <SuccessPaymentMessage />;
+  }
 
   return (
     <FormProvider {...methods}>

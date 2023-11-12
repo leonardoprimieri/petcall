@@ -73,7 +73,7 @@ export const SelectPetStep = ({
 
 const styles = StyleSheet.create({
   contentContainer: {
-    padding: 16,
+    paddingHorizontal: 32,
     gap: 8,
   },
 });
