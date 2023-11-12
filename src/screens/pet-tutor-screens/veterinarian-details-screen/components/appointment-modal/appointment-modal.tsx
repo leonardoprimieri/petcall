@@ -16,6 +16,9 @@ import { SelectPetStep } from "./components/steps/select-pet-step/select-pet-ste
 
 import { PetEntity } from "~/domain/entities/pet-entity";
 import { VeterinarianEntity } from "~/domain/entities/veterinarian-entity";
+import { requestAppointmentService } from "~/domain/services/appointment";
+import { handleIsVeterinarianVoluntary } from "~/helpers/handle-is-veterinarian-voluntary";
+import { useAuthentication } from "~/hooks";
 
 type Props = {
   veterinarian: VeterinarianEntity;
@@ -25,6 +28,7 @@ export const AppointmentModal = forwardRef<any, Props>(function Modal(
   { veterinarian },
   ref
 ) {
+  const { userDetails } = useAuthentication();
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
   const [selectedPet, setSelectedPet] = useState<PetEntity>();
   const [currentStep, setCurrentStep] = useState(1);
@@ -38,6 +42,7 @@ export const AppointmentModal = forwardRef<any, Props>(function Modal(
   const handleCloseModal = () => {
     bottomSheetModalRef.current?.dismiss();
     setCurrentStep(1);
+    setSelectedPet(undefined);
   };
 
   const handleNextStep = () => {
@@ -46,6 +51,26 @@ export const AppointmentModal = forwardRef<any, Props>(function Modal(
 
   const handlePreviousStep = () => {
     setCurrentStep((prev) => prev - 1);
+  };
+
+  const { isVoluntary } = handleIsVeterinarianVoluntary({
+    veterinarian,
+  });
+
+  const handleConfirmAppointment = () => {
+    if (!selectedPet) return;
+
+    requestAppointmentService({
+      veterinarianDetails: veterinarian,
+      requestStatus: "pending",
+      tutorDetails: {
+        fullName: userDetails?.fullName,
+        imageUrl: userDetails?.imageUrl,
+        id: userDetails?.userId,
+      },
+      petDetails: selectedPet,
+    });
+    handleCloseModal();
   };
 
   const steps: Record<
@@ -62,7 +87,8 @@ export const AppointmentModal = forwardRef<any, Props>(function Modal(
         <SelectPetStep
           selectedPet={selectedPet}
           setSelectedPet={setSelectedPet}
-          handleNextStep={handleNextStep}
+          onConfirm={isVoluntary ? handleConfirmAppointment : handleNextStep}
+          buttonLabel={isVoluntary ? "Confirmar" : "Ir para o pagamento"}
         />
       ),
       snapPointPercentage: "40%",
@@ -75,6 +101,7 @@ export const AppointmentModal = forwardRef<any, Props>(function Modal(
           selectedPet={selectedPet}
           veterinarian={veterinarian}
           handlePreviousStep={handlePreviousStep}
+          handleConfirmAppointment={handleConfirmAppointment}
         />
       ),
       snapPointPercentage: "80%",

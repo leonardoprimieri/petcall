@@ -26,6 +26,7 @@ import { ArrowLeftIcon } from "~/components/icons";
 import { WeekDaySelector } from "~/components/week-day-selector/week-day-selector";
 import { VeterinarianEntity } from "~/domain/entities/veterinarian-entity";
 import { formatCurrency } from "~/helpers/format-currency";
+import { handleIsVeterinarianVoluntary } from "~/helpers/handle-is-veterinarian-voluntary";
 import { useCheckForAppointments } from "~/hooks";
 import { useLoadVeterinarianAppointmentsQuery } from "~/hooks/api/veterinarian/use-load-veterinarian-appointments-query";
 import { DefaultLayout } from "~/layouts/default-layout/default-layout";
@@ -86,6 +87,10 @@ export function VeterinarianDetailsScreen({ route }: RouteParams) {
     Linking.openURL(veterinarian?.meetingUrl);
   };
 
+  const { isVoluntary, voluntaryLabel } = handleIsVeterinarianVoluntary({
+    veterinarian,
+  });
+
   return (
     <DefaultLayout>
       <Container>
@@ -102,10 +107,20 @@ export function VeterinarianDetailsScreen({ route }: RouteParams) {
             <GridDescription>Consultas realizadas</GridDescription>
           </GridItem>
           <GridItem>
-            <GridTitle>
-              {formatCurrency(veterinarian.appointmentPrice)}
-            </GridTitle>
-            <GridDescription>Por consulta</GridDescription>
+            {isVoluntary && (
+              <>
+                <GridTitle>R$ 0,00</GridTitle>
+                <GridDescription>{voluntaryLabel}</GridDescription>
+              </>
+            )}
+            {!isVoluntary && (
+              <>
+                <GridTitle>
+                  {formatCurrency(veterinarian.appointmentPrice)}
+                </GridTitle>
+                <GridDescription>Por consulta</GridDescription>
+              </>
+            )}
           </GridItem>
         </GridDetails>
 

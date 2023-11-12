@@ -37,9 +37,6 @@ export function RegisterVeterinarianScreen() {
   const methods = useForm<RegisterVeterinarianFormData>({
     mode: "all",
     resolver: zodResolver(registerVeterinarianValidation),
-    defaultValues: {
-      appointmentPrice: 0,
-    },
   });
 
   const { mutationFn: createUserAccount } = useCreateUserAccount();
@@ -64,8 +61,10 @@ export function RegisterVeterinarianScreen() {
   );
 
   const receivedAmountLabel = () => {
-    if (clearCurrencyInput(String(methods.watch("appointmentPrice"))) === 0) {
-      return "Você optou por voluntariar seu tempo";
+    if (!methods.watch("appointmentPrice")) return;
+
+    if (String(methods.watch("appointmentPrice")) === "R$ 0,00") {
+      return "Você optou por ser voluntário";
     }
 
     return `Você recebe: ${formatCurrency(appointmentPriceWithDiscount)}`;
@@ -87,11 +86,13 @@ export function RegisterVeterinarianScreen() {
               <AppointmentPriceContainer>
                 <ControlledTextInput
                   name="appointmentPrice"
-                  label="Preço por consulta online"
+                  label="Preço por consulta"
                   keyboardType="numeric"
                   mask="currency"
                 />
-                <DiscountLabel>{receivedAmountLabel()}</DiscountLabel>
+                {receivedAmountLabel() && (
+                  <DiscountLabel>{receivedAmountLabel()}</DiscountLabel>
+                )}
               </AppointmentPriceContainer>
               <ControlledTextInput
                 name="meetingUrl"

@@ -17,25 +17,23 @@ import {
 
 import { Button } from "~/components/button/button";
 import { ControlledTextInput } from "~/components/form";
+import { KeyboardContainer } from "~/components/keyboard-container/keyboard-container";
 import { PetEntity } from "~/domain/entities/pet-entity";
 import { VeterinarianEntity } from "~/domain/entities/veterinarian-entity";
-import { requestAppointmentService } from "~/domain/services/appointment";
-import { useAuthentication } from "~/hooks";
 
 type Props = {
   handleCloseModal: () => void;
   handlePreviousStep: () => void;
   selectedPet: PetEntity | undefined;
   veterinarian: VeterinarianEntity;
+  handleConfirmAppointment: () => void;
 };
 
 export const CreditCardStep = ({
   handleCloseModal,
-  selectedPet,
-  veterinarian,
+  handleConfirmAppointment,
   handlePreviousStep,
 }: Props) => {
-  const { userDetails } = useAuthentication();
   const [showConfirmedPaymentMessage, setShowConfirmedPaymentMessage] =
     useState(false);
 
@@ -50,21 +48,6 @@ export const CreditCardStep = ({
       zipCode: "00000-000",
     },
   });
-
-  const handleConfirmAppointment = () => {
-    if (!selectedPet) return;
-
-    requestAppointmentService({
-      veterinarianDetails: veterinarian,
-      requestStatus: "pending",
-      tutorDetails: {
-        fullName: userDetails?.fullName,
-        imageUrl: userDetails?.imageUrl,
-        id: userDetails?.userId,
-      },
-      petDetails: selectedPet,
-    });
-  };
 
   const onSubmit = async () => {
     return new Promise((resolve) => setTimeout(resolve, 1500))
@@ -87,12 +70,7 @@ export const CreditCardStep = ({
 
   return (
     <FormProvider {...methods}>
-      <KeyboardAvoidingView
-        style={{
-          flex: 1,
-        }}
-        behavior="padding"
-      >
+      <KeyboardContainer>
         <Container>
           <ControlledTextInput
             placeholderTextColor="#ccc"
@@ -158,7 +136,7 @@ export const CreditCardStep = ({
             </ProcessingPaymentLabel>
           )}
         </ButtonContainer>
-      </KeyboardAvoidingView>
+      </KeyboardContainer>
     </FormProvider>
   );
 };

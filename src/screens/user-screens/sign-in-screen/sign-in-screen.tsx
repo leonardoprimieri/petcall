@@ -1,20 +1,14 @@
-import { KeyboardAvoidingView } from "react-native";
-
 import { SignInForm } from "./components/sign-in-form/sign-in-form";
 import { Container, HeroText, LogoContainer } from "./sign-in-screen-styles";
 
 import { AppLogo } from "~/components/app-logo/app-logo";
+import { KeyboardContainer } from "~/components/keyboard-container/keyboard-container";
 import { DefaultLayout } from "~/layouts/default-layout/default-layout";
 
 export function SignInScreen() {
   return (
     <DefaultLayout>
-      <KeyboardAvoidingView
-        style={{
-          flex: 1,
-        }}
-        behavior="padding"
-      >
+      <KeyboardContainer>
         <Container>
           <LogoContainer>
             <AppLogo />
@@ -22,7 +16,7 @@ export function SignInScreen() {
           <HeroText>Entrar</HeroText>
           <SignInForm />
         </Container>
-      </KeyboardAvoidingView>
+      </KeyboardContainer>
     </DefaultLayout>
   );
 }

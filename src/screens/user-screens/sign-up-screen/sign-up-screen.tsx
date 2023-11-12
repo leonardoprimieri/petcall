@@ -1,20 +1,14 @@
-import { KeyboardAvoidingView } from "react-native";
-
 import { SignUpForm } from "./components/sign-up-form/sign-up-form";
 import { Container, HeroText, LogoContainer } from "./sign-up-screen-styles";
 
 import { AppLogo } from "~/components/app-logo/app-logo";
+import { KeyboardContainer } from "~/components/keyboard-container/keyboard-container";
 import { DefaultLayout } from "~/layouts/default-layout/default-layout";
 
 export function SignUpScreen() {
   return (
     <DefaultLayout>
-      <KeyboardAvoidingView
-        style={{
-          flex: 1,
-        }}
-        behavior="padding"
-      >
+      <KeyboardContainer>
         <Container>
           <LogoContainer>
             <AppLogo />
@@ -22,7 +16,7 @@ export function SignUpScreen() {
           <HeroText>Criar Conta</HeroText>
           <SignUpForm />
         </Container>
-      </KeyboardAvoidingView>
+      </KeyboardContainer>
     </DefaultLayout>
   );
 }

@@ -61,7 +61,9 @@ export const AppointmentCard = ({
             <Separator />
             <CurrencyContainer>
               <CurrencyDescription>
-                {wasRejected ? "R$ 0,00" : formatCurrency(appointmentPrice)}
+                {wasRejected || appointmentPrice === 0
+                  ? "R$ 0,00"
+                  : formatCurrency(appointmentPrice)}
               </CurrencyDescription>
             </CurrencyContainer>
           </DescriptionContainer>

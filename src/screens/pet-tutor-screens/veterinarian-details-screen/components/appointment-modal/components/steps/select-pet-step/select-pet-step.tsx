@@ -15,14 +15,16 @@ import { useLoadPets } from "~/screens/pet-tutor-screens/my-pets-screen/hooks/us
 
 type Props = {
   selectedPet: PetEntity | undefined;
+  buttonLabel: string;
   setSelectedPet: (pet: PetEntity) => void;
-  handleNextStep: () => void;
+  onConfirm: () => void;
 };
 
 export const SelectPetStep = ({
   selectedPet,
   setSelectedPet,
-  handleNextStep,
+  onConfirm,
+  buttonLabel,
 }: Props) => {
   const { pets } = useLoadPets();
 
@@ -61,10 +63,10 @@ export const SelectPetStep = ({
       <View style={{ paddingHorizontal: 32 }}>
         <Button
           style={{ marginBottom: 24 }}
-          onPress={handleNextStep}
+          onPress={onConfirm}
           disabled={!selectedPet}
         >
-          Ir para o pagamento
+          {buttonLabel}
         </Button>
       </View>
     </>

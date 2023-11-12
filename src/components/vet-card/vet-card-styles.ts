@@ -23,6 +23,7 @@ export const VetName = styled.Text`
   font-family: ${({ theme }) => theme.FONTS.PRIMARY.BOLD};
   font-size: 18px;
   margin-bottom: 12px;
+  text-transform: capitalize;
 `;
 
 export const VetPricePerHour = styled.Text`
@@ -42,4 +43,10 @@ export const Text = styled.Text`
 
 export const VetAvailableDays = styled.Text`
   font-size: 12px;
+`;
+
+export const VoluntaryLabel = styled.Text`
+  font-size: 16px;
+  color: ${({ theme }) => theme.COLORS.SECONDARY_DARK};
+  width: 140px;
 `;

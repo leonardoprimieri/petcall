@@ -17,6 +17,7 @@ export const VeterinarianName = styled.Text`
   font-size: 18px;
   color: ${({ theme }) => theme.COLORS.TITLE};
   margin: 16px;
+  text-transform: capitalize;
 `;
 
 export const GridDetails = styled.View`

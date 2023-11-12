@@ -2,11 +2,17 @@ import { AcceptAppointmentCard } from "./components/accept-appointment-card/acce
 import { PendingAppointmentCard } from "./components/pending-appointment-card/pending-appointment-card";
 import { useAppointment } from "./hooks/use-appointment";
 
-export const AppointmentRequest = () => {
+type Props = {
+  handleOpenNoteModal: () => void;
+};
+
+export const AppointmentRequest = ({ handleOpenNoteModal }: Props) => {
   const { appointment } = useAppointment();
 
   const renderAppointmentCard: Record<string, React.ReactElement | null> = {
-    accepted: <AcceptAppointmentCard />,
+    accepted: (
+      <AcceptAppointmentCard handleOpenNoteModal={handleOpenNoteModal} />
+    ),
     pending: <PendingAppointmentCard />,
   };
 

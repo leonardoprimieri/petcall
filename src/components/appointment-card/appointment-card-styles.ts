@@ -64,7 +64,9 @@ export const CollapseContainer = styled.View`
   margin: 16px 0px;
 `;
 
-export const CardTextContainer = styled.View``;
+export const CardTextContainer = styled.View`
+  align-items: flex-start;
+`;
 
 export const RejectedLabel = styled.Text`
   color: ${({ theme }) => theme.COLORS.RED};

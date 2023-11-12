@@ -1,4 +1,7 @@
+import { useRef } from "react";
+
 import { AppointmentRequest } from "./components";
+import { AddNotePetModal } from "./components/appointment-request/components/accept-appointment-card/components/add-pet-note-modal/add-pet-note-modal";
 import { Container, ItemsContainer } from "./veterinarian-home-screen-styles";
 
 import MedicalImage from "~/assets/medical.png";
@@ -9,12 +12,17 @@ import { AuthorizedLayout } from "~/layouts/authorized-layout/authorized-layout"
 
 export const VeterinarianHomeScreen = () => {
   const { handleGoToVeterinarianAppointments } = useNavigationRoutes();
+  const modalRef = useRef<any>(null);
+
+  const handleOpenNoteModal = () => {
+    modalRef.current?.present();
+  };
 
   return (
     <AuthorizedLayout>
       <Container>
         <Header />
-        <AppointmentRequest />
+        <AppointmentRequest handleOpenNoteModal={handleOpenNoteModal} />
         <ItemsContainer>
           <HomeMenuItem
             ImageProps={{
@@ -24,6 +32,7 @@ export const VeterinarianHomeScreen = () => {
             onPress={handleGoToVeterinarianAppointments}
           />
         </ItemsContainer>
+        <AddNotePetModal ref={modalRef} />
       </Container>
     </AuthorizedLayout>
   );
