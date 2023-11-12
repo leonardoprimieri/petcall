@@ -46,7 +46,7 @@ export const AppRoutes = () => {
                 name="VeterinarianDetails"
                 component={VeterinarianDetailsScreen as any}
               />
-              <Screen name="MyPets" component={MyPetsScreen} />
+              <Screen name="MyPets" component={MyPetsScreen as any} />
               <Screen name="RegisterPet" component={RegisterPetScreen} />
               <Screen
                 name="PetTutorAppointments"

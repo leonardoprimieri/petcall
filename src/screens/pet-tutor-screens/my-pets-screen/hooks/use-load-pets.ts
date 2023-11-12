@@ -4,7 +4,11 @@ import { PetEntity } from "~/domain/entities/pet-entity";
 import { loadPetsService } from "~/domain/services/pet";
 import { useAuthentication } from "~/hooks";
 
-export const useLoadPets = () => {
+type Props = {
+  refetch: boolean;
+};
+
+export const useLoadPets = ({ refetch }: Props) => {
   const { userDetails } = useAuthentication();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -19,7 +23,7 @@ export const useLoadPets = () => {
     });
     setData(response);
     setIsLoading(false);
-  }, [userDetails?.id]);
+  }, [userDetails?.id, refetch]);
 
   useEffect(() => {
     loadPets();

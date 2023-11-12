@@ -14,7 +14,9 @@ export declare global {
       VeterinarianDetails: {
         veterinarian: VeterinarianEntity;
       };
-      MyPets: undefined;
+      MyPets: {
+        refetch: boolean;
+      };
       RegisterPet: undefined;
       PetTutorAppointments: undefined;
       VeterinarianAppointments: undefined;

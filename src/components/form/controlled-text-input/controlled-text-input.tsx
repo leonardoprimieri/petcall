@@ -9,7 +9,13 @@ import {
 
 type Props = {
   name: string;
-  mask?: "currency" | "phone" | "creditCard" | "expirationDate" | "zipCode";
+  mask?:
+    | "currency"
+    | "phone"
+    | "creditCard"
+    | "expirationDate"
+    | "zipCode"
+    | "birthDate";
   width?: string;
 } & TextInputProps;
 

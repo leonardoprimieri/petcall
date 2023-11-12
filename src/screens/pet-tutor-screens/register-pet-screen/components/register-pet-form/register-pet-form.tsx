@@ -20,6 +20,7 @@ export const RegisterPetForm = () => {
 
   const methods = useForm<CreatePetFormData>({
     resolver: zodResolver(CreatePetValidation),
+    mode: "onChange",
   });
 
   const { mutationFn } = useCreatePetMutation();
@@ -31,7 +32,11 @@ export const RegisterPetForm = () => {
       name: values.name,
       weight: values.weight,
       type: "dog",
-    }).then(handleGoToMyPets);
+    }).then(() =>
+      handleGoToMyPets({
+        refetch: true,
+      })
+    );
   };
 
   if (!imageUrl) return <UploadImage onUpload={setImageUrl} />;
@@ -40,13 +45,27 @@ export const RegisterPetForm = () => {
     <FormProvider {...methods}>
       <FormContainer>
         <ControlledTextInput name="name" label="Nome" />
-        <ControlledTextInput name="weight" label="Peso" />
-        <ControlledTextInput name="birthday" label="Aniversário" />
+        <ControlledTextInput
+          name="weight"
+          label="Peso (em kg)"
+          placeholder="Ex: 5.5"
+          placeholderTextColor="#999"
+        />
+        <ControlledTextInput
+          name="birthday"
+          label="Aniversário"
+          mask="birthDate"
+          maxLength={10}
+          placeholder="Ex: 01/01/2021"
+          placeholderTextColor="#999"
+        />
 
         <Button
           onPress={methods.handleSubmit(onSubmit)}
           isLoading={methods.formState.isSubmitting}
           width="300px"
+          style={{ marginTop: 20 }}
+          disabled={!methods.formState.isValid}
         >
           Confirmar
         </Button>

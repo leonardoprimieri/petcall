@@ -1,14 +1,13 @@
 import { z } from "zod";
 
+import { requiredValidator } from "~/validators/required-validator";
+
 export const CreatePetValidation = z.object({
-  name: z.string({ required_error: "O peso é obrigatório" }),
-  weight: z.string({
-    required_error: "O peso é obrigatório",
+  name: requiredValidator("Nome"),
+  weight: requiredValidator("Peso"),
+  birthday: requiredValidator("Data de nascimento").min(10, {
+    message: "Data de nascimento inválida",
   }),
-  birthday: z.string({
-    required_error: "A data de nascimento é obrigatória",
-  }),
-  // type: z.nullable(z.string()),
 });
 
 export type CreatePetFormData = z.infer<typeof CreatePetValidation>;

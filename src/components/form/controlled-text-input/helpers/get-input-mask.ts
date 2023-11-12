@@ -1,3 +1,4 @@
+import { birthDateMask } from "../masks/birthdate-mask";
 import { creditCardMask } from "../masks/credit-card-mask";
 import { currencyMask } from "../masks/currency-mask";
 import { expirationDateMask } from "../masks/expiration-date-mask";
@@ -16,6 +17,7 @@ export const getInputMask = ({ event, mask }: Args) => {
     creditCard: creditCardMask,
     expirationDate: expirationDateMask,
     zipCode: zipCodeMask,
+    birthDate: birthDateMask,
   };
 
   return (event = masks[mask](event));

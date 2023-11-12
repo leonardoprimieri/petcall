@@ -13,7 +13,10 @@ export const useNavigationRoutes = () => {
 
   const handleGoToPetTutorHomeScreen = () => navigate("PetTutorHome");
   const handleGoToRegisterPetTutor = () => navigate("RegisterPetTutor");
-  const handleGoToMyPets = () => navigate("MyPets");
+  const handleGoToMyPets = ({ refetch }: { refetch: boolean }) =>
+    navigate("MyPets", {
+      refetch,
+    });
   const handleGoToVeterinarianDetails = (veterinarian: VeterinarianEntity) =>
     navigate("VeterinarianDetails", {
       veterinarian,

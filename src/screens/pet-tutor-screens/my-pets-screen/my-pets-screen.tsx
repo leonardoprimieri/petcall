@@ -9,8 +9,18 @@ import { HeaderLogo } from "~/components/header-logo/header-logo";
 import { useNavigationRoutes } from "~/hooks";
 import { DefaultLayout } from "~/layouts/default-layout/default-layout";
 
-export function MyPetsScreen() {
-  const { pets, isLoading } = useLoadPets();
+type RouteParams = {
+  route: {
+    params: {
+      refetch: boolean;
+    };
+  };
+};
+
+export function MyPetsScreen({ route }: RouteParams) {
+  const { pets, isLoading } = useLoadPets({
+    refetch: route?.params?.refetch ?? false,
+  });
 
   const { handleGoToRegisterPet } = useNavigationRoutes();
 
