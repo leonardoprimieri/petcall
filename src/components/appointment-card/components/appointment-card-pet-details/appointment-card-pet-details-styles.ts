@@ -1,8 +1,6 @@
 import styled from "styled-components/native";
 
-export const Container = styled.View`
-  gap: 32px;
-`;
+export const Container = styled.View``;
 
 export const PetDetailsContainer = styled.View``;
 
@@ -39,4 +37,11 @@ export const PetNotes = styled.Text`
   font-family: ${({ theme }) => theme.FONTS.PRIMARY.REGULAR};
   font-size: 14px;
   color: ${({ theme }) => theme.COLORS.PRIMARY};
+`;
+
+export const PetNotesTitle = styled.Text`
+  font-family: ${({ theme }) => theme.FONTS.PRIMARY.SEMIBOLD};
+  font-size: 16px;
+  color: ${({ theme }) => theme.COLORS.PRIMARY};
+  margin: 24px 0px 8px 0px;
 `;

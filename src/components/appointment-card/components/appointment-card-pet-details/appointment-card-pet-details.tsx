@@ -8,6 +8,7 @@ import {
   PetInfoContainer,
   PetName,
   PetNotes,
+  PetNotesTitle,
   PetWeight,
 } from "./appointment-card-pet-details-styles";
 import { Separator } from "../../appointment-card-styles";
@@ -35,6 +36,8 @@ export const AppointmentCardPetDetails = ({ pet }: Props) => {
           </PetInfoContainer>
         </PetDetailsContainer>
       </PetDetailsWrapper>
+
+      <PetNotesTitle>Observações pós consulta:</PetNotesTitle>
 
       <PetNotes>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias,
