@@ -11,24 +11,17 @@ export type SaveAppointmentHistoryParams = {
   tutorDetails: TutorEntity | undefined;
   petDetails: PetEntity | undefined;
   wasRejected?: boolean;
+  note?: string;
 };
 
-export const saveAppointmentHistoryService = async ({
-  veterinarianDetails,
-  appointmentStatus,
-  tutorDetails,
-  wasRejected,
-  petDetails,
-}: SaveAppointmentHistoryParams) => {
+export const saveAppointmentHistoryService = async (
+  data: SaveAppointmentHistoryParams
+) => {
   const collectionRef = collection(db, "appointments");
 
   const result = await addDoc(collectionRef, {
-    veterinarianDetails,
-    appointmentStatus,
+    ...data,
     finishedAt: Date.now(),
-    tutorDetails,
-    wasRejected,
-    petDetails,
   });
 
   return result;

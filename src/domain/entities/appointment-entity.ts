@@ -9,4 +9,5 @@ export type AppointmentEntity = {
   finishedAt?: Date;
   wasRejected: boolean;
   petDetails: PetEntity;
+  note?: string;
 };

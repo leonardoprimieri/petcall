@@ -29,6 +29,7 @@ type Props = {
   CollapseContent?: React.ReactNode;
   wasRejected: boolean;
   petDetails: PetEntity;
+  note?: string;
 };
 
 export const AppointmentCard = ({
@@ -39,6 +40,7 @@ export const AppointmentCard = ({
   CollapseContent,
   wasRejected,
   petDetails,
+  note,
 }: Props) => {
   const formattedFinishedAt = formatDate(new Date(finishedAt as Date));
 
@@ -70,7 +72,7 @@ export const AppointmentCard = ({
         <>
           <Divider />
           <CollapseContainer>
-            <AppointmentCardPetDetails pet={petDetails} />
+            <AppointmentCardPetDetails pet={petDetails} note={note} />
             {CollapseContent}
           </CollapseContainer>
         </>

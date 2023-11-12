@@ -18,9 +18,10 @@ import { PetEntity } from "~/domain/entities/pet-entity";
 
 type Props = {
   pet: PetEntity;
+  note?: string;
 };
 
-export const AppointmentCardPetDetails = ({ pet }: Props) => {
+export const AppointmentCardPetDetails = ({ pet, note }: Props) => {
   return (
     <Container>
       <PetDetailsWrapper>
@@ -30,7 +31,7 @@ export const AppointmentCardPetDetails = ({ pet }: Props) => {
         <PetDetailsContainer>
           <PetName>{pet?.name}</PetName>
           <PetInfoContainer>
-            <PetWeight>{pet?.weight}</PetWeight>
+            <PetWeight>{pet?.weight} Kg</PetWeight>
             <Separator />
             <PetBirthDate>{pet?.birthday}</PetBirthDate>
           </PetInfoContainer>
@@ -39,12 +40,7 @@ export const AppointmentCardPetDetails = ({ pet }: Props) => {
 
       <PetNotesTitle>Observações pós consulta:</PetNotesTitle>
 
-      <PetNotes>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias,
-        accusamus magnam ex est architecto eos amet eaque atque mollitia, dicta
-        eligendi aliquam quisquam aperiam dolore, delectus soluta aut minima
-        dignissimos!
-      </PetNotes>
+      <PetNotes>{note}</PetNotes>
     </Container>
   );
 };

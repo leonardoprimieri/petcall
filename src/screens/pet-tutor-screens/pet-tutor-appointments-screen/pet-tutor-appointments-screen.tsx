@@ -32,6 +32,7 @@ export function PetTutorAppointmentsScreen() {
                 imageUrl={item?.veterinarianDetails?.imageUrl}
                 wasRejected={item?.wasRejected}
                 petDetails={item?.petDetails}
+                note={item?.note}
               />
             )}
             style={{ padding: 20 }}

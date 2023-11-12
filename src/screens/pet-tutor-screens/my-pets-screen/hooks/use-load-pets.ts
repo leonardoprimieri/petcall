@@ -5,10 +5,14 @@ import { loadPetsService } from "~/domain/services/pet";
 import { useAuthentication } from "~/hooks";
 
 type Props = {
-  refetch: boolean;
+  refetch?: boolean;
 };
 
-export const useLoadPets = ({ refetch }: Props) => {
+export const useLoadPets = (
+  { refetch }: Props = {
+    refetch: false,
+  }
+) => {
   const { userDetails } = useAuthentication();
 
   const [isLoading, setIsLoading] = useState(false);

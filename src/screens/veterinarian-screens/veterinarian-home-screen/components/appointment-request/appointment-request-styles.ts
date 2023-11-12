@@ -7,7 +7,7 @@ export const HeaderText = styled.Text`
 
 export const StatusCardContainer = styled.View`
   padding: 32px;
-  margin: 32px;
+  margin: 16px 32px;
   border-radius: 8px;
   background-color: ${({ theme }) => theme.COLORS.SECONDARY};
   border: 1px solid ${({ theme }) => theme.COLORS.PRIMARY};

@@ -13,9 +13,11 @@ export const useAppointment = () => {
   });
 
   const handleFinishAppointment = ({
+    note = "",
     wasRejected = false,
   }: {
     wasRejected?: boolean;
+    note?: string;
   }) => {
     updateAppointmentRequestStatusService({
       requestStatus: "finished",
@@ -27,6 +29,7 @@ export const useAppointment = () => {
         tutorDetails: appointment?.tutorDetails,
         wasRejected,
         petDetails: appointment?.petDetails,
+        note,
       });
     });
   };
