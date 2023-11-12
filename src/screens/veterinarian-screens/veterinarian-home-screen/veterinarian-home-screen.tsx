@@ -1,17 +1,29 @@
+import { useNavigation } from "@react-navigation/native";
 import { useRef } from "react";
 
 import { AppointmentRequest } from "./components";
 import { AddNotePetModal } from "./components/appointment-request/components/accept-appointment-card/components/add-pet-note-modal/add-pet-note-modal";
 import { Container, ItemsContainer } from "./veterinarian-home-screen-styles";
 
-import MedicalImage from "~/assets/medical.png";
 import { Header } from "~/components/header/header";
 import { HomeMenuItem } from "~/components/home-menu-item/home-menu-item";
-import { useNavigationRoutes } from "~/hooks";
 import { AuthorizedLayout } from "~/layouts/authorized-layout/authorized-layout";
 
+const MENU_ITEMS = [
+  {
+    label: "Histórico de Consultas",
+    image: require("~/assets/medical.png"),
+    path: "VeterinarianAppointments",
+  },
+  {
+    label: "Meu Perfil",
+    image: require("~/assets/placeholder-user.png"),
+    path: "VeterinarianProfile",
+  },
+];
+
 export const VeterinarianHomeScreen = () => {
-  const { handleGoToVeterinarianAppointments } = useNavigationRoutes();
+  const { navigate } = useNavigation();
   const modalRef = useRef<any>(null);
 
   const handleOpenNoteModal = () => {
@@ -24,13 +36,16 @@ export const VeterinarianHomeScreen = () => {
         <Header />
         <AppointmentRequest handleOpenNoteModal={handleOpenNoteModal} />
         <ItemsContainer>
-          <HomeMenuItem
-            ImageProps={{
-              source: MedicalImage,
-            }}
-            label="Histórico de Consultas"
-            onPress={handleGoToVeterinarianAppointments}
-          />
+          {MENU_ITEMS.map((item) => (
+            <HomeMenuItem
+              key={item.label}
+              label={item.label}
+              ImageProps={{
+                source: item.image,
+              }}
+              onPress={() => navigate(item.path as any)}
+            />
+          ))}
         </ItemsContainer>
         <AddNotePetModal ref={modalRef} />
       </Container>

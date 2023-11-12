@@ -6,20 +6,25 @@ export declare global {
       SignIn: undefined;
       SignUp: undefined;
       Onboarding: undefined;
-      SearchVets: undefined;
+
       RegisterVeterinarian: undefined;
       VeterinarianHome: undefined;
-      PetTutorHome: undefined;
-      RegisterPetTutor: undefined;
       VeterinarianDetails: {
         veterinarian: VeterinarianEntity;
       };
+      VeterinarianAppointments: undefined;
+      VeterinarianProfile: undefined;
+
+      RegisterPet: undefined;
       MyPets: {
         refetch: boolean;
       };
-      RegisterPet: undefined;
+
+      SearchVets: undefined;
+      PetTutorHome: undefined;
+      RegisterPetTutor: undefined;
       PetTutorAppointments: undefined;
-      VeterinarianAppointments: undefined;
+      PetTutorProfile: undefined;
     }
   }
 }

@@ -6,6 +6,7 @@ import {
   MyPetsScreen,
   PetTutorAppointmentsScreen,
   PetTutorHomeScreen,
+  PetTutorProfileScreen,
   RegisterPetScreen,
   RegisterPetTutorScreen,
   SearchVetsScreen,
@@ -20,6 +21,7 @@ import {
   RegisterVeterinarianScreen,
   VeterinarianAppointmentsScreen,
   VeterinarianHomeScreen,
+  VeterinarianProfileScreen,
 } from "~/screens/veterinarian-screens";
 
 const { Navigator, Screen } = createNativeStackNavigator();
@@ -52,6 +54,10 @@ export const AppRoutes = () => {
                 name="PetTutorAppointments"
                 component={PetTutorAppointmentsScreen}
               />
+              <Screen
+                name="PetTutorProfile"
+                component={PetTutorProfileScreen}
+              />
             </>
           )}
 
@@ -64,6 +70,10 @@ export const AppRoutes = () => {
               <Screen
                 name="VeterinarianAppointments"
                 component={VeterinarianAppointmentsScreen}
+              />
+              <Screen
+                name="VeterinarianProfile"
+                component={VeterinarianProfileScreen}
               />
             </>
           )}

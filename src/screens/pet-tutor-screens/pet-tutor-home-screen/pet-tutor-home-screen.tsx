@@ -22,6 +22,11 @@ const MENU_ITEMS = [
     image: require("~/assets/medical.png"),
     path: "PetTutorAppointments",
   },
+  {
+    label: "Meu Perfil",
+    image: require("~/assets/placeholder-user.png"),
+    path: "PetTutorProfile",
+  },
 ];
 
 export const PetTutorHomeScreen = () => {

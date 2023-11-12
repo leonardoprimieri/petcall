@@ -4,11 +4,8 @@ import { FormProvider, useForm } from "react-hook-form";
 import { ScrollView } from "react-native";
 
 import {
-  AppointmentPriceContainer,
   ButtonContainer,
   Container,
-  DiscountLabel,
-  WeekDaySelectorContainer,
 } from "./register-veterinarian-screen-styles";
 import {
   RegisterVeterinarianFormData,
@@ -16,15 +13,13 @@ import {
 } from "./validations/register-veterinarian-validation";
 
 import { Button } from "~/components/button/button";
+import { AppointmentPriceInput } from "~/components/form";
 import { ControlledTextInput } from "~/components/form/controlled-text-input/controlled-text-input";
 import { HeaderLogo } from "~/components/header-logo/header-logo";
 import { UploadImage } from "~/components/upload-image/upload-image";
 import { WeekDaySelector } from "~/components/week-day-selector/week-day-selector";
 import { VeterinarianEntity } from "~/domain/entities/veterinarian-entity";
 import { UserTypeEnum } from "~/enums/user-type.enum";
-import { applyPlatformFee } from "~/helpers/apply-platform-fee";
-import { clearCurrencyInput } from "~/helpers/clear-currency-input";
-import { formatCurrency } from "~/helpers/format-currency";
 import { useCreateUserAccount, useCreateUserMutation } from "~/hooks/api";
 import { DefaultLayout } from "~/layouts/default-layout/default-layout";
 import { useUserStore } from "~/store/user-store";
@@ -56,20 +51,6 @@ export function RegisterVeterinarianScreen() {
     });
   };
 
-  const appointmentPriceWithDiscount = applyPlatformFee(
-    clearCurrencyInput(String(methods.watch("appointmentPrice")))
-  );
-
-  const receivedAmountLabel = () => {
-    if (!methods.watch("appointmentPrice")) return;
-
-    if (String(methods.watch("appointmentPrice")) === "R$ 0,00") {
-      return "Você optou por ser voluntário";
-    }
-
-    return `Você recebe: ${formatCurrency(appointmentPriceWithDiscount)}`;
-  };
-
   return (
     <DefaultLayout>
       <ScrollView>
@@ -81,26 +62,13 @@ export function RegisterVeterinarianScreen() {
           <FormProvider {...methods}>
             <Container>
               <ControlledTextInput name="fullName" label="Nome" />
-
               <ControlledTextInput name="crmv" label="CRMV" />
-              <AppointmentPriceContainer>
-                <ControlledTextInput
-                  name="appointmentPrice"
-                  label="Preço por consulta"
-                  keyboardType="numeric"
-                  mask="currency"
-                />
-                {receivedAmountLabel() && (
-                  <DiscountLabel>{receivedAmountLabel()}</DiscountLabel>
-                )}
-              </AppointmentPriceContainer>
+              <AppointmentPriceInput />
               <ControlledTextInput
                 name="meetingUrl"
                 label="Link para reunião"
               />
-              <WeekDaySelectorContainer>
-                <WeekDaySelector />
-              </WeekDaySelectorContainer>
+              <WeekDaySelector />
               <ButtonContainer>
                 <Button
                   isLoading={methods.formState.isSubmitting}
