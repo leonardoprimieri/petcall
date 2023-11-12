@@ -15,11 +15,11 @@ export const loadTutorAppointmentsService = async ({
   const q = query(
     appointmentsRef,
     where("tutorDetails.id", "==", tutorId),
-    orderBy("finishedAt", "desc"),
+    orderBy("finishedAt", "desc")
   );
 
   const appointments = await getDocs(q).then((querySnapshot) =>
-    querySnapshot.docs.map((doc) => doc.data()),
+    querySnapshot.docs.map((doc) => doc.data())
   );
 
   return appointments as AppointmentEntity[];

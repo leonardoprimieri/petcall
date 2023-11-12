@@ -45,7 +45,7 @@ export const AddNotePetModal = forwardRef<any, any>(function Modal(any, ref) {
               name="note"
               label="Adicione notas pós consulta"
               multiline
-              numberOfLines={4}
+              numberOfLines={10}
               maxLength={500}
             />
             <Button onPress={methods.handleSubmit(onSubmit)} width="300px">

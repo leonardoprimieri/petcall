@@ -61,14 +61,14 @@ export const AppointmentCard = ({
             <Separator />
             <CurrencyContainer>
               <CurrencyDescription>
-                {!wasRejected ? formatCurrency(appointmentPrice) : "R$ 0,00"}
+                {wasRejected ? "R$ 0,00" : formatCurrency(appointmentPrice)}
               </CurrencyDescription>
             </CurrencyContainer>
           </DescriptionContainer>
           {wasRejected && <RejectedLabel>Consulta rejeitada</RejectedLabel>}
         </CardTextContainer>
       </InfoContainer>
-      {openCollapse && (
+      {openCollapse && !wasRejected && (
         <>
           <Divider />
           <CollapseContainer>
