@@ -27,7 +27,7 @@ import { WeekDaySelector } from "~/components/week-day-selector/week-day-selecto
 import { VeterinarianEntity } from "~/domain/entities/veterinarian-entity";
 import { formatCurrency } from "~/helpers/format-currency";
 import { handleIsVeterinarianVoluntary } from "~/helpers/handle-is-veterinarian-voluntary";
-import { useCheckForAppointments } from "~/hooks";
+import { useAuthentication, useCheckForAppointments } from "~/hooks";
 import { useLoadVeterinarianAppointmentsQuery } from "~/hooks/api/veterinarian/use-load-veterinarian-appointments-query";
 import { DefaultLayout } from "~/layouts/default-layout/default-layout";
 
@@ -41,6 +41,7 @@ type RouteParams = {
 
 export function VeterinarianDetailsScreen({ route }: RouteParams) {
   const { veterinarian } = route.params;
+  const { userDetails } = useAuthentication();
 
   const modalRef = useRef<any>(null);
 
@@ -62,6 +63,16 @@ export function VeterinarianDetailsScreen({ route }: RouteParams) {
   });
 
   const renderAppointmentStatus = () => {
+    const appointmentBelongsToUser =
+      appointment?.tutorDetails?.id === userDetails?.userId;
+
+    if (
+      !appointmentBelongsToUser &&
+      appointment?.requestStatus !== "finished"
+    ) {
+      return "Esse veterinário já tem uma consulta em andamento. Tente novamente mais tarde.";
+    }
+
     if (appointment?.requestStatus === "pending") {
       return "Já avisamos o veterinário que você deseja uma consulta. Aguarde a resposta dele.";
     }
