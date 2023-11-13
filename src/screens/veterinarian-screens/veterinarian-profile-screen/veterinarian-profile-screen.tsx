@@ -25,7 +25,10 @@ export function VeterinarianProfileScreen() {
   const methods = useForm({
     values: {
       fullName: userDetails?.fullName,
-      appointmentPrice: currencyMask(userDetails?.appointmentPrice),
+      appointmentPrice:
+        userDetails?.appointmentPrice === 0
+          ? "R$ 0,00"
+          : currencyMask(userDetails?.appointmentPrice),
       meetingUrl: userDetails?.meetingUrl,
       daysAvailable: userDetails?.daysAvailable,
       birthDate: userDetails?.birthDate,
