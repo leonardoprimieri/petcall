@@ -125,7 +125,7 @@ export function VeterinarianDetailsScreen({ route }: RouteParams) {
         </GridDetails>
 
         <FormProvider {...methods}>
-          <WeekDaySelector disabled />
+          <WeekDaySelector removePadding disabled />
         </FormProvider>
 
         <ButtonContainer>

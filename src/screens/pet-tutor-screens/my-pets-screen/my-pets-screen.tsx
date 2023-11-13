@@ -35,7 +35,6 @@ export function MyPetsScreen({ route }: RouteParams) {
             data={pets}
             keyExtractor={(item) => item.name}
             renderItem={({ item }) => <PetCard pet={item} />}
-            numColumns={2}
           />
         )}
 

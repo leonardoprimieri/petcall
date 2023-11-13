@@ -11,9 +11,10 @@ import {
 
 type Props = {
   disabled?: boolean;
+  removePadding?: boolean;
 };
 
-export const WeekDaySelector = ({ disabled }: Props) => {
+export const WeekDaySelector = ({ disabled, removePadding = false }: Props) => {
   const { setValue, watch, getFieldState } = useFormContext();
 
   const daysAvailable = (watch("daysAvailable") as number[]) || [];
@@ -26,14 +27,14 @@ export const WeekDaySelector = ({ disabled }: Props) => {
 
     setValue(
       "daysAvailable",
-      daysAvailable.filter((day) => day !== id),
+      daysAvailable.filter((day) => day !== id)
     );
   };
 
   const errorMessage = getFieldState("daysAvailable")?.error?.message;
 
   return (
-    <Container>
+    <Container removePadding={removePadding}>
       <Label>Dias que atende:</Label>
       <WeekDaysContainer>
         {WEEK_DAYS.map((day) => (

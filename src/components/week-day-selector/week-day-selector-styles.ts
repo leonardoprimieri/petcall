@@ -1,8 +1,12 @@
 import styled from "styled-components/native";
 
-export const Container = styled.View`
+type ContainerProps = {
+  removePadding?: boolean;
+};
+
+export const Container = styled.View<ContainerProps>`
   margin-top: 16px;
-  padding: 0px 48px;
+  padding: ${({ removePadding }) => (removePadding ? 0 : "0px 48px")};
 `;
 
 export const WeekDaysContainer = styled.View`

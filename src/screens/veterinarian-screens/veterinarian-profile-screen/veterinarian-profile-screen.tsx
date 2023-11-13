@@ -11,6 +11,7 @@ import { Button } from "~/components/button/button";
 import { AppointmentPriceInput, ControlledTextInput } from "~/components/form";
 import { currencyMask } from "~/components/form/controlled-text-input/masks/currency-mask";
 import { HeaderLogo } from "~/components/header-logo/header-logo";
+import { KeyboardContainer } from "~/components/keyboard-container/keyboard-container";
 import { WeekDaySelector } from "~/components/week-day-selector/week-day-selector";
 import { updateUserProfileService } from "~/domain/services";
 import { useAuthentication, useNavigationRoutes } from "~/hooks";
@@ -41,31 +42,33 @@ export function VeterinarianProfileScreen() {
 
   return (
     <DefaultLayout>
-      <Container>
-        <HeaderLogo text="Meu Perfil" />
-        <FormProvider {...methods}>
-          <ControlledTextInput name="fullName" label="Nome" />
-          <ControlledTextInput name="crmv" label="CRMV" />
-          <ControlledTextInput
-            name="birthDate"
-            label="Data de Nascimento"
-            mask="birthDate"
-            maxLength={10}
-            keyboardType="numeric"
-          />
-          <AppointmentPriceInput />
-          <ControlledTextInput name="meetingUrl" label="Link para reunião" />
-          <WeekDaySelector />
-          <Button
-            isLoading={methods.formState.isSubmitting}
-            disabled={!methods.formState.isValid}
-            onPress={methods.handleSubmit(onSubmit as any)}
-            width="300px"
-          >
-            Salvar
-          </Button>
-        </FormProvider>
-      </Container>
+      <KeyboardContainer>
+        <Container>
+          <HeaderLogo text="Meu Perfil" />
+          <FormProvider {...methods}>
+            <ControlledTextInput name="fullName" label="Nome" />
+            <ControlledTextInput name="crmv" label="CRMV" />
+            <ControlledTextInput
+              name="birthDate"
+              label="Data de Nascimento"
+              mask="birthDate"
+              maxLength={10}
+              keyboardType="numeric"
+            />
+            <AppointmentPriceInput />
+            <ControlledTextInput name="meetingUrl" label="Link para reunião" />
+            <WeekDaySelector />
+            <Button
+              isLoading={methods.formState.isSubmitting}
+              disabled={!methods.formState.isValid}
+              onPress={methods.handleSubmit(onSubmit as any)}
+              width="300px"
+            >
+              Salvar
+            </Button>
+          </FormProvider>
+        </Container>
+      </KeyboardContainer>
     </DefaultLayout>
   );
 }

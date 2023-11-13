@@ -1,5 +1,12 @@
-import { Container, PetName } from "./pet-card-styles";
+import {
+  Container,
+  PetDetail,
+  PetInfo,
+  PetInfoFooter,
+  PetName,
+} from "./pet-card-styles";
 
+import { Separator } from "~/components/appointment-card/appointment-card-styles";
 import { Avatar } from "~/components/avatar/avatar";
 import { PetEntity } from "~/domain/entities/pet-entity";
 
@@ -10,8 +17,15 @@ type Props = {
 export const PetCard = ({ pet }: Props) => {
   return (
     <Container>
-      <Avatar size={130} url={pet?.imageUrl} />
-      <PetName>{pet?.name}</PetName>
+      <Avatar size={85} url={pet?.imageUrl} />
+      <PetInfo>
+        <PetName>{pet?.name}</PetName>
+        <PetInfoFooter>
+          <PetDetail>{pet?.birthday}</PetDetail>
+          <Separator />
+          <PetDetail>{pet?.weight}Kg</PetDetail>
+        </PetInfoFooter>
+      </PetInfo>
     </Container>
   );
 };
