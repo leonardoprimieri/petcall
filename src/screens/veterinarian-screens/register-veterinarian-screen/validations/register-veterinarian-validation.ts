@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 import { clearCurrencyInput } from "~/helpers/clear-currency-input";
+import { requiredValidator } from "~/validators/required-validator";
 
 export const registerVeterinarianValidation = z.object({
   fullName: z
@@ -16,6 +17,9 @@ export const registerVeterinarianValidation = z.object({
       invalid_type_error: "Informe um valor válido",
     })
     .transform((value) => clearCurrencyInput(value)),
+  birthDate: requiredValidator("Data de nascimento").min(10, {
+    message: "Data de nascimento inválida",
+  }),
 });
 
 export type RegisterVeterinarianFormData = z.infer<

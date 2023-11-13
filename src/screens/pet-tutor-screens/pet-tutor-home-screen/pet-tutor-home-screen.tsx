@@ -1,4 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
+import { useEffect } from "react";
 
 import { Container, ItemsContainer } from "./pet-tutor-home-screen-styles";
 

@@ -39,10 +39,7 @@ export const AppRoutes = () => {
         <>
           {userDetails?.userType === UserTypeEnum.PET_TUTOR && (
             <>
-              <Screen
-                name="PetTutorHomeScreen"
-                component={PetTutorHomeScreen}
-              />
+              <Screen name="PetTutorHome" component={PetTutorHomeScreen} />
               <Screen name="SearchVets" component={SearchVetsScreen} />
               <Screen
                 name="VeterinarianDetails"

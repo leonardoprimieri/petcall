@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-import { SignUpFormData } from "~/screens/sign-up-screen/validation/sign-up-form-validation";
+import { SignUpFormData } from "~/screens/user-screens/sign-up-screen/validation/sign-up-form-validation";
 
 type UserStore = {
   user: SignUpFormData;

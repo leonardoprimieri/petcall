@@ -55,6 +55,13 @@ export function RegisterPetTutorScreen() {
           <FormProvider {...methods}>
             <Container>
               <ControlledTextInput name="fullName" label="Nome" />
+              <ControlledTextInput
+                name="birthDate"
+                label="Data de Nascimento"
+                mask="birthDate"
+                maxLength={10}
+                keyboardType="numeric"
+              />
               <ButtonContainer>
                 <Button
                   isLoading={methods.formState.isSubmitting}

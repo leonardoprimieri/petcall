@@ -16,7 +16,10 @@ import { useAuthentication } from "~/hooks/auth/use-authentication";
 
 export const Header = () => {
   const { userDetails, logout } = useAuthentication();
+
   const { COLORS } = useTheme();
+
+  if (!userDetails) return null;
 
   return (
     <Container>

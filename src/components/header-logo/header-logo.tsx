@@ -1,8 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import { useTheme } from "styled-components/native";
 
-import { Container, HeroText, LogoContainer } from "./header-logo-styles";
-import { AppLogo } from "../app-logo/app-logo";
+import { Container, HeroText } from "./header-logo-styles";
 import { IconButton } from "../icon-button/icon-button";
 import { ArrowLeftIcon } from "../icons";
 
@@ -27,10 +26,7 @@ export const HeaderLogo = ({ text, removeGoBack }: Props) => {
           <ArrowLeftIcon color={COLORS.PRIMARY} weight="bold" />
         </IconButton>
       )}
-      <LogoContainer>
-        <AppLogo removeText />
-        <HeroText>{text}</HeroText>
-      </LogoContainer>
+      <HeroText>{text}</HeroText>
     </Container>
   );
 };

@@ -23,18 +23,18 @@ export function useAuthentication() {
 
         const q = query(
           collection(db, "users"),
-          where("userId", "==", user?.uid),
+          where("userId", "==", user?.uid)
         );
 
         const userDetails = await getDocs(q).then(
-          (querySnapshot) => querySnapshot.docs[0],
+          (querySnapshot) => querySnapshot.docs[0]
         );
 
         setUserDetails({
           ...userDetails?.data(),
           id: userDetails?.id,
         });
-      },
+      }
     );
 
     return unsubscribeFromAuthStatusChanged;
@@ -51,5 +51,6 @@ export function useAuthentication() {
     authenticatedUser,
     userDetails,
     logout,
+    setUserDetails,
   };
 }

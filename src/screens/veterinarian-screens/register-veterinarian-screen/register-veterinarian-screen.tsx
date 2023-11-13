@@ -62,6 +62,13 @@ export function RegisterVeterinarianScreen() {
           <FormProvider {...methods}>
             <Container>
               <ControlledTextInput name="fullName" label="Nome" />
+              <ControlledTextInput
+                name="birthDate"
+                label="Data de Nascimento"
+                mask="birthDate"
+                maxLength={10}
+                keyboardType="numeric"
+              />
               <ControlledTextInput name="crmv" label="CRMV" />
               <AppointmentPriceInput />
               <ControlledTextInput
