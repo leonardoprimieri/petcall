@@ -39,4 +39,6 @@ export const PetInfoFooter = styled.View`
 
 export const ButtonContainer = styled.View`
   margin-left: auto;
+  flex-direction: row;
+  gap: 8px;
 `;
