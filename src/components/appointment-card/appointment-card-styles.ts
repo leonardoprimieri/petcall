@@ -11,7 +11,7 @@ export const Container = styled.TouchableOpacity`
 export const InfoContainer = styled.View`
   gap: 32px;
   width: 100%;
-  height: 80px;
+  height: 120px;
   padding: 0 12px 0 16px;
   margin-bottom: 12px;
   flex-direction: row;
@@ -24,6 +24,7 @@ export const CardTitle = styled.Text`
   font-family: ${({ theme }) => theme.FONTS.PRIMARY.SEMIBOLD};
   text-transform: capitalize;
   font-size: 18px;
+  width: 200px;
 `;
 
 export const DescriptionContainer = styled.View`

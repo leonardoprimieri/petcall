@@ -40,13 +40,6 @@ export const CreditCardStep = ({
   const methods = useForm<CreditCardFormData>({
     resolver: zodResolver(CreditCardFormValidation),
     mode: "onChange",
-    defaultValues: {
-      cardCvv: "123",
-      cardExpDate: "12/22",
-      cardNumber: "1234 1234 1234 1234",
-      fullName: "Joana da Silva",
-      zipCode: "00000-000",
-    },
   });
 
   const onSubmit = async () => {

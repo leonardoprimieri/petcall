@@ -91,7 +91,7 @@ export const AppointmentModal = forwardRef<any, Props>(function Modal(
           buttonLabel={isVoluntary ? "Confirmar" : "Ir para o pagamento"}
         />
       ),
-      snapPointPercentage: "40%",
+      snapPointPercentage: "45%",
     },
     2: {
       title: "Insira os dados de pagamento",

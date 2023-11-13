@@ -30,7 +30,7 @@ export const SelectPetStep = ({
   onConfirm,
   buttonLabel,
 }: Props) => {
-  const { pets } = useLoadPets();
+  const { pets, isLoading } = useLoadPets();
 
   const renderItem = useCallback(
     (item: PetEntity) => (
@@ -56,7 +56,7 @@ export const SelectPetStep = ({
     [selectedPet?.name]
   );
 
-  if (!pets.length)
+  if (!isLoading && !pets.length)
     return (
       <MissingPetsInfoContainer>
         <MissingPetsInfo>

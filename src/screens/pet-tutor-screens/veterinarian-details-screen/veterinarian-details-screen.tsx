@@ -15,6 +15,7 @@ import {
   GridItem,
   GridTitle,
   HeaderContainer,
+  NotAvailableLabel,
   StatusLabel,
   VeterinarianName,
 } from "./veterinarian-details-screen-styles";
@@ -27,6 +28,7 @@ import { WeekDaySelector } from "~/components/week-day-selector/week-day-selecto
 import { VeterinarianEntity } from "~/domain/entities/veterinarian-entity";
 import { formatCurrency } from "~/helpers/format-currency";
 import { handleIsVeterinarianVoluntary } from "~/helpers/handle-is-veterinarian-voluntary";
+import { isVeterinarianAvailableToday } from "~/helpers/is-veterinarian-available-today";
 import { useAuthentication, useCheckForAppointments } from "~/hooks";
 import { useLoadVeterinarianAppointmentsQuery } from "~/hooks/api/veterinarian/use-load-veterinarian-appointments-query";
 import { DefaultLayout } from "~/layouts/default-layout/default-layout";
@@ -91,7 +93,7 @@ export function VeterinarianDetailsScreen({ route }: RouteParams) {
     }
 
     if (appointment?.requestStatus === "rejected") {
-      return "Infelizmente o veterinário não pode atender você agora. Tente novamente mais tarde.";
+      return "Infelizmente o veterinário não pode atender você agora. Não se preocupe, o pagamento foi estornado.";
     }
   };
 
@@ -100,6 +102,10 @@ export function VeterinarianDetailsScreen({ route }: RouteParams) {
   };
 
   const { isVoluntary, voluntaryLabel } = handleIsVeterinarianVoluntary({
+    veterinarian,
+  });
+
+  const { isAvailable, notAvailableLabel } = isVeterinarianAvailableToday({
     veterinarian,
   });
 
@@ -140,18 +146,25 @@ export function VeterinarianDetailsScreen({ route }: RouteParams) {
           <WeekDaySelector removePadding disabled />
         </FormProvider>
 
-        <ButtonContainer>
-          {(!appointment?.requestStatus ||
-            appointment.requestStatus === "finished") && (
-            <Button
-              onPress={() => {
-                modalRef?.current?.present();
-              }}
-            >
-              Solicitar consulta
-            </Button>
-          )}
-        </ButtonContainer>
+        {isAvailable && (
+          <ButtonContainer>
+            {(!appointment?.requestStatus ||
+              appointment.requestStatus === "finished") && (
+              <Button
+                onPress={() => {
+                  modalRef?.current?.present();
+                }}
+              >
+                Solicitar consulta
+              </Button>
+            )}
+          </ButtonContainer>
+        )}
+
+        {!isAvailable && (
+          <NotAvailableLabel>{notAvailableLabel}</NotAvailableLabel>
+        )}
+
         <StatusLabel>{renderAppointmentStatus()}</StatusLabel>
       </Container>
       <AppointmentModal ref={modalRef} veterinarian={veterinarian} />

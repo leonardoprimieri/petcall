@@ -25,7 +25,7 @@ export const Welcome = styled.Text`
 
 export const Name = styled.Text`
   color: ${({ theme }) => theme.COLORS.PRIMARY};
-  font-family: ${({ theme }) => theme.FONTS.PRIMARY.BOLD};
+  font-family: ${({ theme }) => theme.FONTS.PRIMARY.SEMIBOLD};
 `;
 
 export const AvatarContainer = styled.View`
