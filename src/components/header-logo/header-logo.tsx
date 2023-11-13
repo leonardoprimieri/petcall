@@ -8,9 +8,10 @@ import { ArrowLeftIcon } from "../icons";
 type Props = {
   text?: string;
   removeGoBack?: boolean;
+  smallTitle?: boolean;
 };
 
-export const HeaderLogo = ({ text, removeGoBack }: Props) => {
+export const HeaderLogo = ({ text, removeGoBack, smallTitle }: Props) => {
   const navigation = useNavigation();
 
   const { COLORS } = useTheme();
@@ -26,7 +27,7 @@ export const HeaderLogo = ({ text, removeGoBack }: Props) => {
           <ArrowLeftIcon color={COLORS.PRIMARY} weight="bold" />
         </IconButton>
       )}
-      <HeroText>{text}</HeroText>
+      <HeroText smallTitle={smallTitle}>{text}</HeroText>
     </Container>
   );
 };

@@ -1,8 +1,12 @@
 import styled from "styled-components/native";
 
-export const HeroText = styled.Text`
+type HeroTextProps = {
+  smallTitle?: boolean;
+};
+
+export const HeroText = styled.Text<HeroTextProps>`
   font-family: ${({ theme }) => theme.FONTS.PRIMARY.REGULAR};
-  font-size: 22px;
+  font-size: ${({ smallTitle }) => (smallTitle ? "16px" : "22px")};
   color: ${({ theme }) => theme.COLORS.PRIMARY};
   margin: 0 auto;
 `;

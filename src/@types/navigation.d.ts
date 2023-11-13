@@ -21,6 +21,7 @@ export declare global {
         refetch: boolean;
       };
 
+      VeterinaryMap: undefined;
       SearchVets: undefined;
       PetTutorHome: undefined;
       RegisterPetTutor: undefined;

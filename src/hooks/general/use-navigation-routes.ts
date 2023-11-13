@@ -34,6 +34,8 @@ export const useNavigationRoutes = () => {
     });
   };
 
+  const handleGoToVeterinaryMap = () => navigate("VeterinaryMap");
+
   return {
     handleGoToOnboarding,
     handleGoToSearchVets,
@@ -48,5 +50,6 @@ export const useNavigationRoutes = () => {
     handleGoToPetTutorAppointments,
     handleGoToVeterinarianAppointments,
     handleGoToEditPet,
+    handleGoToVeterinaryMap,
   };
 };

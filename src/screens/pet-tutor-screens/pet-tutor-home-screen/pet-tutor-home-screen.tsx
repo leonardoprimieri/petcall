@@ -27,6 +27,11 @@ const MENU_ITEMS = [
     image: require("~/assets/medical.png"),
     path: "PetTutorAppointments",
   },
+  {
+    label: "Mapa de Clínicas",
+    image: require("~/assets/medical.png"),
+    path: "VeterinaryMap",
+  },
 ];
 
 export const PetTutorHomeScreen = () => {
