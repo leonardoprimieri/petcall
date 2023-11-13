@@ -1,5 +1,5 @@
 import LottieView from "lottie-react-native";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { View } from "react-native";
 
 import {
@@ -8,7 +8,11 @@ import {
 } from "./success-payment-message-styles";
 
 export const SuccessPaymentMessage = () => {
-  const animation = useRef(null);
+  const animation = useRef<LottieView | null>(null);
+
+  useEffect(() => {
+    animation.current?.play();
+  }, []);
 
   return (
     <SuccessPaymentContainer>
@@ -17,8 +21,8 @@ export const SuccessPaymentMessage = () => {
       </SuccessPaymentLabel>
       <View>
         <LottieView
-          ref={animation}
           autoPlay
+          ref={animation}
           source={require("./succeed-payment-animation.json")}
           style={{
             width: 400,

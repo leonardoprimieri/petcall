@@ -68,7 +68,8 @@ export function VeterinarianDetailsScreen({ route }: RouteParams) {
 
     if (
       !appointmentBelongsToUser &&
-      appointment?.requestStatus !== "finished"
+      appointment?.requestStatus !== "finished" &&
+      appointment
     ) {
       return "Esse veterinário já tem uma consulta em andamento. Tente novamente mais tarde.";
     }
