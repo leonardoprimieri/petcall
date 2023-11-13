@@ -8,12 +8,12 @@ import {
   LinkButton,
   LinkText,
 } from "./sign-in-form-styles";
+import { SignInFormValidation } from "../../validation/sign-in-form-validation";
 
 import { Button } from "~/components/button/button";
 import { ControlledTextInput } from "~/components/form/controlled-text-input/controlled-text-input";
 import { useNavigationRoutes } from "~/hooks/general/use-navigation-routes";
 import { useEmailLogin } from "~/screens/user-screens/sign-in-screen/hooks/use-email-login";
-import { SignUpFormValidation } from "~/screens/user-screens/sign-in-screen/validation/sign-up-form-validation";
 
 type FormData = {
   email: string;
@@ -22,7 +22,7 @@ type FormData = {
 
 export const SignInForm = () => {
   const methods = useForm<FormData>({
-    resolver: zodResolver(SignUpFormValidation),
+    resolver: zodResolver(SignInFormValidation),
     mode: "onSubmit",
   });
 
@@ -55,6 +55,7 @@ export const SignInForm = () => {
           width="300px"
           isLoading={methods.formState.isSubmitting}
           onPress={methods.handleSubmit(onSubmit)}
+          disabled={!methods.formState.isValid}
         >
           Entrar
         </Button>

@@ -1,5 +1,3 @@
-import { Text } from "react-native";
-
 import { ButtonsContainer } from "./pending-appointment-card-styles";
 import {
   HeaderText,
@@ -7,8 +5,7 @@ import {
 } from "../../appointment-request-styles";
 import { useAppointment } from "../../hooks/use-appointment";
 
-import { IconButton } from "~/components/icon-button/icon-button";
-import { CheckIcon, XIcon } from "~/components/icons";
+import { Button } from "~/components/button/button";
 
 export const PendingAppointmentCard = () => {
   const {
@@ -21,17 +18,13 @@ export const PendingAppointmentCard = () => {
     <StatusCardContainer>
       <HeaderText>
         Você tem uma solicitação de consulta de{" "}
-        {appointment?.tutorDetails.fullName}
+        {appointment?.tutorDetails?.fullName}
       </HeaderText>
       <ButtonsContainer>
-        <IconButton onPress={handleRejectAppointmentRequest}>
-          <XIcon color="red" />
-          <Text>Rejeitar</Text>
-        </IconButton>
-        <IconButton onPress={handleAcceptAppointmentRequest}>
-          <CheckIcon color="green" />
-          <Text>Aceitar</Text>
-        </IconButton>
+        <Button onPress={handleAcceptAppointmentRequest}>Aceitar</Button>
+        <Button variant="tertiary" onPress={handleRejectAppointmentRequest}>
+          Rejeitar
+        </Button>
       </ButtonsContainer>
     </StatusCardContainer>
   );

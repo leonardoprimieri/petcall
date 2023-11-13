@@ -3,6 +3,7 @@ import styled from "styled-components/native";
 export const HeaderText = styled.Text`
   font-family: ${({ theme }) => theme.FONTS.PRIMARY.REGULAR};
   text-align: center;
+  font-size: 16px;
 `;
 
 export const StatusCardContainer = styled.View`

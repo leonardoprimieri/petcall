@@ -1,3 +1,4 @@
+import { Link } from "@react-navigation/native";
 import styled from "styled-components/native";
 
 type PetImageWrapperProps = {
@@ -31,4 +32,23 @@ export const PetName = styled.Text<PetNameProps>`
   color: ${({ theme, isSelected }) =>
     isSelected ? theme.COLORS.PRIMARY : theme.COLORS.BLACK};
   margin-top: 8px;
+`;
+
+export const MissingPetsInfo = styled.Text`
+  font-family: ${({ theme }) => theme.FONTS.PRIMARY.REGULAR};
+  font-size: 16px;
+  color: ${({ theme }) => theme.COLORS.BLACK};
+  margin-top: 8px;
+  text-align: center;
+  width: 300px;
+`;
+
+export const MissingPetsInfoContainer = styled.View`
+  justify-content: center;
+  align-items: center;
+`;
+
+export const RegisterPetLink = styled(Link)`
+  margin-top: 8px;
+  color: ${({ theme }) => theme.COLORS.PRIMARY};
 `;

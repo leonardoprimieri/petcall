@@ -1,12 +1,16 @@
 import { BottomSheetScrollView } from "@gorhom/bottom-sheet";
+import { Link } from "@react-navigation/native";
 import { useCallback } from "react";
 import { StyleSheet, View } from "react-native";
 
 import {
+  MissingPetsInfo,
+  MissingPetsInfoContainer,
   PetCard,
   PetImage,
   PetImageWrapper,
   PetName,
+  RegisterPetLink,
 } from "./select-pet-step-styles";
 
 import { Button } from "~/components/button/button";
@@ -51,6 +55,16 @@ export const SelectPetStep = ({
     ),
     [selectedPet?.name]
   );
+
+  if (!pets.length)
+    return (
+      <MissingPetsInfoContainer>
+        <MissingPetsInfo>
+          Para consultar, você precisa{" "}
+          <RegisterPetLink to="/MyPets">cadastrar um pet</RegisterPetLink>
+        </MissingPetsInfo>
+      </MissingPetsInfoContainer>
+    );
 
   return (
     <>

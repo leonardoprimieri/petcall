@@ -2,18 +2,20 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm } from "react-hook-form";
 
 import { Form } from "./sign-up-form-styles";
-import { SignUpFormData } from "../../validation/sign-up-form-validation";
+import {
+  SignUpFormData,
+  SignUpFormValidation,
+} from "../../validation/sign-up-form-validation";
 
 import { Button } from "~/components/button/button";
 import { ControlledTextInput } from "~/components/form/controlled-text-input/controlled-text-input";
 import { useNavigationRoutes } from "~/hooks/general/use-navigation-routes";
-import { SignUpFormValidation } from "~/screens/user-screens/sign-in-screen/validation/sign-up-form-validation";
 import { useUserStore } from "~/store/user-store";
 
 export const SignUpForm = () => {
   const methods = useForm<SignUpFormData>({
     resolver: zodResolver(SignUpFormValidation),
-    mode: "onSubmit",
+    mode: "onTouched",
   });
 
   const { setUser } = useUserStore();
@@ -29,13 +31,18 @@ export const SignUpForm = () => {
     <FormProvider {...methods}>
       <Form>
         <ControlledTextInput
-          placeholder="E-mail"
           keyboardType="email-address"
           name="email"
+          placeholder="E-mail"
         />
         <ControlledTextInput
-          placeholder="Senha"
           name="password"
+          placeholder="Senha"
+          secureTextEntry
+        />
+        <ControlledTextInput
+          name="passwordConfirmation"
+          placeholder="Confirmar senha"
           secureTextEntry
         />
 
@@ -43,6 +50,7 @@ export const SignUpForm = () => {
           width="300px"
           isLoading={methods.formState.isSubmitting}
           onPress={methods.handleSubmit(onSubmit)}
+          disabled={!methods.formState.isValid}
         >
           Continuar
         </Button>
