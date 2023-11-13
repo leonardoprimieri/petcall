@@ -12,6 +12,7 @@ import { AppointmentPriceInput, ControlledTextInput } from "~/components/form";
 import { currencyMask } from "~/components/form/controlled-text-input/masks/currency-mask";
 import { HeaderLogo } from "~/components/header-logo/header-logo";
 import { KeyboardContainer } from "~/components/keyboard-container/keyboard-container";
+import { Loading } from "~/components/loading/loading";
 import { WeekDaySelector } from "~/components/week-day-selector/week-day-selector";
 import { updateUserProfileService } from "~/domain/services";
 import { useAuthentication, useNavigationRoutes } from "~/hooks";
@@ -39,6 +40,8 @@ export function VeterinarianProfileScreen() {
       userId: userDetails?.id,
     }).then(handleGoToVeterinarianHomeScreen);
   };
+
+  if (!userDetails?.fullName) return <Loading />;
 
   return (
     <DefaultLayout>

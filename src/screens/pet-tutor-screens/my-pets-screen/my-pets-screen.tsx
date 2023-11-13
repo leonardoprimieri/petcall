@@ -1,4 +1,4 @@
-import { ActivityIndicator, FlatList } from "react-native";
+import { FlatList } from "react-native";
 
 import { PetCard } from "./components/pet-card/pet-card";
 import { useLoadPets } from "./hooks/use-load-pets";
@@ -6,6 +6,7 @@ import { Container } from "./my-pets-screen-styles";
 
 import { Button } from "~/components/button/button";
 import { HeaderLogo } from "~/components/header-logo/header-logo";
+import { Loading } from "~/components/loading/loading";
 import { useNavigationRoutes } from "~/hooks";
 import { DefaultLayout } from "~/layouts/default-layout/default-layout";
 
@@ -24,19 +25,18 @@ export function MyPetsScreen({ route }: RouteParams) {
 
   const { handleGoToRegisterPet } = useNavigationRoutes();
 
+  if (isLoading) return <Loading />;
+
   return (
     <DefaultLayout>
       <Container>
         <HeaderLogo text="Meus Pets" />
-        {isLoading ? (
-          <ActivityIndicator />
-        ) : (
-          <FlatList
-            data={pets}
-            keyExtractor={(item) => item.name}
-            renderItem={({ item }) => <PetCard pet={item} />}
-          />
-        )}
+
+        <FlatList
+          data={pets}
+          keyExtractor={(item) => item.name}
+          renderItem={({ item }) => <PetCard pet={item} />}
+        />
 
         <Button onPress={handleGoToRegisterPet}>Cadastrar Pet</Button>
       </Container>

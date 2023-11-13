@@ -10,6 +10,7 @@ import {
 import { Button } from "~/components/button/button";
 import { ControlledTextInput } from "~/components/form";
 import { HeaderLogo } from "~/components/header-logo/header-logo";
+import { Loading } from "~/components/loading/loading";
 import { updateUserProfileService } from "~/domain/services";
 import { useAuthentication, useNavigationRoutes } from "~/hooks";
 import { DefaultLayout } from "~/layouts/default-layout/default-layout";
@@ -38,6 +39,8 @@ export function PetTutorProfileScreen() {
       handleGoToPetTutorHomeScreen();
     });
   };
+
+  if (!userDetails?.fullName) return <Loading />;
 
   return (
     <DefaultLayout>
