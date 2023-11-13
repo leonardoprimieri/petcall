@@ -1,6 +1,6 @@
 import styled from "styled-components/native";
 
-export const Container = styled.TouchableOpacity`
+export const Container = styled.View`
   flex-direction: row;
   padding: 12px 16px 12px 12px;
   gap: 12px;
@@ -35,4 +35,8 @@ export const PetInfoFooter = styled.View`
   flex-direction: row;
   gap: 8px;
   align-items: center;
+`;
+
+export const ButtonContainer = styled.View`
+  margin-left: auto;
 `;

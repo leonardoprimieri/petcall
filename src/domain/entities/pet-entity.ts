@@ -5,4 +5,5 @@ export type PetEntity = {
   birthday: string;
   type: string;
   imageUrl: string;
+  id?: string;
 };

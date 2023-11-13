@@ -1,3 +1,4 @@
+import { PetEntity } from "~/domain/entities/pet-entity";
 import { VeterinarianEntity } from "~/domain/entities/veterinarian-entity";
 
 export declare global {
@@ -25,6 +26,9 @@ export declare global {
       RegisterPetTutor: undefined;
       PetTutorAppointments: undefined;
       PetTutorProfile: undefined;
+      EditPet: {
+        pet: PetEntity;
+      };
     }
   }
 }

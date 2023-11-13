@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { UserTypeEnum } from "~/enums/user-type.enum";
 import { useAuthentication } from "~/hooks/auth/use-authentication";
 import {
+  EditPetScreen,
   MyPetsScreen,
   PetTutorAppointmentsScreen,
   PetTutorHomeScreen,
@@ -55,6 +56,7 @@ export const AppRoutes = () => {
                 name="PetTutorProfile"
                 component={PetTutorProfileScreen}
               />
+              <Screen name="EditPet" component={EditPetScreen} />
             </>
           )}
 

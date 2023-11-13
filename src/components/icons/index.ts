@@ -6,3 +6,4 @@ export * from "./check-icon";
 export * from "./x-icon";
 export * from "./upload-image-icon";
 export * from "./calendar-icon";
+export * from "./edit-icon";
