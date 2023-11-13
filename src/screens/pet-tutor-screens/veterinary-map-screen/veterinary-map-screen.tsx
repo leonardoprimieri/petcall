@@ -62,7 +62,6 @@ export const VeterinaryMapScreen = () => {
             }}
             title="Bom dia"
             description="Teste"
-            image={userDetails?.imageUrl}
           />
         </MapView>
       )}
