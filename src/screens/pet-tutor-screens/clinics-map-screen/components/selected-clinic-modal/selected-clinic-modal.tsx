@@ -62,7 +62,7 @@ export const SelectedClinicModal = forwardRef<any, Props>(function Modal(
   return (
     <BottomModal
       BottomSheetModalProps={{
-        snapPoints: ["50%", "50%"],
+        snapPoints: ["50%", "65%"],
       }}
       ref={modalRef}
     >
@@ -81,6 +81,9 @@ export const SelectedClinicModal = forwardRef<any, Props>(function Modal(
           <ClinicDistance>
             <Bold>Aproximadamente</Bold> {distanceBetweenClinicAndUser}km de
             você
+          </ClinicDistance>
+          <ClinicDistance>
+            {selectedClinic?.email} - {selectedClinic?.phone}
           </ClinicDistance>
         </InfoContainer>
         <StyledIconButton onPress={handleGoToGoogleMaps}>
