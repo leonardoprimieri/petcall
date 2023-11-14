@@ -62,7 +62,7 @@ export const SelectedClinicModal = forwardRef<any, Props>(function Modal(
   return (
     <BottomModal
       BottomSheetModalProps={{
-        snapPoints: ["50%", "65%"],
+        snapPoints: ["50%", "55%"],
       }}
       ref={modalRef}
     >

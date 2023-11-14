@@ -160,10 +160,3 @@ export const MAP_DARK_THEME = [
     ],
   },
 ];
-
-export const FloatingButtonContainer = styled.View`
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  gap: 12px;
-`;

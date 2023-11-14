@@ -38,7 +38,6 @@ export const StyledIconButton = styled(IconButton)`
   border-radius: 4px;
   padding: 12px;
   transform: rotate(45deg);
-  margin-top: 64px;
 `;
 
 export const Address = styled.Text`
