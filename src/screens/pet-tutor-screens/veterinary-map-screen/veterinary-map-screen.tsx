@@ -1,46 +1,37 @@
-import {
-  LocationObject,
-  requestForegroundPermissionsAsync,
-  getCurrentPositionAsync,
-  watchPositionAsync,
-  LocationAccuracy,
-} from "expo-location";
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 
+import { useUserLocation } from "./hooks/use-user-location";
+import { SelectedClinicModal } from "./selected-clinic-modal/selected-clinic-modal";
+
 import { HeaderLogo } from "~/components/header-logo/header-logo";
-import { useAuthentication } from "~/hooks";
 
 export const VeterinaryMapScreen = () => {
-  const { userDetails } = useAuthentication();
-  const [location, setLocation] = useState<LocationObject | null>(null);
+  const { location } = useUserLocation();
 
-  const requestLocationPermission = async () => {
-    const { granted } = await requestForegroundPermissionsAsync();
+  const [selectedClinic, setSelectedClinic] = useState(null);
 
-    if (granted) {
-      const currentPosition = await getCurrentPositionAsync();
-      setLocation(currentPosition);
-    }
-  };
-
-  useEffect(() => {
-    requestLocationPermission();
-  }, []);
-
-  useEffect(() => {
-    watchPositionAsync(
-      {
-        accuracy: LocationAccuracy.Highest,
-        timeInterval: 1000,
-        distanceInterval: 1,
-      },
-      (response) => {
-        setLocation(response);
-      }
-    );
-  }, []);
+  const PINS = [
+    {
+      longitude: -46.636,
+      latitude: -23.552,
+      title: "Clínica Veterinária 1",
+      description: "Rua 1, 123",
+    },
+    {
+      longitude: -40.636,
+      latitude: -20.553,
+      title: "Clínica Veterinária 2",
+      description: "Rua 2, 123",
+    },
+    {
+      longitude: location?.coords.longitude,
+      latitude: location?.coords.latitude,
+      title: "Clínica Veterinária 3",
+      description: "Rua 3, 123",
+    },
+  ];
 
   return (
     <View style={styles.container}>
@@ -55,16 +46,22 @@ export const VeterinaryMapScreen = () => {
             longitudeDelta: 0.005,
           }}
         >
-          <Marker
-            coordinate={{
-              longitude: location.coords.longitude,
-              latitude: location.coords.latitude,
-            }}
-            title="Bom dia"
-            description="Teste"
-          />
+          {PINS.map((clinic) => (
+            <Marker
+              coordinate={{
+                longitude: clinic.longitude,
+                latitude: clinic.latitude,
+              }}
+              image={require("~/assets/clinic.png")}
+              onPress={() => setSelectedClinic(clinic)}
+            />
+          ))}
         </MapView>
       )}
+      <SelectedClinicModal
+        selectedClinic={selectedClinic}
+        isOpen={selectedClinic}
+      />
     </View>
   );
 };
