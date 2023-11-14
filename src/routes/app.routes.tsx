@@ -12,7 +12,7 @@ import {
   RegisterPetTutorScreen,
   SearchVetsScreen,
   VeterinarianDetailsScreen,
-  VeterinaryMapScreen,
+  ClinicsMapScreen,
 } from "~/screens/pet-tutor-screens";
 import {
   OnboardingScreen,
@@ -20,6 +20,7 @@ import {
   SignUpScreen,
 } from "~/screens/user-screens";
 import {
+  RegisterClinicScreen,
   RegisterVeterinarianScreen,
   VeterinarianAppointmentsScreen,
   VeterinarianHomeScreen,
@@ -58,7 +59,7 @@ export const AppRoutes = () => {
                 component={PetTutorProfileScreen}
               />
               <Screen name="EditPet" component={EditPetScreen as any} />
-              <Screen name="VeterinaryMap" component={VeterinaryMapScreen} />
+              <Screen name="ClinicsMap" component={ClinicsMapScreen} />
             </>
           )}
 
@@ -76,6 +77,7 @@ export const AppRoutes = () => {
                 name="VeterinarianProfile"
                 component={VeterinarianProfileScreen}
               />
+              <Screen name="RegisterClinic" component={RegisterClinicScreen} />
             </>
           )}
         </>

@@ -7,4 +7,4 @@ export * from "./register-pet-screen/register-pet-screen";
 export * from "./pet-tutor-appointments-screen/pet-tutor-appointments-screen";
 export * from "./pet-tutor-profile-screen/pet-tutor-profile-screen";
 export * from "./edit-pet-screen/edit-pet-screen";
-export * from "./veterinary-map-screen/veterinary-map-screen";
+export * from "./clinics-map-screen/clinics-map-screen";

@@ -8,9 +8,13 @@ import { UploadImageIcon } from "../icons";
 
 type Props = {
   onUpload: React.Dispatch<React.SetStateAction<string>>;
+  title?: string;
 };
 
-export const UploadImage = ({ onUpload }: Props) => {
+export const UploadImage = ({
+  onUpload,
+  title = "Adicionar Foto de Perfil",
+}: Props) => {
   const [progress, setProgress] = useState(0);
 
   const takePhoto = async () => {
@@ -43,7 +47,7 @@ export const UploadImage = ({ onUpload }: Props) => {
 
   return (
     <Container>
-      <Title>Adicionar Foto de Perfil</Title>
+      <Title>{title}</Title>
       <UploadButton onPress={takePhoto}>
         {progress > 0 && <ActivityIndicator color="#fff" />}
         {progress <= 0 && (

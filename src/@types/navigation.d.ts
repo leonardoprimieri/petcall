@@ -15,13 +15,14 @@ export declare global {
       };
       VeterinarianAppointments: undefined;
       VeterinarianProfile: undefined;
+      RegisterClinic: undefined;
 
       RegisterPet: undefined;
       MyPets: {
         refetch: boolean;
       };
 
-      VeterinaryMap: undefined;
+      ClinicsMap: undefined;
       SearchVets: undefined;
       PetTutorHome: undefined;
       RegisterPetTutor: undefined;

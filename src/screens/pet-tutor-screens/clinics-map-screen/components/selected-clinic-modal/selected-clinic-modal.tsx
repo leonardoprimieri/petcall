@@ -1,7 +1,7 @@
 import { BottomSheetModal } from "@gorhom/bottom-sheet";
 import haversine from "haversine";
 import { forwardRef, useImperativeHandle, useRef } from "react";
-import { Linking, Text } from "react-native";
+import { Linking } from "react-native";
 import { useTheme } from "styled-components/native";
 
 import {
@@ -15,14 +15,11 @@ import {
   InfoContainer,
   StyledIconButton,
 } from "./selected-clinic-modal-styles";
-import { useUserLocation } from "../../hooks/use-user-location";
 
-import { Avatar } from "~/components/avatar/avatar";
 import { BottomModal } from "~/components/bottom-sheet-modal/bottom-sheet-modal";
-import { Button } from "~/components/button/button";
-import { IconButton } from "~/components/icon-button/icon-button";
-import { ArrowElbowUpRightIcon, MapPinIcon, XIcon } from "~/components/icons";
+import { ArrowElbowUpRightIcon, MapPinIcon } from "~/components/icons";
 import { ClinicEntity } from "~/domain/entities/clinic-entity";
+import { useUserLocation } from "~/hooks";
 
 type Props = {
   selectedClinic: ClinicEntity | null;
@@ -44,7 +41,7 @@ export const SelectedClinicModal = forwardRef<any, Props>(function Modal(
 
   const handleGoToGoogleMaps = () => {
     Linking.openURL(
-      `https://www.google.com/maps/search/?api=1&query=${selectedClinic?.latitude},${selectedClinic?.longitude}`,
+      `https://www.google.com/maps/search/?api=1&query=${selectedClinic?.location?.latitude},${selectedClinic?.location?.longitude}`,
     );
   };
 
@@ -54,13 +51,13 @@ export const SelectedClinicModal = forwardRef<any, Props>(function Modal(
       longitude: location?.coords.longitude as number,
     },
     {
-      latitude: selectedClinic?.latitude as number,
-      longitude: selectedClinic?.longitude as number,
+      latitude: selectedClinic?.location?.latitude as number,
+      longitude: selectedClinic?.location?.longitude as number,
     },
     {
       unit: "km",
     },
-  ).toFixed(2);
+  ).toFixed(1);
 
   return (
     <BottomModal
@@ -79,7 +76,7 @@ export const SelectedClinicModal = forwardRef<any, Props>(function Modal(
           <ClinicName>{selectedClinic?.name}</ClinicName>
           <DistanceContainer>
             <MapPinIcon color={COLORS.PRIMARY} />
-            <Address>{selectedClinic?.address}</Address>
+            <Address>{selectedClinic?.complement}</Address>
           </DistanceContainer>
           <ClinicDistance>
             <Bold>Aproximadamente</Bold> {distanceBetweenClinicAndUser}km de

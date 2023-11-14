@@ -38,5 +38,7 @@ export const useUserLocation = () => {
 
   return {
     location,
+    userLatitude: location?.coords.latitude as number,
+    userLongitude: location?.coords.longitude as number,
   };
 };

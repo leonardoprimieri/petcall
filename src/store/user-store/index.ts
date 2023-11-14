@@ -11,6 +11,7 @@ export const useUserStore = create<UserStore>((set) => ({
   user: {
     email: "",
     password: "",
+    passwordConfirmation: "",
   },
   setUser: (user) => set(() => ({ user })),
 }));

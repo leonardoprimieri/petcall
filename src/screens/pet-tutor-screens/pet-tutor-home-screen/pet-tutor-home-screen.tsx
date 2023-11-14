@@ -30,7 +30,7 @@ const MENU_ITEMS = [
   {
     label: "Mapa de Clínicas",
     image: require("~/assets/world.png"),
-    path: "VeterinaryMap",
+    path: "ClinicsMap",
   },
 ];
 

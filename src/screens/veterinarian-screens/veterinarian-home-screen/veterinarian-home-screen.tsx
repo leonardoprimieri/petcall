@@ -20,6 +20,11 @@ const MENU_ITEMS = [
     image: require("~/assets/placeholder-user.png"),
     path: "VeterinarianProfile",
   },
+  {
+    label: "Registrar Clínica Veterinária",
+    image: require("~/assets/clinic.png"),
+    path: "RegisterClinic",
+  },
 ];
 
 export const VeterinarianHomeScreen = () => {

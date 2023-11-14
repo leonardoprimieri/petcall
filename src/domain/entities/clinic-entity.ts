@@ -1,9 +1,11 @@
+import { LatLng } from "react-native-maps";
+
 export type ClinicEntity = {
-  longitude: number;
-  latitude: number;
   name: string;
-  address: string;
+  location: LatLng;
   phone: string;
   imageUrl: string;
-  id: string;
+  id?: string;
+  email: string;
+  complement: string;
 };

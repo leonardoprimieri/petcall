@@ -34,7 +34,7 @@ export const useNavigationRoutes = () => {
     });
   };
 
-  const handleGoToVeterinaryMap = () => navigate("VeterinaryMap");
+  const handleGoToVeterinaryMap = () => navigate("ClinicsMap");
 
   return {
     handleGoToOnboarding,

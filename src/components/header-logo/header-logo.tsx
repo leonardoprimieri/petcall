@@ -9,14 +9,22 @@ type Props = {
   text?: string;
   removeGoBack?: boolean;
   smallTitle?: boolean;
+  onGoBack?: () => void;
 };
 
-export const HeaderLogo = ({ text, removeGoBack, smallTitle }: Props) => {
+export const HeaderLogo = ({
+  text,
+  removeGoBack,
+  smallTitle,
+  onGoBack,
+}: Props) => {
   const navigation = useNavigation();
 
   const { COLORS } = useTheme();
 
   const handleGoBack = () => {
+    if (onGoBack) return onGoBack();
+
     navigation.goBack();
   };
 

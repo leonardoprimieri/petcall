@@ -13,7 +13,6 @@ export const useEmailLogin = () => {
 
   const login = async (params: EmailLoginParams) => {
     await emailLogin(params).catch((e) => {
-      console.log("🚀 ~ file: use-email-login.ts:16 ~ login ~ e:", e);
       return showToast({
         message: mapFirebaseError(e.code),
         type: "error",
