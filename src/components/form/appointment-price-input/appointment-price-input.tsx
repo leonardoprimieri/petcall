@@ -14,7 +14,7 @@ export const AppointmentPriceInput = () => {
   const { watch } = useFormContext();
 
   const appointmentPriceWithDiscount = applyPlatformFee(
-    clearCurrencyInput(String(watch("appointmentPrice")))
+    clearCurrencyInput(String(watch("appointmentPrice"))),
   );
 
   const receivedAmountLabel = () => {

@@ -9,7 +9,7 @@ type ButtonProps = {
 
 const renderButtonBackground = (
   theme: DefaultTheme,
-  variant?: "primary" | "secondary" | "tertiary"
+  variant?: "primary" | "secondary" | "tertiary",
 ) => {
   switch (variant) {
     case "primary":
@@ -44,7 +44,7 @@ type ButtonTextProps = {
 
 const renderButtonText = (
   theme: DefaultTheme,
-  variant?: "primary" | "secondary" | "tertiary"
+  variant?: "primary" | "secondary" | "tertiary",
 ) => {
   switch (variant) {
     case "primary":

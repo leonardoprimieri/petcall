@@ -1,5 +1,4 @@
 import { BottomSheetScrollView } from "@gorhom/bottom-sheet";
-import { Link } from "@react-navigation/native";
 import { useCallback } from "react";
 import { StyleSheet, View } from "react-native";
 
@@ -53,7 +52,7 @@ export const SelectPetStep = ({
         </PetName>
       </PetCard>
     ),
-    [selectedPet?.name]
+    [selectedPet?.name],
   );
 
   if (!isLoading && !pets.length)

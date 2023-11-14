@@ -27,7 +27,7 @@ export const WeekDaySelector = ({ disabled, removePadding = false }: Props) => {
 
     setValue(
       "daysAvailable",
-      daysAvailable.filter((day) => day !== id)
+      daysAvailable.filter((day) => day !== id),
     );
   };
 

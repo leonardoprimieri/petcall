@@ -12,7 +12,7 @@ type Props = {
 
 export const BottomModal = forwardRef<any, Props>(function Modal(
   { BottomSheetModalProps, children },
-  ref
+  ref,
 ) {
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
 

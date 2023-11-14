@@ -15,7 +15,7 @@ export type SaveAppointmentHistoryParams = {
 };
 
 export const saveAppointmentHistoryService = async (
-  data: SaveAppointmentHistoryParams
+  data: SaveAppointmentHistoryParams,
 ) => {
   const collectionRef = collection(db, "appointments");
 

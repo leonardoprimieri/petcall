@@ -16,8 +16,8 @@ export const requestAppointmentService = (data: RequestAppointmentParams) => {
   set(
     ref(
       realTimeDb,
-      "appointment-requests/" + data?.veterinarianDetails?.userId
+      "appointment-requests/" + data?.veterinarianDetails?.userId,
     ),
-    data
+    data,
   );
 };

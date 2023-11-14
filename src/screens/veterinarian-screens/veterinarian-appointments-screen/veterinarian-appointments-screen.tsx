@@ -30,7 +30,7 @@ export function VeterinarianAppointmentsScreen() {
           renderItem={({ item }) => (
             <AppointmentCard
               appointmentPrice={applyPlatformFee(
-                item?.veterinarianDetails?.appointmentPrice
+                item?.veterinarianDetails?.appointmentPrice,
               )}
               finishedAt={item.finishedAt as Date}
               fullName={item.tutorDetails?.fullName}

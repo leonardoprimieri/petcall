@@ -7,11 +7,11 @@ export const SignUpFormValidation = z
     email: requiredValidator("E-mail").email("Email inválido"),
     password: requiredValidator("Senha").min(
       6,
-      "Senha deve ter no mínimo 6 caracteres"
+      "Senha deve ter no mínimo 6 caracteres",
     ),
     passwordConfirmation: requiredValidator("Confirmação de senha").min(
       6,
-      "Senha deve ter no mínimo 6 caracteres"
+      "Senha deve ter no mínimo 6 caracteres",
     ),
   })
   .refine((data) => data.password === data.passwordConfirmation, {

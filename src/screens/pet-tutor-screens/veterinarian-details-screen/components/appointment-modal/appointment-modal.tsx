@@ -26,7 +26,7 @@ type Props = {
 
 export const AppointmentModal = forwardRef<any, Props>(function Modal(
   { veterinarian },
-  ref
+  ref,
 ) {
   const { userDetails } = useAuthentication();
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
@@ -110,7 +110,7 @@ export const AppointmentModal = forwardRef<any, Props>(function Modal(
 
   const snapPoints = useMemo(
     () => ["40%", steps[currentStep].snapPointPercentage],
-    [steps[currentStep].snapPointPercentage]
+    [steps[currentStep].snapPointPercentage],
   );
 
   return (

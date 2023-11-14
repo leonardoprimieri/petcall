@@ -13,7 +13,7 @@ export function PetTutorAppointmentsScreen() {
   const { userDetails } = useAuthentication();
 
   const { appointments, isLoading } = useLoadPetTutorAppointmentsQuery(
-    userDetails?.userId
+    userDetails?.userId,
   );
 
   if (isLoading) return <Loading />;

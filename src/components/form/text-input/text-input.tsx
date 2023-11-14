@@ -34,5 +34,5 @@ export const TextInput = forwardRef<any, TextInputProps>(
         )}
       </Container>
     );
-  }
+  },
 );

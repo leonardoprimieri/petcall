@@ -32,7 +32,7 @@ export const useUserLocation = () => {
       },
       (response) => {
         setLocation(response);
-      }
+      },
     );
   }, []);
 

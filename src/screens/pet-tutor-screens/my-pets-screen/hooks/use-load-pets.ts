@@ -11,7 +11,7 @@ type Props = {
 export const useLoadPets = (
   { refetch }: Props = {
     refetch: false,
-  }
+  },
 ) => {
   const { userDetails } = useAuthentication();
 

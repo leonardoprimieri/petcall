@@ -7,3 +7,5 @@ export * from "./x-icon";
 export * from "./upload-image-icon";
 export * from "./calendar-icon";
 export * from "./edit-icon";
+export * from "./map-pin-icon";
+export * from "./arrow-elbow-up-right";
