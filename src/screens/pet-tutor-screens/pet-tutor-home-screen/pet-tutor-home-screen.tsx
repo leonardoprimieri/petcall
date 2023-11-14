@@ -29,7 +29,7 @@ const MENU_ITEMS = [
   },
   {
     label: "Mapa de Clínicas",
-    image: require("~/assets/medical.png"),
+    image: require("~/assets/world.png"),
     path: "VeterinaryMap",
   },
 ];
