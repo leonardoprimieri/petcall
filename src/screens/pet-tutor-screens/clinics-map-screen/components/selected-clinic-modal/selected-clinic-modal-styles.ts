@@ -57,9 +57,8 @@ export const ClinicImage = styled.Image`
 `;
 
 export const VeterinarianContainer = styled(Link)`
-  width: 100%;
+  width: 300px;
   flex-direction: row;
-  gap: 12px;
   border: 1px solid ${(props) => props.theme.COLORS.PRIMARY};
   padding: 16px;
   border-radius: 4px;
