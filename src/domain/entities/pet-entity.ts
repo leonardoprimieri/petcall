@@ -4,6 +4,7 @@ export type PetEntity = {
   weight: string;
   birthday: string;
   type: string;
+  brand: string;
   imageUrl: string;
   id?: string;
 };

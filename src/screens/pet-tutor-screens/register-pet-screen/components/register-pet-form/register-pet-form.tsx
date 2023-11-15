@@ -2,6 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 
+import { mappedPetTypes } from "./components/select-pet-brand/constants/mapped-pet-types";
 import { SelectPetBrand } from "./components/select-pet-brand/select-pet-brand";
 import { useCreatePetMutation } from "./hooks/use-create-pet-mutation";
 import { FormContainer } from "./register-pet-form-styles";
@@ -16,6 +17,12 @@ import { UploadImage } from "~/components/upload-image/upload-image";
 import { useNavigationRoutes } from "~/hooks";
 
 export const RegisterPetForm = () => {
+  const [selectedPetType, setSelectedPetType] = useState("dog");
+
+  const [selectedBrand, setSelectedBrand] = useState(
+    mappedPetTypes[selectedPetType]?.[0]?.label,
+  );
+
   const [imageUrl, setImageUrl] = useState("");
 
   const { handleGoToPetTutorHomeScreen } = useNavigationRoutes();
@@ -32,11 +39,12 @@ export const RegisterPetForm = () => {
       imageUrl,
       name: values.name,
       weight: values.weight,
-      type: "dog",
+      type: selectedPetType,
+      brand: selectedBrand,
     }).then(handleGoToPetTutorHomeScreen);
   };
 
-  // if (!imageUrl) return <UploadImage onUpload={setImageUrl} />;
+  if (!imageUrl) return <UploadImage onUpload={setImageUrl} />;
 
   return (
     <FormProvider {...methods}>
@@ -50,7 +58,12 @@ export const RegisterPetForm = () => {
           maxLength={10}
         />
 
-        <SelectPetBrand />
+        <SelectPetBrand
+          selectedBrand={selectedBrand}
+          selectedPetType={selectedPetType}
+          setSelectedBrand={setSelectedBrand}
+          setSelectedPetType={setSelectedPetType}
+        />
 
         <Button
           onPress={methods.handleSubmit(onSubmit)}

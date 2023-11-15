@@ -49,3 +49,16 @@ export const Label = styled.Text`
   margin-left: 16px;
   margin-bottom: 4px;
 `;
+
+export const LabelContainer = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  align-items: flex-start;
+`;
+
+export const InfoContainer = styled.View`
+  flex-direction: row;
+  justify-content: center;
+  gap: 8px;
+`;

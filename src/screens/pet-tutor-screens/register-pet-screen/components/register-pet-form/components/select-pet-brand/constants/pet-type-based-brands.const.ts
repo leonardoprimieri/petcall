@@ -54,3 +54,22 @@ export const BIRD_BRANDS = [
     value: "Canário",
   },
 ];
+
+export const GUINEA_PIG_BRANDS = [
+  {
+    label: "Inglês",
+    value: "Inglês",
+  },
+  {
+    label: "Peruano",
+    value: "Peruano",
+  },
+  {
+    label: "Abissínio",
+    value: "Abissínio",
+  },
+  {
+    label: "Rex",
+    value: "Rex",
+  },
+];

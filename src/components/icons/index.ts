@@ -9,3 +9,4 @@ export * from "./calendar-icon";
 export * from "./edit-icon";
 export * from "./map-pin-icon";
 export * from "./arrow-elbow-up-right";
+export * from "./info-icon";

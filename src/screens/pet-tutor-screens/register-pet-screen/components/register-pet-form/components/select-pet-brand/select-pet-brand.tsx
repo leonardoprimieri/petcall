@@ -1,32 +1,22 @@
-import { useState } from "react";
-
-import {
-  BIRD_BRANDS,
-  CAT_BRANDS,
-  DOG_BRANDS,
-} from "./constants/pet-type-based-brands.const";
+import { mappedPetTypes } from "./constants/mapped-pet-types";
 import { PET_TYPES } from "./constants/pet-types.const";
 import { SelectContainer } from "./select-pet-brand-styles";
 
 import { Select } from "~/components/select/select";
 
-export const SelectPetBrand = () => {
-  const [selectedPetType, setSelectedPetType] = useState("dog");
+type Props = {
+  selectedBrand: string;
+  setSelectedBrand: (value: string) => void;
+  selectedPetType: string;
+  setSelectedPetType: (value: string) => void;
+};
 
-  const [selectedBrand, setSelectedBrand] = useState("");
-
-  const petTypes: Record<
-    string,
-    {
-      label: string;
-      value: string;
-    }[]
-  > = {
-    dog: DOG_BRANDS,
-    cat: CAT_BRANDS,
-    bird: BIRD_BRANDS,
-  };
-
+export const SelectPetBrand = ({
+  selectedBrand,
+  selectedPetType,
+  setSelectedBrand,
+  setSelectedPetType,
+}: Props) => {
   return (
     <SelectContainer>
       <Select
@@ -38,7 +28,7 @@ export const SelectPetBrand = () => {
       />
       <Select
         width="300px"
-        options={petTypes[selectedPetType] || petTypes["dog"]}
+        options={mappedPetTypes[selectedPetType]}
         selectedValue={selectedBrand}
         setSelectedValue={setSelectedBrand}
         label="Raça"

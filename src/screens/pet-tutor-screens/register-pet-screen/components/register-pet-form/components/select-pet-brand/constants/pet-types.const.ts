@@ -12,7 +12,7 @@ export const PET_TYPES = [
     value: "bird",
   },
   {
-    label: "Outro",
-    value: "other",
+    label: "Porquinho da Índia",
+    value: "guineaPig",
   },
 ];

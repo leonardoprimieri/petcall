@@ -1,8 +1,10 @@
+import { BottomSheetModal } from "@gorhom/bottom-sheet";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import { ScrollView } from "react-native";
+import { ScrollView, Text } from "react-native";
 
+import { MeetingUrlInfoModal } from "./components/meeting-url-info-modal/meeting-url-info-modal";
 import {
   ButtonContainer,
   Container,
@@ -12,6 +14,7 @@ import {
   registerVeterinarianValidation,
 } from "./validations/register-veterinarian-validation";
 
+import { BottomModal } from "~/components/bottom-sheet-modal/bottom-sheet-modal";
 import { Button } from "~/components/button/button";
 import { AppointmentPriceInput } from "~/components/form";
 import { ControlledTextInput } from "~/components/form/controlled-text-input/controlled-text-input";
@@ -26,6 +29,7 @@ import { useUserStore } from "~/store/user-store";
 
 export function RegisterVeterinarianScreen() {
   const [imageUrl, setImageUrl] = useState("");
+  const modalRef = useRef<BottomSheetModal>(null);
 
   const { user } = useUserStore();
 
@@ -74,6 +78,11 @@ export function RegisterVeterinarianScreen() {
               <ControlledTextInput
                 name="meetingUrl"
                 label="Link para reunião"
+                TooltipProps={{
+                  onPress: () => {
+                    modalRef.current?.present();
+                  },
+                }}
               />
               <WeekDaySelector />
               <ButtonContainer>
@@ -88,6 +97,7 @@ export function RegisterVeterinarianScreen() {
             </Container>
           </FormProvider>
         )}
+        <MeetingUrlInfoModal ref={modalRef} />
       </ScrollView>
     </DefaultLayout>
   );
