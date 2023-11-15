@@ -24,6 +24,11 @@ export default {
         foregroundImage: "./assets/adaptive-icon.png",
         backgroundColor: "#ffffff",
       },
+      config: {
+        googleMaps: {
+          apiKey: "AIzaSyDlDYeALoINGayYIJy84CsJ542JOOFFIoE",
+        },
+      },
     },
     web: {
       favicon: "./assets/favicon.png",

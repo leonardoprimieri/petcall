@@ -2,6 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 
+import { SelectPetBrand } from "./components/select-pet-brand/select-pet-brand";
 import { useCreatePetMutation } from "./hooks/use-create-pet-mutation";
 import { FormContainer } from "./register-pet-form-styles";
 import {
@@ -35,7 +36,7 @@ export const RegisterPetForm = () => {
     }).then(handleGoToPetTutorHomeScreen);
   };
 
-  if (!imageUrl) return <UploadImage onUpload={setImageUrl} />;
+  // if (!imageUrl) return <UploadImage onUpload={setImageUrl} />;
 
   return (
     <FormProvider {...methods}>
@@ -48,6 +49,8 @@ export const RegisterPetForm = () => {
           mask="birthDate"
           maxLength={10}
         />
+
+        <SelectPetBrand />
 
         <Button
           onPress={methods.handleSubmit(onSubmit)}

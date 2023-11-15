@@ -1,6 +1,6 @@
 import { PropsWithChildren, forwardRef } from "react";
 import { StyleSheet, View } from "react-native";
-import MapView, { LatLng } from "react-native-maps";
+import MapView, { LatLng, PROVIDER_GOOGLE } from "react-native-maps";
 
 import { MAP_DARK_THEME } from "./map-styles";
 import { Loading } from "../loading/loading";
@@ -29,6 +29,7 @@ export const Map = forwardRef<MapView, PropsWithChildren<Props>>(
             latitudeDelta: 1,
             longitudeDelta: 1,
           }}
+          provider={PROVIDER_GOOGLE}
           showsCompass
           showsBuildings
           zoomEnabled
