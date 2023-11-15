@@ -35,7 +35,7 @@ export const AppointmentCardPetDetails = ({
         <Image
           source={{
             uri: pet?.imageUrl,
-            width: isRequestVariant ? 150 : 300,
+            width: isRequestVariant ? 300 : 300,
             height: isRequestVariant ? 100 : 150,
           }}
           style={{

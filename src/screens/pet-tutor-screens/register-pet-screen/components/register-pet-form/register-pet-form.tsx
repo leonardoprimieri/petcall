@@ -14,10 +14,14 @@ import {
 import { Button } from "~/components/button/button";
 import { ControlledTextInput } from "~/components/form";
 import { UploadImage } from "~/components/upload-image/upload-image";
-import { useNavigationRoutes } from "~/hooks";
+import { PetEntity } from "~/domain/entities/pet-entity";
+import { useNavigationRoutes, useToast } from "~/hooks";
 
 export const RegisterPetForm = () => {
-  const [selectedPetType, setSelectedPetType] = useState("dog");
+  const { showToast } = useToast();
+
+  const [selectedPetType, setSelectedPetType] =
+    useState<PetEntity["type"]>("dog");
 
   const [selectedBrand, setSelectedBrand] = useState(
     mappedPetTypes[selectedPetType]?.[0]?.label,
@@ -41,7 +45,14 @@ export const RegisterPetForm = () => {
       weight: values.weight,
       type: selectedPetType,
       brand: selectedBrand,
-    }).then(handleGoToPetTutorHomeScreen);
+    }).then(() => {
+      handleGoToPetTutorHomeScreen();
+      showToast({
+        type: "success",
+        message: "Pet cadastrado com sucesso!",
+        title: "Sucesso",
+      });
+    });
   };
 
   if (!imageUrl) return <UploadImage onUpload={setImageUrl} />;
@@ -50,7 +61,13 @@ export const RegisterPetForm = () => {
     <FormProvider {...methods}>
       <FormContainer>
         <ControlledTextInput name="name" label="Nome" />
-        <ControlledTextInput name="weight" label="Peso" />
+        <ControlledTextInput
+          name="weight"
+          label="Peso em Kg"
+          placeholder="Ex: 5.5kg"
+          placeholderTextColor="#A0A0A0"
+          keyboardType="numeric"
+        />
         <ControlledTextInput
           name="birthday"
           label="Aniversário"

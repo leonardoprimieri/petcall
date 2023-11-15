@@ -77,6 +77,7 @@ export const CreditCardStep = ({
             label="Número do cartão"
             mask="creditCard"
             maxLength={19}
+            keyboardType="numeric"
           />
           <DetailsContainer>
             <ControlledTextInput
@@ -87,6 +88,7 @@ export const CreditCardStep = ({
               width="160px"
               mask="expirationDate"
               maxLength={5}
+              keyboardType="numeric"
             />
             <ControlledTextInput
               placeholderTextColor="#ccc"
@@ -95,6 +97,7 @@ export const CreditCardStep = ({
               label="CVV"
               width="130px"
               maxLength={3}
+              keyboardType="numeric"
             />
           </DetailsContainer>
           <ControlledTextInput
@@ -103,6 +106,8 @@ export const CreditCardStep = ({
             placeholder="00000-000"
             label="CEP"
             mask="zipCode"
+            keyboardType="numeric"
+            maxLength={9}
           />
         </Container>
 
