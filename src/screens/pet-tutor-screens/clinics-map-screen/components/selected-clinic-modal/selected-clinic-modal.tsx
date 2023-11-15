@@ -14,11 +14,19 @@ import {
   DistanceContainer,
   InfoContainer,
   StyledIconButton,
+  VetInfoContainer,
+  VetName,
+  VetPrice,
+  VetTitle,
+  VeterinarianContainer,
 } from "./selected-clinic-modal-styles";
 
+import { Avatar } from "~/components/avatar/avatar";
 import { BottomModal } from "~/components/bottom-sheet-modal/bottom-sheet-modal";
 import { ArrowElbowUpRightIcon, MapPinIcon } from "~/components/icons";
 import { ClinicEntity } from "~/domain/entities/clinic-entity";
+import { VeterinarianEntity } from "~/domain/entities/veterinarian-entity";
+import { formatCurrency } from "~/helpers/format-currency";
 import { useUserLocation } from "~/hooks";
 
 type Props = {
@@ -29,7 +37,7 @@ export const SelectedClinicModal = forwardRef<any, Props>(function Modal(
   { selectedClinic },
   ref,
 ) {
-  const { location } = useUserLocation();
+  const { location, granted } = useUserLocation();
   const { COLORS } = useTheme();
   const modalRef = useRef<BottomSheetModal>(null);
 
@@ -59,10 +67,12 @@ export const SelectedClinicModal = forwardRef<any, Props>(function Modal(
     },
   ).toFixed(1);
 
+  if (!granted) return null;
+
   return (
     <BottomModal
       BottomSheetModalProps={{
-        snapPoints: ["50%", "55%"],
+        snapPoints: ["50%", "80%"],
       }}
       ref={modalRef}
     >
@@ -74,6 +84,30 @@ export const SelectedClinicModal = forwardRef<any, Props>(function Modal(
         />
         <InfoContainer>
           <ClinicName>{selectedClinic?.name}</ClinicName>
+          <VetTitle>Atende aqui:</VetTitle>
+          <VeterinarianContainer
+            to={{
+              screen: "VeterinarianDetails",
+              params: {
+                veterinarian:
+                  selectedClinic?.veterinarianDetails as VeterinarianEntity,
+              },
+            }}
+          >
+            <Avatar
+              size={50}
+              url={selectedClinic?.veterinarianDetails?.imageUrl}
+            />
+            <VetInfoContainer>
+              <VetName>{selectedClinic?.veterinarianDetails?.fullName}</VetName>
+              <VetPrice>
+                {formatCurrency(
+                  selectedClinic?.veterinarianDetails
+                    ?.appointmentPrice as number,
+                )}
+              </VetPrice>
+            </VetInfoContainer>
+          </VeterinarianContainer>
           <DistanceContainer>
             <MapPinIcon color={COLORS.PRIMARY} />
             <Address>{selectedClinic?.complement}</Address>

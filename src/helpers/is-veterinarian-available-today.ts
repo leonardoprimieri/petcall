@@ -7,7 +7,7 @@ type Props = {
 export const isVeterinarianAvailableToday = ({ veterinarian }: Props) => {
   const todayNumberDay = new Date().getDay();
 
-  const isAvailable = veterinarian.daysAvailable.includes(todayNumberDay);
+  const isAvailable = veterinarian.daysAvailable?.includes(todayNumberDay);
   const notAvailableLabel = "Esse veterinário não está disponível hoje";
 
   return {

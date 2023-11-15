@@ -15,10 +15,12 @@ export const UploadImage = ({
   onUpload,
   title = "Adicionar Foto de Perfil",
 }: Props) => {
+  const [isLoading, setIsLoading] = useState(false);
   const [progress, setProgress] = useState(0);
 
   const takePhoto = async () => {
     try {
+      setIsLoading(true);
       const cameraResp = await ImagePicker.launchImageLibraryAsync({
         allowsEditing: true,
         mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -42,6 +44,8 @@ export const UploadImage = ({
       }
     } catch (e) {
       console.log(e);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -49,8 +53,8 @@ export const UploadImage = ({
     <Container>
       <Title>{title}</Title>
       <UploadButton onPress={takePhoto}>
-        {progress > 0 && <ActivityIndicator color="#fff" />}
-        {progress <= 0 && (
+        {(progress > 0 || isLoading) && <ActivityIndicator color="#fff" />}
+        {(progress <= 0 || !isLoading) && (
           <UploadImageIcon color="#fff" weight="bold" size={32} />
         )}
       </UploadButton>

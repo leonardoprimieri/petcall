@@ -1,8 +1,10 @@
+import { BottomSheetModal } from "@gorhom/bottom-sheet";
 import { useNavigation } from "@react-navigation/native";
 import { useRef } from "react";
 
 import { AppointmentRequest } from "./components";
 import { AddNotePetModal } from "./components/appointment-request/components/accept-appointment-card/components/add-pet-note-modal/add-pet-note-modal";
+import { AppointmentRequestInfoModal } from "./components/appointment-request-info-modal/appointment-request-info-modal";
 import { Container, ItemsContainer } from "./veterinarian-home-screen-styles";
 
 import { Header } from "~/components/header/header";
@@ -29,17 +31,29 @@ const MENU_ITEMS = [
 
 export const VeterinarianHomeScreen = () => {
   const { navigate } = useNavigation();
-  const modalRef = useRef<any>(null);
+  const modalRef = useRef<BottomSheetModal>(null);
+  const petInfoModalRef = useRef<BottomSheetModal>(null);
 
   const handleOpenNoteModal = () => {
     modalRef.current?.present();
+  };
+
+  const handleOpenPetInfoModal = () => {
+    petInfoModalRef.current?.present();
+  };
+
+  const handleClosePetInfoModal = () => {
+    petInfoModalRef.current?.dismiss();
   };
 
   return (
     <AuthorizedLayout>
       <Container>
         <Header />
-        <AppointmentRequest handleOpenNoteModal={handleOpenNoteModal} />
+        <AppointmentRequest
+          handleOpenPetInfoModal={handleOpenPetInfoModal}
+          handleOpenNoteModal={handleOpenNoteModal}
+        />
         <ItemsContainer>
           {MENU_ITEMS.map((item) => (
             <HomeMenuItem
@@ -53,6 +67,11 @@ export const VeterinarianHomeScreen = () => {
           ))}
         </ItemsContainer>
         <AddNotePetModal ref={modalRef} />
+
+        <AppointmentRequestInfoModal
+          ref={petInfoModalRef}
+          handleClosePetInfoModal={handleClosePetInfoModal}
+        />
       </Container>
     </AuthorizedLayout>
   );

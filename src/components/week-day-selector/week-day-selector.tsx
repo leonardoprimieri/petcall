@@ -20,7 +20,7 @@ export const WeekDaySelector = ({ disabled, removePadding = false }: Props) => {
   const daysAvailable = (watch("daysAvailable") as number[]) || [];
 
   const handleSelectDay = (id: number) => {
-    if (!daysAvailable.includes(id)) {
+    if (!daysAvailable?.includes(id)) {
       setValue("daysAvailable", [...daysAvailable, id]);
       return;
     }
@@ -39,7 +39,7 @@ export const WeekDaySelector = ({ disabled, removePadding = false }: Props) => {
       <WeekDaysContainer>
         {WEEK_DAYS.map((day) => (
           <WeekDay
-            isSelected={daysAvailable.includes(day.id)}
+            isSelected={daysAvailable?.includes(day.id)}
             onPress={() => handleSelectDay(day.id)}
             key={day.id}
             disabled={disabled}

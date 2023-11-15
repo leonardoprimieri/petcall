@@ -3,27 +3,20 @@ import {
   HeaderText,
   StatusCardContainer,
 } from "../../appointment-request-styles";
-import { useAppointment } from "../../hooks/use-appointment";
 
 import { Button } from "~/components/button/button";
 
-export const PendingAppointmentCard = () => {
-  const {
-    appointment,
-    handleAcceptAppointmentRequest,
-    handleRejectAppointmentRequest,
-  } = useAppointment();
+type Props = {
+  handleOpenPetInfoModal: () => void;
+};
 
+export const PendingAppointmentCard = ({ handleOpenPetInfoModal }: Props) => {
   return (
     <StatusCardContainer>
-      <HeaderText>
-        Você tem uma solicitação de consulta de{" "}
-        {appointment?.tutorDetails?.fullName}
-      </HeaderText>
+      <HeaderText>Você tem uma nova solicitação de consulta</HeaderText>
       <ButtonsContainer>
-        <Button onPress={handleAcceptAppointmentRequest}>Aceitar</Button>
-        <Button variant="tertiary" onPress={handleRejectAppointmentRequest}>
-          Rejeitar
+        <Button onPress={handleOpenPetInfoModal}>
+          Acessar detalhes da solicitação
         </Button>
       </ButtonsContainer>
     </StatusCardContainer>

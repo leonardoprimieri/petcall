@@ -119,6 +119,7 @@ export function VeterinarianDetailsScreen({ route }: RouteParams) {
         </HeaderContainer>
         <Avatar size={110} url={veterinarian?.imageUrl} />
         <VeterinarianName>{veterinarian.fullName}</VeterinarianName>
+
         <GridDetails>
           <GridItem>
             <GridTitle>{appointments?.length}</GridTitle>
@@ -141,6 +142,11 @@ export function VeterinarianDetailsScreen({ route }: RouteParams) {
             )}
           </GridItem>
         </GridDetails>
+
+        <GridItem style={{ marginTop: 16 }}>
+          <GridTitle large>{veterinarian?.crmv}</GridTitle>
+          <GridDescription large>CRMV</GridDescription>
+        </GridItem>
 
         <FormProvider {...methods}>
           <WeekDaySelector removePadding disabled />

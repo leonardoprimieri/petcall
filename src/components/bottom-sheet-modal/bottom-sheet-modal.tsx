@@ -20,6 +20,9 @@ export const BottomModal = forwardRef<any, Props>(function Modal(
     present: () => {
       bottomSheetModalRef.current?.present();
     },
+    dismiss: () => {
+      bottomSheetModalRef.current?.dismiss();
+    },
   }));
 
   return (

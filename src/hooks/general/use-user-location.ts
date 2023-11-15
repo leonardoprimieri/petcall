@@ -40,5 +40,6 @@ export const useUserLocation = () => {
     location,
     userLatitude: location?.coords.latitude as number,
     userLongitude: location?.coords.longitude as number,
+    granted: location !== null,
   };
 };

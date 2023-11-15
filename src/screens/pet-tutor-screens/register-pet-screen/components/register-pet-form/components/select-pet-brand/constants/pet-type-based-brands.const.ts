@@ -19,6 +19,10 @@ export const DOG_BRANDS = [
     label: "Pug",
     value: "Pug",
   },
+  {
+    label: "Sem raça definida",
+    value: "Sem raça definida",
+  },
 ];
 
 export const CAT_BRANDS = [
@@ -33,6 +37,10 @@ export const CAT_BRANDS = [
   {
     label: "Vira-lata",
     value: "Vira-lata",
+  },
+  {
+    label: "Sem raça definida",
+    value: "Sem raça definida",
   },
 ];
 

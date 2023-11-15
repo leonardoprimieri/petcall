@@ -15,7 +15,7 @@ type Props = {
     value: string;
   }[];
   selectedValue: string;
-  setSelectedValue: (value: string) => void;
+  setSelectedValue: (value: any) => void;
   label: string;
 };
 

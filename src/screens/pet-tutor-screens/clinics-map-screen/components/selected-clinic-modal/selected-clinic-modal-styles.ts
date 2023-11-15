@@ -1,3 +1,4 @@
+import { Link } from "@react-navigation/native";
 import styled from "styled-components/native";
 
 import { IconButton } from "~/components/icon-button/icon-button";
@@ -53,4 +54,35 @@ export const ClinicImage = styled.Image`
   height: 120px;
   border-radius: 4px;
   margin-top: 12px;
+`;
+
+export const VeterinarianContainer = styled(Link)`
+  width: 100%;
+  flex-direction: row;
+  gap: 12px;
+  border: 1px solid ${(props) => props.theme.COLORS.PRIMARY};
+  padding: 16px;
+  border-radius: 4px;
+`;
+
+export const VetName = styled.Text`
+  font-size: 16px;
+  font-family: ${(props) => props.theme.FONTS.PRIMARY.SEMIBOLD};
+  color: ${(props) => props.theme.COLORS.PRIMARY};
+`;
+
+export const VetInfoContainer = styled.View``;
+
+export const VetPrice = styled.Text`
+  font-size: 16px;
+  font-family: ${(props) => props.theme.FONTS.PRIMARY.SEMIBOLD};
+  color: ${(props) => props.theme.COLORS.PRIMARY};
+`;
+
+export const VetTitle = styled.Text`
+  font-size: 16px;
+  font-family: ${(props) => props.theme.FONTS.PRIMARY.SEMIBOLD};
+  color: ${(props) => props.theme.COLORS.BLACK};
+  width: 100%;
+  align-self: flex-start;
 `;

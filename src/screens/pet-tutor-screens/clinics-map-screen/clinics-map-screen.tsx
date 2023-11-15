@@ -14,7 +14,7 @@ import { ClinicEntity } from "~/domain/entities/clinic-entity";
 import { useUserLocation } from "~/hooks";
 
 export const ClinicsMapScreen = () => {
-  const { location } = useUserLocation();
+  const { location, granted } = useUserLocation();
   const modalRef = useRef<BottomSheetModal>(null);
   const mapRef = useRef<MapView>(null);
 
@@ -37,6 +37,8 @@ export const ClinicsMapScreen = () => {
   };
 
   if (isLoading) return <Loading />;
+
+  if (!granted) return null;
 
   return (
     <>

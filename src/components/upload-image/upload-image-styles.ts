@@ -2,9 +2,9 @@ import styled from "styled-components/native";
 
 export const UploadButton = styled.TouchableOpacity`
   background-color: ${({ theme }) => theme.COLORS.PRIMARY};
-  width: 150px;
+  width: 300px;
   height: 150px;
-  border-radius: 99999px;
+  border-radius: 12px;
   justify-content: center;
   align-items: center;
 `;

@@ -3,12 +3,13 @@ import { PET_TYPES } from "./constants/pet-types.const";
 import { SelectContainer } from "./select-pet-brand-styles";
 
 import { Select } from "~/components/select/select";
+import { PetEntity } from "~/domain/entities/pet-entity";
 
 type Props = {
   selectedBrand: string;
   setSelectedBrand: (value: string) => void;
   selectedPetType: string;
-  setSelectedPetType: (value: string) => void;
+  setSelectedPetType: (value: PetEntity["type"]) => void;
 };
 
 export const SelectPetBrand = ({

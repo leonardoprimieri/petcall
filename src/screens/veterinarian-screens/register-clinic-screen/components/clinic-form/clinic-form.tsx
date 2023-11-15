@@ -14,7 +14,7 @@ import { HeaderLogo } from "~/components/header-logo/header-logo";
 import { KeyboardContainer } from "~/components/keyboard-container/keyboard-container";
 import { UploadImage } from "~/components/upload-image/upload-image";
 import { createClinicService } from "~/domain/services";
-import { useNavigationRoutes, useToast } from "~/hooks";
+import { useAuthentication, useNavigationRoutes, useToast } from "~/hooks";
 import { AuthorizedLayout } from "~/layouts/authorized-layout/authorized-layout";
 import { useClinicStore } from "~/store/clinic-store";
 
@@ -23,6 +23,7 @@ type Props = {
 };
 
 export const ClinicForm = ({ handleBackStep }: Props) => {
+  const { userDetails } = useAuthentication();
   const { clinicPosition } = useClinicStore();
   const [imageUrl, setImageUrl] = useState("");
 
@@ -45,6 +46,17 @@ export const ClinicForm = ({ handleBackStep }: Props) => {
         latitude: clinicPosition?.latitude,
         longitude: clinicPosition?.longitude,
       },
+      veterinarianDetails: {
+        fullName: userDetails?.fullName,
+        userId: userDetails?.userId,
+        appointmentPrice: userDetails?.appointmentPrice,
+        imageUrl: userDetails?.imageUrl,
+        crmv: userDetails?.crmv,
+        daysAvailable: userDetails?.daysAvailable,
+        meetingUrl: userDetails?.meetingUrl,
+        email: userDetails?.email,
+      },
+      id: Math.random().toString(),
     }).then(() => {
       showToast({
         message: "Clínica cadastrada com sucesso!",
@@ -84,7 +96,7 @@ export const ClinicForm = ({ handleBackStep }: Props) => {
             />
             <ControlledTextInput name="clinicEmail" label="E-mail" />
             <Button
-              onPress={methods.handleSubmit(onSubmit)}
+              onPress={methods.handleSubmit(onSubmit as any)}
               style={{ marginTop: 16 }}
               width="300px"
               disabled={!methods.formState.isValid}

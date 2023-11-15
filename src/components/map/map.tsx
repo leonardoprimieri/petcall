@@ -14,9 +14,11 @@ type Props = {
 
 export const Map = forwardRef<MapView, PropsWithChildren<Props>>(
   function Modal(props, mapRef) {
-    const { userLatitude, userLongitude } = useUserLocation();
+    const { granted, userLatitude, userLongitude } = useUserLocation();
 
     if (!userLatitude || !userLongitude) return <Loading />;
+
+    if (!granted) return null;
 
     return (
       <View style={styles.container}>

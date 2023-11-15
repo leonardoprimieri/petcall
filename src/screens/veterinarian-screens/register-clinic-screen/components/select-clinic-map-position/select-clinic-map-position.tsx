@@ -15,7 +15,7 @@ type Props = {
 };
 
 export const SelectClinicMapPosition = ({ handleNextStep }: Props) => {
-  const { userLatitude, userLongitude, location } = useUserLocation();
+  const { userLatitude, userLongitude, location, granted } = useUserLocation();
   const mapRef = useRef<MapView>(null);
 
   const { clinicPosition, setClinicPosition } = useClinicStore();
@@ -31,6 +31,8 @@ export const SelectClinicMapPosition = ({ handleNextStep }: Props) => {
   const handleConfirm = () => {
     handleNextStep();
   };
+
+  if (!granted) return null;
 
   return (
     <>

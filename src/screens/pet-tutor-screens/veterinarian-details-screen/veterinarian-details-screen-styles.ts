@@ -32,15 +32,23 @@ export const GridItem = styled.View`
   align-items: center;
 `;
 
-export const GridTitle = styled.Text`
+type GridTitleProps = {
+  large?: boolean;
+};
+
+export const GridTitle = styled.Text<GridTitleProps>`
   font-family: ${({ theme }) => theme.FONTS.PRIMARY.EXTRA_BOLD};
-  font-size: 16px;
+  font-size: ${({ large }) => (large ? "24px" : "18px")};
   color: ${({ theme }) => theme.COLORS.TITLE};
 `;
 
-export const GridDescription = styled.Text`
+type GridDescriptionProps = {
+  large?: boolean;
+};
+
+export const GridDescription = styled.Text<GridDescriptionProps>`
   font-family: ${({ theme }) => theme.FONTS.PRIMARY.REGULAR};
-  font-size: 14px;
+  font-size: ${({ large }) => (large ? "18px" : "14px")};
   color: ${({ theme }) => theme.COLORS.PARAGRAPH};
 `;
 
